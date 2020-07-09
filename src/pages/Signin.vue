@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                <button type="submit" class="btn btn-success btn-block" @click.prevent="login()">Sign in</button>
             </div>
         </form>
         <div class="new-account mt-3">
@@ -73,7 +73,23 @@
                 if (!this.$v.$invalid) {
                     this.$router.push('otp-1');
                 }
-            }
+            },
+
+              login: function() {
+         this.isLoading = true;
+         // eslint-disable-next-line no-console
+         console.log("loding strated")
+      let email = this.email;
+      let password = this.password;
+      this.$store
+        .dispatch("login", { email, password })
+        .then(() => this.$router.push("/dashboard"))
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+        setTimeout(() => {
+                  this.isLoading = false
+                },5000)
+    }
         }
     }
 </script>

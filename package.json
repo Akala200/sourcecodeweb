@@ -3,15 +3,19 @@
   "dependencies": {
     "@vue/cli-service": "^4.4.6",
     "apexcharts": "^3.19.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.11.0",
     "node-waves": "^0.7.6",
+    "express": "^4.17.1",
     "path": "^0.12.7",
     "popper.js": "^1.16.1-lts",
     "vue": "^2.6.11",
     "vue-carousel": "^0.18.0",
     "vue-router": "^3.1.6",
-    "vuelidate": "^0.7.5"
+    "vuelidate": "^0.7.5",
+    "vuetify": "^2.2.29",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "~7.2",
@@ -42,7 +46,9 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
     "webpack-hot-middleware": "~2.24",
-    "webpack-merge": "~4.2"
+    "webpack-merge": "~4.2",
+    "vuetify": "^2.2.29",
+    "vuex": "^3.4.0"
   },
   "scripts": {
     "serve": "vue-cli-service serve",

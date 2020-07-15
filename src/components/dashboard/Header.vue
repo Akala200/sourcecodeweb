@@ -60,8 +60,40 @@
     export default {
         data() {
             return {
-                show: false
+                show: false,
+                fullname:  ''
             }
-        }
+        },
+
+          methods: {
+        submit() {
+            this.$v.$touch();
+
+            if (!this.$v.$invalid) {
+                this.$router.push('sign-in');
+            }
+        },
+
+          register: function() {
+         // eslint-disable-next-line no-console
+         console.log("loding strated")
+      const {
+last_name,
+first_name,
+email,
+phone,
+password
+      } = this
+        this.isLoading = true;
+
+      this.$store.dispatch("register", { last_name, first_name, email, phone, password })
+        .then(() => this.$router.push("/otp-2"))
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+        setTimeout(() => {
+                  this.isLoading = false
+                },5000)
+    }
+    }
     }
 </script>

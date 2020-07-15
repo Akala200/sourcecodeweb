@@ -41,12 +41,14 @@ export default new Vuex.Store({
             const token = resp.data.token;
             const user = resp.data.id;
             const email = resp.data.email;
-            const name = resp.data.first_name;
+            const firstname = resp.data.first_name;
+            const lastname = resp.data.last_name;
 
             localStorage.setItem("token", token);
             localStorage.setItem("user", user);
             localStorage.setItem("email", email);
-            localStorage.setItem("name", name);
+            localStorage.setItem("firstname", firstname);
+            localStorage.setItem("lastname", lastname);
 
             // Add the following line:
             axios.defaults.headers.common["Authorization"] = token;
@@ -69,10 +71,15 @@ export default new Vuex.Store({
           method: "POST",
         })
           .then((resp) => {
-            console.log(resp);
-            const token = resp.data.token;
+            const token = resp.data.tokenize;
             const user = resp.data.id;
+            const firstname = resp.data.first_name;
+            const lastname = resp.data.last_name;
+            const email = resp.data.email;
             localStorage.setItem("token", token);
+            localStorage.setItem("firstname", firstname);
+            localStorage.setItem("lastname", lastname);
+            localStorage.setItem("email", email);
             // Add the following line:
             axios.defaults.headers.common["Authorization"] = token;
             commit("auth_success", token, user);
@@ -85,6 +92,70 @@ export default new Vuex.Store({
           });
       });
     },
+
+     register({ commit }, user) {
+      return new Promise((resolve, reject) => {
+        commit("auth_request");
+        axios({
+          url: "https://coinzz.herokuapp.com/api/create/account",
+          data: user,
+          method: "POST",
+        })
+          .then((resp) => {
+            const token = resp.data.tokenize;
+            const user = resp.data.id;
+            const firstname = resp.data.first_name;
+            const lastname = resp.data.last_name;
+            const email = resp.data.email;
+            localStorage.setItem("token", token);
+            localStorage.setItem("firstname", firstname);
+            localStorage.setItem("lastname", lastname);
+            localStorage.setItem("email", email);
+            // Add the following line:
+            axios.defaults.headers.common["Authorization"] = token;
+            commit("auth_success", token, user);
+            resolve(resp);
+          })
+          .catch((err) => {
+            commit("auth_error", err);
+            localStorage.removeItem("token");
+            reject(err);
+          });
+      });
+    },
+
+    
+    verify({ commit }, code) {
+      return new Promise((resolve, reject) => {
+        commit("auth_request");
+        axios({
+          url: "https://coinzz.herokuapp.com/api/verify",
+          data: code,
+          method: "POST",
+        })
+          .then((resp) => {
+            const token = resp.data.tokenize;
+            const user = resp.data.id;
+            const firstname = resp.data.first_name;
+            const lastname = resp.data.last_name;
+            const email = resp.data.email;
+            localStorage.setItem("token", token);
+            localStorage.setItem("firstname", firstname);
+            localStorage.setItem("lastname", lastname);
+            localStorage.setItem("email", email);
+            // Add the following line:
+            axios.defaults.headers.common["Authorization"] = token;
+            commit("auth_success", token, user);
+            resolve(resp);
+          })
+          .catch((err) => {
+            commit("auth_error", err);
+            localStorage.removeItem("token");
+            reject(err);
+          });
+      });
+    },
+
     logout({ commit }) {
       // eslint-disable-next-line no-unused-vars
       return new Promise((resolve, reject) => {

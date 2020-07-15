@@ -1,5 +1,9 @@
 <template>
 <form-page>
+ <loading :active.sync="isLoading" 
+        :can-cancel="true" 
+        :is-full-page="fullPage"></loading>
+        
     <template #header>
         <h4 class="card-title">Sign up your account</h4>
     </template>
@@ -34,6 +38,10 @@
 
 <script>
 import formPage from '@/components/FormPage.vue';
+    // Import component
+    import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
 import {
     required,
     email,
@@ -44,7 +52,9 @@ import validateField from '@/components/ValidateField.vue';
 export default {
     components: {
         validateField,
-        formPage
+        formPage,
+        Loading
+
     },
 
     data() {
@@ -54,6 +64,8 @@ export default {
             last_name: '',
             password: '',
             phone: '',
+            isLoading: false,
+            fullPage: true,
             customErrors: {
                 username: {
                     required: 'Please enter your username'
@@ -98,9 +110,10 @@ email,
 phone,
 password
       } = this
+        this.isLoading = true;
 
       this.$store.dispatch("register", { last_name, first_name, email, phone, password })
-        .then(() => this.$router.push("/dashboard"))
+        .then(() => this.$router.push("/otp-2"))
         // eslint-disable-next-line no-console
         .catch(err => console.log(err));
         setTimeout(() => {

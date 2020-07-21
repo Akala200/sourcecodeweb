@@ -22,79 +22,24 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Price</th>
-                                            <th>Change</th>
-                                            <th>Chart</th>
-                                            <th>Trade</th>
+                                            <th>Change (1hour)</th>
+                                            <th>Current Supply</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
+                                        <tbody >
+                                        <tr v-for="list in lists" :key="list.id">
                                             <td><span>1</span>
                                             </td>
                                             <td class="coin_icon">
-                                                <i class="cc BTC"></i>
-                                                <span>Bitcoin <b>BTC</b></span>
-                                            </td>
-
-                                            <td>
-                                                USD 680,175.06
+                                                <span><b>{{list.name}}</b></span>
                                             </td>
                                             <td>
-                                                <span class="text-success">+1.13%</span>
-                                            </td>
-                                            <td> <img src="/images/sparkline.png" alt="sparkline"></td>
-                                            <td><a href="#" class="btn btn-success">Buy</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>2</span>
-                                            </td>
-                                            <td class="coin_icon">
-                                                <i class="cc ETH"></i>
-                                                <span>Ethereum <b>ETH</b></span>
-                                            </td>
-
-                                            <td>
-                                                USD 680,175.06
+                                                NGN    {{list.quote.NGN.price}}
                                             </td>
                                             <td>
-                                                <span class="text-success">+1.13%</span>
+                                                <span class="text-success">+{{list.quote.NGN.percent_change_1h}}%</span>
                                             </td>
-                                            <td> <img src="/images/sparkline.png" alt="sparkline"></td>
-                                            <td><a href="#" class="btn btn-success">Buy</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>3</span>
-                                            </td>
-                                            <td class="coin_icon">
-                                                <i class="cc BCH-alt"></i>
-                                                <span>Bitcoin Cash <b>BCH</b></span>
-                                            </td>
-
-                                            <td>
-                                                USD 680,175.06
-                                            </td>
-                                            <td>
-                                                <span class="text-success">+1.13%</span>
-                                            </td>
-                                            <td> <img src="/images/sparkline.png" alt="sparkline"></td>
-                                            <td><a href="#" class="btn btn-success">Buy</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>4</span>
-                                            </td>
-                                            <td class="coin_icon">
-                                                <i class="cc LTC"></i>
-                                                <span>Litecoin <b>LTC</b></span>
-                                            </td>
-
-                                            <td>
-                                                USD 680,175.06
-                                            </td>
-                                            <td>
-                                                <span class="text-danger">-0.47%</span>
-                                            </td>
-                                            <td> <img src="/images/sparkline.png" alt="sparkline"></td>
-                                            <td><a href="#" class="btn btn-success">Buy</a></td>
+                                            <td>{{list.circulating_supply}}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -107,3 +52,44 @@
         </div>
     </div>
 </template>
+
+<script>
+const axios = require('axios');
+
+export default {
+    data() {
+        return {
+            lists: [],
+            country_code: '',
+            phone: ""
+
+
+        };
+    },
+    auth: false,
+    
+
+    methods: {
+             getlist() {
+        
+            axios.get('https://coinzz.herokuapp.com/api/lists')
+                .then(res => {
+                    this.lists = res.data.data
+                    // eslint-disable-next-line no-console
+                                  console.log(this.lists)
+
+
+                    // eslint-disable-next-line no-unused-vars
+                }).catch(err => {
+                    console.log(err)
+                })
+            // eslint-disable-next-line no-console
+        },
+
+    },
+       mounted() {
+        this.getlist()
+    }
+}
+//reset_password
+</script>

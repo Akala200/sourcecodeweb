@@ -11,18 +11,18 @@
                                 <div class="account_money">
                                     <ul class="d-flex">
                                         <li class="crypto">
-                                            <span>0.0025</span>
+                                            <span>0</span>
                                             <i class="cc BTC-alt"></i>
                                         </li>
                                         <li class="usd">
-                                            <span>19.93 USD</span>
+                                            <span>0 NGN</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="profile_log dropdown">
                                     <div class="user" @click="show = !show">
                                         <span class="thumb"><i class="la la-user"></i></span>
-                                        <span class="name">Maria Pascle</span>
+                                        <span class="name">{{firstname}} {{lastname}}</span>
                                         <span class="arrow"><i class="la la-angle-down"></i></span>
                                     </div>
                                     <div
@@ -61,7 +61,9 @@
         data() {
             return {
                 show: false,
-                fullname:  ''
+                firstname:  '',
+                  lastname:  '',
+                    email:  ''
             }
         },
 
@@ -94,6 +96,17 @@ password
                   this.isLoading = false
                 },5000)
     }
-    }
+    },
+    
+        mounted() {
+
+               if (process.browser) {
+                 this.firstname =  localStorage.getItem("firstname");
+                 this.lastname  =  localStorage.getItem("lastname");
+                 this.email  =   localStorage.getItem("email");
+                }
+
+      
+        },
     }
 </script>

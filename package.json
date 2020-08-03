@@ -1,5 +1,7 @@
 {
-  "name": "elaenia",
+  "name": "test",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@vue/cli-service": "^4.4.6",
     "apexcharts": "^3.19.0",
@@ -49,11 +51,20 @@
     "webpack-hot-middleware": "~2.24",
     "webpack-merge": "~4.2",
     "vuetify": "^2.2.29",
-    "vuex": "^3.4.0"
+    "vuex": "^3.4.0",
+    "@vue/cli-plugin-babel": "^4.4.4",
+    "@vue/cli-plugin-eslint": "^4.4.4",
+    "@vue/cli-service": "^4.4.4",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "lint-staged": "^8.2.1"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "postinstall": "npm run build",
     "start": "node server.js"
   },

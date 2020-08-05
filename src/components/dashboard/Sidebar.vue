@@ -1,28 +1,44 @@
 <template>
-    <div class="sidebar">
-        <div class="menu">
-            <ul>
-                <li>
-                    <router-link to="/dashboard/home" v-b-tooltip.hover="{placement: 'right'}" title="Home">
-                        <span><i class="la la-igloo"></i></span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/dashboard/buy-sell" v-b-tooltip.hover="{placement: 'right'}" title="Exchange">
-                        <span><i class="la la-exchange-alt"></i></span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/dashboard/accounts" v-b-tooltip.hover="{placement: 'right'}" title="Account">
-                        <span><i class="la la-user"></i></span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/dashboard/settings" v-b-tooltip.hover="{placement: 'right'}" title="Setting">
-                        <span><i class="la la-tools"></i></span>
-                    </router-link>
-                </li>
-            </ul>
-        </div>
+  <div class="sidebar">
+    <div class="menu">
+      <ul>
+        <li>
+          <router-link
+            v-b-tooltip.hover="{placement: 'right'}"
+            to="/dashboard/home"
+            title="Home"
+          >
+            <span><i class="la la-igloo" /></span>
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            v-b-tooltip.hover="{placement: 'right'}"
+            to="/dashboard/buy-sell"
+            title="Exchange"
+          >
+            <span><i class="la la-exchange-alt" /></span>
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            v-b-tooltip.hover="{placement: 'right'}"
+            to="/dashboard/accounts"
+            title="Account"
+          >
+            <span><i class="la la-user" /></span>
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            v-b-tooltip.hover="{placement: 'right'}"
+            to="/dashboard/settings"
+            title="Setting"
+          >
+            <span><i class="la la-tools" /></span>
+          </router-link>
+        </li>
+      </ul>
     </div>
+  </div>
 </template>

@@ -1,100 +1,185 @@
 <template>
-    <form @submit.prevent="submit" name="myform" class="currency_validate">
-        <validate-field title="Currency" field="currency" :validations="$v.currency">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text">
-                        <i class="cc BTC-alt"></i>
-                    </label>
-                </div>
-                <select
-                    v-model="$v.currency.$model"
-                    id="currency"
-                    class="form-control"
-                    name="currency"
-                >
-                    <option value="">Select</option>
-                    <option value="bitcoin">Bitcoin</option>
-                    <option value="litecoin">Litecoin</option>
-                </select>
-            </div>
-        </validate-field>
+  <form
+    name="myform"
+    class="currency_validate"
+  >
+    <div class="form-group mb-3">
+      <div class="input-group-prepend" />
+      <select
+        id="currency"
+        class="form-control"
+        name="currency"
+      >
+        <option value="">
+          Select
+        </option>
+        <option
+          value="bitcoin"
+        >
+          Bitcoin
+        </option>
+      </select>
+    </div>
 
-        <validate-field title="Payment Method" field="method" :validations="$v.method">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text">
-                        <i class="fa fa-bank"></i>
-                    </label>
-                </div>
-                <select
-                    v-model="$v.method.$model"
-                    id="method"
-                    class="form-control"
-                    name="method"
-                >
-                    <option value="">Select</option>
-                    <option value="bank">Bank of America ********45845</option>
-                    <option value="master">Master Card ***********5458</option>
-                </select>
-            </div>
-        </validate-field>
+    <div class="form-group mb-3">
+      <select
+        id="method"
+        class="form-control"
+        name="method"
+      >
+        <option value="">
+          Select
+        </option>
+        <option
+          value="card"
+        >
+          Card
+        </option>
+      </select>
+    </div>
 
-        <validate-field title="Enter your amount" field="amount" :validations="$v.amount">
-            <div class="input-group">
-                <input v-model="currencyAmount" type="text" name="currency_amount" class="form-control" placeholder="0.0214 BTC">
-                <input v-model="usdAmount" type="text" name="usd_amount" class="form-control" placeholder="125.00 USD">
-            </div>
-        </validate-field>
+    <div class="form-group">
+      <input
+        v-model="amount"
+        type="text"
+        name="usd_amount"
+        class="form-control"
+        placeholder="125.00 NGN"
+      >
+    </div>
 
-        <div class="d-flex justify-content-between mb-3">
-            <p class="mb-0">Monthly Limit</p>
-            <h6 class="mb-0">$49750 remaining</h6>
-        </div>
+    <div class="d-flex justify-content-between mb-3">
+      <p class="mb-0">
+        Total Amount
+      </p>
+      <h6 class="mb-0">
+        NGN {{ amount }}
+      </h6>
+    </div>
 
-        <button type="submit" name="submit" class="btn btn-success btn-block">Exchange Now</button>
-    </form>
+    <button
+      class="btn btn-success btn-block p-2"
+      @click.prevent="buy()"
+    >
+      BUY COIN
+    </button>
+  </form>
 </template>
 
 <script>
-    import validateField from '@/components/ValidateField.vue';
-    import {required} from 'vuelidate/lib/validators';
+import axios from 'axios'
 
-    export default {
-        components: {validateField},
+export default {
 
-        data() {
-            return {
-                currency: '',
-                method: '',
-                currencyAmount: '',
-                usdAmount: '',
-            }
-        },
-
-        computed: {
-            amount() {
-                return this.currencyAmount && this.usdAmount
-                    ? `${this.currencyAmount} ${this.usdAmount}` : '';
-            }
-        },
-
-        validations: {
-            currency: {required},
-            method: {required},
-            currencyAmount: {required},
-            usdAmount: {required},
-            amount: {required}
-        },
-
-        methods: {
-            submit() {
-                this.$v.$touch();
-
-                if (!this.$v.$invalid) {
-                    this.$router.go(0);
-                }
-            }
-        }
+  data () {
+    return {
+      currency: '',
+      method: '',
+      card: '',
+      amount: '',
+      usdAmount: ''
     }
+  },
+
+  methods: {
+    buy () {
+      let email
+      if (process.browser) {
+        email = localStorage.getItem('email')
+      }
+
+      const amountData = this.amount
+      const data = {
+        email: email,
+        amount: amountData
+      }
+      axios.post('https://coinzz.herokuapp.com/api/credit', data).then(res => {
+        // sessionStorage.setItem('token', res.data.token)
+        window.location.href = res.data.authorization_url
+      })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }
+}
 </script>
+<style scoped>
+.form-group .form-control {
+    border-radius: 15px;
+    min-height: 50px;
+    border: 1px solid #423a6f;
+    padding: 0px 22px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    transition: all .3s ease-in-out;
+    background: #423a6f;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+button, input {
+    overflow: visible;
+}
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+* {
+    outline: none;
+    padding: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+user agent stylesheet
+input[type="text" i] {
+    padding: 1px 2px;
+}
+user agent stylesheet
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: rgb(232, 240, 254) !important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important;
+}
+user agent stylesheet
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+</style>

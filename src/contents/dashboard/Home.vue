@@ -12,7 +12,12 @@
           <div class="card-body pt-0">
             <div class="balance-widget">
               <div class="total-balance">
-                <h3>NGN 0</h3>
+                <div class="d-flex">
+                  <h3>BTC {{ balance.balance }}</h3>
+                </div>
+                <div class="d-flex">
+                  <h3>NGN {{ Math.ceil(nairaBalance.price /100) }}</h3>
+                </div>
                 <h6>Total Balance</h6>
               </div>
               <ul class="list-unstyled">
@@ -172,96 +177,46 @@
               <div class="table-responsive">
                 <table class="table mb-0 table-responsive-sm">
                   <tbody>
-                    <tr>
+                    <tr
+                      v-for="history in histories"
+                      :key="history.id"
+                    >
                       <td>
-                        <span class="sold-thumb"><i class="la la-arrow-down" /></span>
+                        <span
+                          v-if="history.type == 'debit'"
+                          class="sold-thumb"
+                        ><i class="la la-arrow-down" /></span>
+                        <span
+                          v-else
+                          class="buy-thumb"
+                        ><i class="la la-arrow-up" /></span>
                       </td>
 
                       <td>
-                        <span class="badge badge-danger">Sold</span>
+                        <span
+                          v-if="history.type == 'debit'"
+                          class="badge badge-danger"
+                        >SOLD</span>
+                        <span
+                          v-if="history.type == 'credit'"
+                          class="badge badge-success"
+                        >BUY</span>
                       </td>
                       <td>
                         <i class="cc BTC" /> Bitcoin
                       </td>
                       <td>
-                        Using - Bank *******5264
+                        {{ history.cardType }} *******{{ history.lastFour }}
                       </td>
                       <td class="text-danger">
-                        -0.000242 BTC
+                        <div v-if="history.type == 'debit'">
+                          -{{ history.coins }} BTC
+                        </div>
+                        <div v-else>
+                          {{ history.coins }} BTC
+                        </div>
                       </td>
-                      <td>-0.125 USD</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="buy-thumb"><i class="la la-arrow-up" /></span>
-                      </td>
-                      <td>
-                        <span class="badge badge-success">Buy</span>
-                      </td>
-                      <td>
-                        <i class="cc LTC" /> Litecoin
-                      </td>
-                      <td>
-                        Using - Card *******8475
-                      </td>
-                      <td class="text-success">
-                        -0.000242 BTC
-                      </td>
-                      <td>-0.125 USD</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="sold-thumb"><i class="la la-arrow-down" /></span>
-                      </td>
-                      <td>
-                        <span class="badge badge-danger">Sold</span>
-                      </td>
-                      <td>
-                        <i class="cc XRP" /> Ripple
-                      </td>
-                      <td>
-                        Using - Card *******8475
-                      </td>
-                      <td class="text-danger">
-                        -0.000242 BTC
-                      </td>
-                      <td>-0.125 USD</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="buy-thumb"><i class="la la-arrow-up" /></span>
-                      </td>
-                      <td>
-                        <span class="badge badge-success">Buy</span>
-                      </td>
-                      <td>
-                        <i class="cc DASH" /> Dash
-                      </td>
-                      <td>
-                        Using - Card *******2321
-                      </td>
-                      <td class="text-success">
-                        -0.000242 BTC
-                      </td>
-                      <td>-0.125 USD</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="sold-thumb"><i class="la la-arrow-down" /></span>
-                      </td>
-                      <td>
-                        <span class="badge badge-danger">Sold</span>
-                      </td>
-                      <td>
-                        <i class="cc BTC" /> Bitcoin
-                      </td>
-                      <td>
-                        Using - Card *******2321
-                      </td>
-                      <td class="text-danger">
-                        -0.000242 BTC
-                      </td>
-                      <td>-0.125 USD</td>
+                      <td>{{ history.amount }}NGN</td>
                     </tr>
                   </tbody>
                 </table>
@@ -321,22 +276,47 @@ export default {
       },
       bitcoin: {},
       shortlists: [],
-      NGN: '',
-      history: []
+      NGN: {},
+      histories: [],
+      balance: {},
+      nairaBalance: {}
     }
   },
   mounted () {
     this.getbitcoin()
+    // eslint-disable-next-line no-unused-vars
+    let userEmail
     if (process.browser) {
       localStorage.getItem('firstname')
       localStorage.getItem('lastname')
-      localStorage.getItem('email')
+      userEmail = localStorage.getItem('email')
     }
 
-    axios.get('https://coinzz.herokuapp.com/api/history')
+    axios.get(`https://coinzz.herokuapp.com/api/history?email=${userEmail}`)
       .then(res => {
-        console.log(res.data)
-        this.history = res.data
+        this.histories = res.data
+        // eslint-disable-next-line no-console
+
+        // eslint-disable-next-line no-unused-vars
+      }).catch(err => {
+        console.log(err)
+      })
+    // eslint-disable-next-line no-console
+
+    axios.get(`https://coinzz.herokuapp.com/api/balance/coin?email=${userEmail}`)
+      .then(res => {
+        this.balance = res.data
+        // eslint-disable-next-line no-console
+
+        // eslint-disable-next-line no-unused-vars
+      }).catch(err => {
+        console.log(err)
+      })
+    // eslint-disable-next-line no-console
+
+    axios.get(`https://coinzz.herokuapp.com/api/balance/naira?email=${userEmail}`)
+      .then(res => {
+        this.nairaBalance = res.data
         // eslint-disable-next-line no-console
 
         // eslint-disable-next-line no-unused-vars
@@ -378,7 +358,7 @@ export default {
       axios.get('https://coinzz.herokuapp.com/api/history')
         .then(res => {
           console.log(res)
-          this.history = res.data
+          this.histories = res.data
           // eslint-disable-next-line no-console
 
           // eslint-disable-next-line no-unused-vars

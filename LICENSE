@@ -19,3 +19,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+
+ axios.get(`https://coinzz.herokuapp.com/api/history?email=${userEmail}`)
+      .then(res => {
+        this.histories = res.data
+        // eslint-disable-next-line no-console
+
+        // eslint-disable-next-line no-unused-vars
+      }).catch(err => {
+        console.log(err)
+      })
+    // eslint-disable-next-line no-console

@@ -17,13 +17,7 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-md-6 py-md-5">
-                    <div class="card">
-                        <div class="card-body px-0">
-                            <div class="buy-sell-widget">
-                                <currency-form/>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

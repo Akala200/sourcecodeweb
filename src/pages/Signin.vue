@@ -1,5 +1,9 @@
 <template>
   <form-page>
+  <loading :active.sync="isLoading" 
+        :can-cancel="true" 
+        :on-cancel="onCancel"
+        :is-full-page="fullPage"></loading>
     <template #header>
       <h4 class="card-title">
         Sign in
@@ -70,14 +74,19 @@
 import formPage from '@/components/FormPage.vue'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 import validateField from '@/components/ValidateField.vue'
+  import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
-  components: { validateField, formPage },
+  components: { validateField, formPage, Loading },
 
   data () {
     return {
       email: '',
       password: '',
+      isLoading: false,
+      fullPage: true,
       customErrors: {
         password: { required: 'Please provide a password' }
       }

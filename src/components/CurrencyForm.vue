@@ -160,7 +160,6 @@ input:-internal-autofill-selected {
 }
 user agent stylesheet
 input {
-    -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
     color: -internal-light-dark(black, white);
     letter-spacing: normal;

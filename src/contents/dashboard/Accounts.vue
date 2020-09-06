@@ -35,17 +35,25 @@
         <div class="col-xl-4 col-lg-4 col-md-6">
           <div class="card acc_balance">
             <div class="card-header">
-              <h4 class="card-title">
+              <h6 class="card-title">
                 Wallet
-              </h4>
+              </h6>
             </div>
             <div class="card-body">
+            <div>
+            <span>Wallet ID</span>
+            <h5>{{user.guid}}</h5>
+            </div>
+            <div>
+            <span>Wallet Address</span>
+            <h5>{{user.address}}</h5>
+            </div>
               <span>Available BTC</span>
-              <h3>{{ balance.balance }} BTC</h3>
+              <h5>{{ balance.balance }} BTC</h5>
 
               <div class="mb-3">
                 <span>NGN Value</span>
-                <h3>{{ nairaBalance.price }} NGN</h3>
+                <h5>{{ nairaBalance.price }} NGN</h5>
               </div>
             </div>
           </div>
@@ -166,7 +174,8 @@ export default {
       NGN: {},
       histories: [],
       balance: {},
-      nairaBalance: {}
+      nairaBalance: {},
+      user: {}
     }
   },
   mounted () {
@@ -194,6 +203,18 @@ export default {
       .then(res => {
         this.balance = res.data
         // eslint-disable-next-line no-console
+
+        // eslint-disable-next-line no-unused-vars
+      }).catch(err => {
+        console.log(err)
+      })
+    // eslint-disable-next-line no-console
+
+      axios.get(`https://coinzz.herokuapp.com/api/get/user?email=${userEmail}`)
+      .then(res => {
+        this.user = res.data.data
+        // eslint-disable-next-line no-console
+         console.log(this.user)
 
         // eslint-disable-next-line no-unused-vars
       }).catch(err => {

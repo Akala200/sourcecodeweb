@@ -21,6 +21,8 @@ import features from '@/contents/landing/Features.vue';
 import portfolio from '@/contents/landing/Portfolio.vue';
 import testimonial from '@/contents/landing/Testimonial.vue';
 import contact from '@/contents/landing/Contact.vue';
+import completeTransfer from "@/contents/dashboard/CompleteTransfer.vue";
+
 import landingPageTitle from '@/components/landing/PageTitle.vue';
 import about from '@/contents/landing/About.vue';
 import settings from '@/contents/dashboard/settings/Settings.vue';
@@ -74,6 +76,8 @@ export default [
         { path: 'verify-step-4', meta: {title: 'ID Verified'}, component: verifyStep4 },
         { path: 'verify-step-5', meta: {title: 'Recommendation'}, component: verifyStep5 },
         { path: 'verify-step-6', meta: {title: 'Success'}, component: verifyStep6 },
+        { path: 'complete', meta: {title: 'Complete'}, component: completeTransfer },
+
 
         { path: 'settings', components: {default: settings, dashboardPageTitle}, children: [
             { path: '', meta: {title: 'Edit Profile'}, component: profile },

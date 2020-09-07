@@ -42,6 +42,9 @@ import formPage from '@/components/FormPage.vue';
     import Loading from 'vue-loading-overlay';
     // Import stylesheet
     import 'vue-loading-overlay/dist/vue-loading.css';
+    import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+import 'sweetalert2/src/sweetalert2.scss'
 import {
     required,
     email,

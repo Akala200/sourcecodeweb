@@ -106,6 +106,9 @@ export default {
         this.$router.push('otp-1')
       }
     },
+     onCancel() {
+              console.log('User cancelled the loader.')
+            },
 
     login: function () {
       this.isLoading = true

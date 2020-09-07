@@ -1,109 +1,131 @@
 <template>
-  <form
-    name="myform"
-    class="currency_validate"
-  >
+<form name="myform" class="currency_validate">
     <div class="form-group mb-3">
-      <div class="input-group-prepend" />
-      <select
-        id="currency"
-        class="form-control"
-        name="currency"
-      >
-        <option value="">
-          Select
-        </option>
-        <option
-          value="bitcoin"
-        >
-          Bitcoin
-        </option>
-      </select>
+        <div class="input-group-prepend" />
+        <select id="currency" class="form-control" name="currency">
+            <option value="">
+                Select
+            </option>
+            <option value="bitcoin">
+                Bitcoin
+            </option>
+        </select>
     </div>
 
     <div class="form-group mb-3">
-      <select
-        id="method"
-        class="form-control"
-        name="method"
-      >
-        <option value="">
-          Select
-        </option>
-        <option
-          value="card"
-        >
-          Card
-        </option>
-      </select>
+        <select id="method" class="form-control" name="method">
+            <option value="">
+                Select
+            </option>
+            <option value="card">
+                Card
+            </option>
+        </select>
     </div>
 
     <div class="form-group">
-      <input
-        v-model="amount"
-        type="text"
-        name="usd_amount"
-        class="form-control"
-        placeholder="125.00 NGN"
-      >
+        <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 NGN" @input="searchInput">
     </div>
 
     <div class="d-flex justify-content-between mb-3">
-      <p class="mb-0">
-        Total Amount
-      </p>
-      <h6 class="mb-0">
-        NGN {{ amount }}
-      </h6>
+        <p class="mb-0">
+            Total Amount
+        </p>
+        <h6 class="mb-0">
+            NGN {{ amount }}
+        </h6>
+    </div>
+     <div class="d-flex justify-content-between mb-3">
+        <p class="mb-0">
+            Fee
+        </p>
+        <h6 class="mb-0">
+          3%
+        </h6>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <p class="mb-0">
+           Amount After Fee
+        </p>
+        <h6 class="mb-0">
+            NGN {{ afterFee }}
+        </h6>
+    </div>
+     <div class="d-flex justify-content-between mb-3">
+        <p class="mb-0">
+           Bitcoin
+        </p>
+        <h6 class="mb-0">
+            BTC {{ coinAmount }}
+        </h6>
     </div>
 
-    <button
-      class="btn btn-success btn-block p-2"
-      @click.prevent="buy()"
-    >
-      BUY COIN
+    <button class="btn btn-success btn-block p-2" @click.prevent="buy()">
+        BUY COIN
     </button>
-  </form>
+</form>
 </template>
 
 <script>
 import axios from 'axios'
+import {
+    debounce
+} from 'debounce'
 
 export default {
 
-  data () {
-    return {
-      currency: '',
-      method: '',
-      card: '',
-      amount: '',
-      usdAmount: ''
-    }
-  },
+    data() {
+        return {
+            currency: '',
+            method: '',
+            card: '',
+            amount: '',
+            usdAmount: '',
+            afterFee: '',
+            coinAmount: ''
+        }
+    },
 
-  methods: {
-    buy () {
-      let email
-      if (process.browser) {
-        email = localStorage.getItem('email')
-      }
+    methods: {
+        searchInput: debounce(function (e) {
+            // make API call here
+            axios.get(`https://coinzz.herokuapp.com/api/convert?amount=${e.target.value}`)
+                .then(res => {
+                   console.log(res)
+                    // eslint-disable-next-line no-console
+                  this.afterFee =   res.data.amountAfterFee
+                  this.coinAmount =   res.data.price
 
-      const amountData = this.amount
-      const data = {
-        email: email,
-        amount: amountData
-      }
-      axios.post('https://coinzz.herokuapp.com/api/credit', data).then(res => {
-        // sessionStorage.setItem('token', res.data.token)
-        window.location.href = res.data.authorization_url
-      })
-        .catch(err => {
-          console.log(err)
-        })
+                    // eslint-disable-next-line no-unused-vars
+                }).catch(err => {
+                    console.log(err)
+                })
+        }, 800),
+        
+        buy() {
+            let email
+            if (process.browser) {
+                email = localStorage.getItem('email')
+            }
+
+            const amountData = this.amount
+            const data = {
+                email: email,
+                amount: amountData,
+                bitcoin: coinAmount
+            }
+            axios.post('https://coinzz.herokuapp.com/api/credit', data).then(res => {
+                    // sessionStorage.setItem('token', res.data.token)
+                    window.location.href = res.data.authorization_url
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }
-  }
 }
 </script>
+
 <style scoped>
 .form-group .form-control {
     border-radius: 15px;
@@ -116,6 +138,7 @@ export default {
     transition: all .3s ease-in-out;
     background: #423a6f;
 }
+
 .form-control {
     display: block;
     width: 100%;
@@ -129,37 +152,48 @@ export default {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-button, input {
+
+button,
+input {
     overflow: visible;
 }
-input, button, select, optgroup, textarea {
+
+input,
+button,
+select,
+optgroup,
+textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
 }
+
 * {
     outline: none;
     padding: 0;
 }
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
-user agent stylesheet
-input[type="text" i] {
+
+user agent stylesheet input[type="text"i] {
     padding: 1px 2px;
 }
-user agent stylesheet
-input:-internal-autofill-selected {
+
+user agent stylesheet input:-internal-autofill-selected {
     appearance: menulist-button;
     background-color: rgb(232, 240, 254) !important;
     background-image: none !important;
     color: -internal-light-dark(black, white) !important;
 }
-user agent stylesheet
-input {
+
+user agent stylesheet input {
     text-rendering: auto;
     color: -internal-light-dark(black, white);
     letter-spacing: normal;

@@ -10,18 +10,67 @@
                             <b-button @click.prevent="callModal()">Send</b-button>
                         </div>
                         <div class="col-6">
-                            <b-button @click.prevent="callModal()">Receive</b-button>
+                            <b-button @click.prevent="callModal2()">Receive</b-button>
                         </div>
                     </div>
-                    <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal1">
-                       <div class="container">
-                       <div class="row">
-                      <img src="/images/pl.png" alt="" class="pl"> <h4 class="tx">Send Bitcoin</h4>
-                       </div>
-                       </div>
-                        <br /><br />
+                                        <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal2">
+                                                <div class="container">
+                                                    <h3 class="mb-5">Copy Wallet Address</h3>
+                                                 <h5>{{user.address}}</h5>
+                                                </div>
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4xgx4k83zzc" frameborder="0" allowfullscreen></iframe>
+                                        </sweet-modal>
+                    <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal1">
+                        <div class="container">
+                            <div class="d-flex">
+                                <img src="/images/pl.png" alt="" class="pl">
+                                <h4 class="tx">Send Bitcoin</h4>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="container">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <span>Currency</span>
+                                        <select class="select-css" v-model="coin">
+                                            <option>Select Coin</option>
+                                            <option> <i class="cc BTC mr-3" /> Bitcoin</option>
+                                        </select>
+                                    </div>
+                                     <div class="col-lg-6">
+                                        <span>From</span>
+                                        <select class="select-css" v-model="wallet">
+                                            <option>Select Wallet</option>
+                                            <option>Bitcoin Wallet</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-lg-12">
+                                        <span>To</span>
+                                          <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="address" aria-describedby="emailHelp" placeholder="Paste Wallet Address">
+                                    </div>
+                                </div>
+                                  <div class="row mt-4">
+                                    <div class="col-lg-6">
+                                        <span>Amount</span>
+                                        <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="amount" aria-describedby="emailHelp" placeholder="₦0.00">
+                                    </div>
+                                     <div class="col-lg-6">
+                                        <span>Fee</span>
+                                         <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="fee" aria-describedby="emailHelp" disabled>
+                                    </div>
+                                </div>
+
+                                 <div class="row mt-4">
+                                     <div class="col-lg-12">
+                                         <button class="btn btn-success buttn"  @click.prevent="nextPage()">Continue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </sweet-modal>
                 </div>
 
@@ -276,7 +325,13 @@ export default {
             histories: [],
             balance: {},
             nairaBalance: {},
-            user: {}
+            user: {},
+            coin: '',
+            wallet: '',
+            address: '',
+            amount: '',
+            fee: '3%'
+
         }
     },
     mounted() {
@@ -363,8 +418,24 @@ export default {
             // eslint-disable-next-line no-console
         },
 
+          // shortlist callModal
+        nextPage() {
+            if (process.browser) {
+            localStorage.setItem('coin', this.coin);
+            localStorage.setItem('wallet', this.wallet);
+            localStorage.setItem('address', this.address);
+            localStorage.setItem('amount', this.amount);
+            localStorage.setItem('fee', this.fee);
+        }
+          this.$router.push('complete')
+        },
+
         callModal() {
             this.$refs.modal1.open()
+        },
+
+        callModal2() {
+            this.$refs.modal2.open()
         },
 
         getHistory() {
@@ -387,14 +458,123 @@ export default {
 
 <style scoped>
 .pl {
-    width: 30px;
+    width: 40px;
+    margin-top: -10px;
     margin-right: 10px;
 }
 
 .mt {
     color: #000;
 }
+
 .tx {
-  font-size: 18px;
+    font-size: 19px;
 }
+
+.buttn {
+    width: 100%;
+}
+.input-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    height: 50px;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+        for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+        
+    */
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+}
+/* class applies to select element itself, not a wrapper element */
+.select-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    height: 50px;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+        for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+        
+    */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+      linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+}
+/* Hide arrow icon in IE browsers */
+.select-css::-ms-expand {
+    display: none;
+}
+/* Hover style */
+.select-css:hover {
+    border-color: #888;
+}
+/* Focus style */
+.select-css:focus {
+    border-color: #aaa;
+    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+}
+
+/* Set options to normal weight */
+.select-css option {
+    font-weight:normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css {
+    background-position: left .7em top 50%, 0 0;
+    padding: .6em .8em .5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled, .select-css[aria-disabled=true] {
+    color: graytext;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+      linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+}
+
+.select-css:disabled:hover, .select-css[aria-disabled=true] {
+    border-color: #aaa;
+}
+
+
 </style>

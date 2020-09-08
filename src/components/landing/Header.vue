@@ -30,6 +30,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#contact" data-scroll-nav="4">Contact</a>
                                 </li>
+                                <li class="nav-item d-lg-none">
+                                      <router-link to="sign-in" class="nav-link">Sign In</router-link>
+                                </li>
+                                <li class="nav-item d-lg-none">
+                                    <router-link to="sign-up" class="nav-link">Sign Up</router-link>
+                                </li>
                             </ul>
                         </div>
                         <div class="dashboard_log">

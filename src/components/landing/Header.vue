@@ -5,7 +5,6 @@
                 <div class="col-xl-12">
                     <nav class="navbar navbar-expand-lg navbar-light px-0">
                         <router-link to="/" class="navbar-brand"><img src="/images/w_logo.png" alt="">
-                            <span>Elaenia</span>
                         </router-link>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -61,3 +60,8 @@
         }
     }
 </script>
+<style scoped>
+.header .navbar-brand img {
+    max-width: 150px;
+}
+</style>

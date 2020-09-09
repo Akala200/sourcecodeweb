@@ -10,7 +10,7 @@
     border-bottom: 1px solid $border-color;
     &.landing_page {
         left: 0;
-        background: #342C58;
+        background: #043D74;
         padding: 10px 0px;
     }
     
@@ -59,7 +59,7 @@
 
 .navbar-nav {
     @include respond('tab-port') {
-        background: #342C58;
+        background: #043D74;
         margin-top: 10px;
         border-radius: 16px;
         padding: 10px 0px;
@@ -219,7 +219,7 @@
         background-color: #423A6F;
         .dropdown-item {
             padding: 15px 20px;
-            border-bottom: 1px solid #3A3361;
+            border-bottom: 1px solid #043D74;
             font-size: 16px;
             color: $body-color;
             font-weight: 500;

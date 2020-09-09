@@ -13,7 +13,6 @@
                 src="/images/w_logo.png"
                 alt=""
               >
-              <span>Elaenia</span>
             </router-link>
             <div class="dashboard_log my-2">
               <div class="d-flex align-items-center">
@@ -136,3 +135,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.header .navbar-brand img {
+    max-width: 150px;
+}
+</style>

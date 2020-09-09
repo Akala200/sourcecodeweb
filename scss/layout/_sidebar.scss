@@ -1,5 +1,5 @@
 .sidebar {
-    background: #342C58;
+    background: #043D74;
     position  : fixed;
     left      : 0;
     height    : 100%;
@@ -18,7 +18,7 @@
                 margin-bottom: 5px;
                 border-radius: 5px;
                 &:hover,&:focus,&.active{
-                    background: #3A3361;
+                    background: #043D74;
                 }
                 &.router-link-active{
                     background: $primary;

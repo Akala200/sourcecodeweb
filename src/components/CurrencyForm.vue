@@ -89,7 +89,7 @@ export default {
     methods: {
         searchInput: debounce(function (e) {
             // make API call here
-            axios.get(`https://coinzz.herokuapp.com/api/convert?amount=${e.target.value}`)
+            axios.get(`https://modez.herokuapp.com/api/convert?amount=${e.target.value}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
@@ -114,7 +114,7 @@ export default {
                 amount: amountData,
                 bitcoin: coinAmount
             }
-            axios.post('https://coinzz.herokuapp.com/api/credit', data).then(res => {
+            axios.post('https://modez.herokuapp.com/api/credit', data).then(res => {
                     // sessionStorage.setItem('token', res.data.token)
                     window.location.href = res.data.authorization_url
                 })

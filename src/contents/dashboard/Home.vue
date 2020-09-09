@@ -344,7 +344,7 @@ export default {
             userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://coinzz.herokuapp.com/api/history?email=${userEmail}`)
+        axios.get(`https://modez.herokuapp.com/api/history?email=${userEmail}`)
             .then(res => {
                 this.histories = res.data
                 // eslint-disable-next-line no-console
@@ -355,7 +355,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://coinzz.herokuapp.com/api/get/user?email=${userEmail}`)
+        axios.get(`https://modez.herokuapp.com/api/get/user?email=${userEmail}`)
             .then(res => {
                 this.user = res.data.data
                 // eslint-disable-next-line no-console
@@ -367,7 +367,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://coinzz.herokuapp.com/api/balance/coin?email=${userEmail}`)
+        axios.get(`https://modez.herokuapp.com/api/balance/coin?email=${userEmail}`)
             .then(res => {
                 this.balance = res.data
                 // eslint-disable-next-line no-console
@@ -378,7 +378,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://coinzz.herokuapp.com/api/balance/naira?email=${userEmail}`)
+        axios.get(`https://modez.herokuapp.com/api/balance/naira?email=${userEmail}`)
             .then(res => {
                 this.nairaBalance = res.data
                 // eslint-disable-next-line no-console
@@ -389,7 +389,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get('https://coinzz.herokuapp.com/api/shortlist')
+        axios.get('https://modez.herokuapp.com/api/shortlist')
             .then(res => {
                 this.shortlists = res.data.data
                 // eslint-disable-next-line no-console
@@ -406,7 +406,7 @@ export default {
 
         // shortlist callModal
         getbitcoin() {
-            axios.get('https://coinzz.herokuapp.com/api/bitcoin')
+            axios.get('https://modez.herokuapp.com/api/bitcoin')
                 .then(res => {
                     this.bitcoin = res.data.data[0]
                     // eslint-disable-next-line no-console
@@ -439,7 +439,7 @@ export default {
         },
 
         getHistory() {
-            axios.get('https://coinzz.herokuapp.com/api/history')
+            axios.get('https://modez.herokuapp.com/api/history')
                 .then(res => {
                     console.log(res)
                     this.histories = res.data

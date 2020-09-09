@@ -139,7 +139,7 @@ export default {
       userEmail = localStorage.getItem('email')
     }
 
-    axios.get(`https://coinzz.herokuapp.com/api/get/user?email=${userEmail}`)
+    axios.get(`https://modez.herokuapp.com/api/get/user?email=${userEmail}`)
       .then(res => {
         this.first_name = res.data.data.first_name
         this.last_name = res.data.data.last_name
@@ -158,7 +158,7 @@ export default {
     },
 
     updateUser () {
-      let userEmail
+      let userEmail;
       if (process.browser) {
         userEmail = localStorage.getItem('email')
       }
@@ -169,12 +169,19 @@ export default {
         phone: this.phone
       }
 
-      axios.put(`https://coinzz.herokuapp.com/api/update/user?email=${userEmail}`, data)
+      axios.put(`https://modez.herokuapp.com/api/update/user?email=${userEmail}`, data)
         .then(res => {
           this.first_name = res.data.data.first_name
           this.last_name = res.data.data.last_name
           this.email = res.data.data.email
           this.phone = res.data.data.phone
+
+           if (process.browser) {
+       localStorage.setItem('firstname', res.data.data.first_name)
+         localStorage.setItem('lastname', res.data.data.last_name)
+        localStorage.setItem('email', res.data.data.email)
+       localStorage.setItem('phone', res.data.data.phone)
+      }
 
         // eslint-disable-next-line no-unused-vars
         }).catch(err => {

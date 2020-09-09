@@ -79,7 +79,7 @@ export default {
 
   methods: {
     getlist () {
-      axios.get('https://coinzz.herokuapp.com/api/lists')
+      axios.get('https://modez.herokuapp.com/api/lists')
         .then(res => {
           this.lists = res.data.data
           // eslint-disable-next-line no-console

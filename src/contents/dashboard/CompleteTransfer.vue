@@ -97,7 +97,7 @@ export default {
 
             }
 
-            axios.post(`https://coinzz.herokuapp.com/api/send`, dataSend)
+            axios.post(`https://modez.herokuapp.comapi/send`, dataSend)
                 .then(res => {
                     console.log(res)
                     Swal.fire({
@@ -142,14 +142,14 @@ export default {
             this.userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://coinzz.herokuapp.com/api/convert?amount=${amountSelected}`)
+        axios.get(`https://modez.herokuapp.comapi/convert?amount=${amountSelected}`)
             .then(res => {
                 this.bitcoin = res.data.price
                 this.realAmount = res.data.amountAfterFee
                 // eslint-disable-next-line no-console
                 amountNeeded = res.data.amountAfterFee
 
-                axios.get(`https://coinzz.herokuapp.com/api/get/coin?amount=${amountNeeded}`)
+                axios.get(`https://modez.herokuapp.comapi/get/coin?amount=${amountNeeded}`)
                     .then(res => {
                         this.flatAmount = res.data.price
                         // eslint-disable-next-line no-console

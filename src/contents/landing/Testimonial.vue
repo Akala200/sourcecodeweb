@@ -30,7 +30,7 @@
                                     <div class="col-xl-6 col-md-6">
                                         <div class="customer-review">
                                             <img class="img-fluid" src="/images/brand/2.webp" alt="">
-                                            <p>Integrating Elaenia services into Trezor Wallet's exchange has been a
+                                            <p>Integrating Sourcecode services into Trezor Wallet's exchange has been a
                                                 great success for all parties, especially the users.
                                             </p>
                                             <div class="customer-info">
@@ -51,7 +51,7 @@
                                     <div class="col-xl-6 col-md-6">
                                         <div class="customer-review">
                                             <img class="img-fluid" src="/images/brand/3.webp" alt="">
-                                            <p>MEW is excited to bring Elaenia’s extensive range of crypto assets,
+                                            <p>MEW is excited to bring Sourcecode's extensive range of crypto assets,
                                                 competitive rates and seamless swap functionality</p>
                                             <div class="customer-info">
                                                 <h5>Mr Abraham</h5>

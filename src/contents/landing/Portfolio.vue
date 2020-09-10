@@ -6,7 +6,7 @@
                     <div class="section_heading">
                         <span>Join Us</span>
                         <h3>Create your cryptocurrency portfolio today</h3>
-                        <p>Elaenia has a variety of features that make it the best place to start trading</p>
+                        <p>Sourcecode has a variety of features that make it the best place to start trading</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                             <span class="port-icon"> <i class="la la-mobile"></i></span>
                             <div class="media-body">
                                 <h4>Mobile apps</h4>
-                                <p>Stay on top of the markets with the Elaenia app for <a href="#">Android</a> or
+                                <p>Stay on top of the markets with the Sourcecode app for <a href="#">Android</a> or
                                     <a href="#">iOS</a>.</p>
                             </div>
                         </div>

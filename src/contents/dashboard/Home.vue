@@ -21,7 +21,7 @@
 
                                         </sweet-modal>
                     <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal1">
-                        <div class="container">
+                        <div class="container  d-none d-lg-block">
                             <div class="d-flex">
                                 <img src="/images/pl.png" alt="" class="pl">
                                 <h4 class="tx">Send Bitcoin</h4>
@@ -81,7 +81,7 @@
                                 <h3>BTC {{ balance.balance }}</h3>
                             </div>
                             <div class="d-flex">
-                                <h3>NGN {{ Math.ceil(nairaBalance.price /100) }}</h3>
+                                <h3>NGN {{ Math.ceil(nairaBalance.price) }}</h3>
                             </div>
                             <h6>Total Balance</h6>
                         </div>

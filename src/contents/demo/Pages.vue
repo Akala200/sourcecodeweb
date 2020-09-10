@@ -5,7 +5,7 @@
                 <div class="col-xl-7">
                     <div class="section_heading">
                         <span>Explore</span>
-                        <h3>The Complete Elaenia Crafted Design Pages</h3>
+                        <h3>The Complete Sourcecode Crafted Design Pages</h3>
                     </div>
                 </div>
             </div>

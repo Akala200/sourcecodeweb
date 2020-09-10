@@ -31,7 +31,7 @@
                     <div class="features-content">
                         <span><i class="fa fa-life-ring"></i></span>
                         <h4>Industry best practices</h4>
-                        <p>Elaeniasupports a variety of the most popular digital currencies.</p>
+                        <p>Sourcecodesupports a variety of the most popular digital currencies.</p>
                         <a href="#">Learn more <i class="la la-angle-right"></i></a>
                     </div>
                 </div>

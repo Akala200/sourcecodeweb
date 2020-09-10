@@ -6,8 +6,8 @@
                     <div class="terms_condition-content">
                         <div class="terms_condition-text">
                             <h3>Terms of Service : </h3>
-                            <p>By using Elaenia.com you agree to and are bound by these Terms and Conditions in their entirety and, without reservation, all applicable laws and regulations, and you agree that you are responsible for compliance with
-                                any applicable laws. These Terms of Service govern your use of this website. If you do not agree with any of these terms, you are prohibited from using Elaenia.com.
+                            <p>By using Sourcecode.com you agree to and are bound by these Terms and Conditions in their entirety and, without reservation, all applicable laws and regulations, and you agree that you are responsible for compliance with
+                                any applicable laws. These Terms of Service govern your use of this website. If you do not agree with any of these terms, you are prohibited from using Sourcecode.com.
                             </p>
                         </div>
 
@@ -16,7 +16,7 @@
                             <ul>
                                 <li>
                                     <i class="fa fa-circle"></i>
-                                    <p>You must not use Elaenia.com in any way that can cause damage to Elaenia.com or in any way which is unlawful, illegal, fraudulent or harmful, or in connection with any illegal, fraudulent, or harmful activity.
+                                    <p>You must not use Sourcecode.com in any way that can cause damage to Sourcecode.com or in any way which is unlawful, illegal, fraudulent or harmful, or in connection with any illegal, fraudulent, or harmful activity.
                                     </p>
                                 </li>
                                 <li>
@@ -26,7 +26,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-circle"></i>
-                                    <p>You must not use this website for any purposes related to marketing without the permission of Elaenia.com.</p>
+                                    <p>You must not use this website for any purposes related to marketing without the permission of Sourcecode.com.</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-circle"></i>
@@ -58,7 +58,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-circle"></i>
-                                    <p>Account balance may not be transferred, exchanged, sold, or otherwise change ownership under any circumstances, except by Elaenia.com</p>
+                                    <p>Account balance may not be transferred, exchanged, sold, or otherwise change ownership under any circumstances, except by Sourcecode.com</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-circle"></i>
@@ -73,16 +73,16 @@
 
                         <div class="terms_condition-text">
                             <h3>Indemnity : </h3>
-                            <p>You hereby indemnify Elaenia.com and undertake to keep Elaenia.com indemnified against any losses, damages, costs, liabilities, and/or expenses (including without limitation legal expenses) and any amounts paid by Elaenia.com
-                                to a third party in settlement of a claim or dispute on the advice of Elaenia.com’s legal advisers) incurred or suffered by Elaenia.com arising out of any breach by you of any provision of these terms and conditions,
+                            <p>You hereby indemnify Sourcecode.com and undertake to keep Sourcecode.com indemnified against any losses, damages, costs, liabilities, and/or expenses (including without limitation legal expenses) and any amounts paid by Sourcecode.com
+                                to a third party in settlement of a claim or dispute on the advice of Sourcecode.com’s legal advisers) incurred or suffered by Sourcecode.com arising out of any breach by you of any provision of these terms and conditions,
                                 or arising out of any claim that you have breachedany provision of these terms and conditions.
                             </p>
                         </div>
 
                         <div class="terms_condition-text">
                             <h3>No warranties : </h3>
-                            <p>Elaenia is provided “as is” without any representations or warranties. Elaenia.com makes no representations or warranties in relation to this website or the information and materials provided on this website.</p>
-                            <p>Elaenia.com does not warrant that:</p>
+                            <p>Sourcecode is provided “as is” without any representations or warranties. Sourcecode.com makes no representations or warranties in relation to this website or the information and materials provided on this website.</p>
+                            <p>Sourcecode.com does not warrant that:</p>
 
                             <ul>
                                 <li>
@@ -114,7 +114,7 @@
 
                         <div class="terms_condition-text">
                             <h3>Modifications: </h3>
-                            <p>Elaenia.com may revise these terms of use for its website at any time without notice. By using this web site you are agreeing to be bound by the then current version of these terms of service.</p>
+                            <p>Sourcecode.com may revise these terms of use for its website at any time without notice. By using this web site you are agreeing to be bound by the then current version of these terms of service.</p>
                         </div>
 
                         <div class="terms_condition-text">
@@ -122,11 +122,11 @@
                             <ul>
                                 <li>
                                     <i class="fa fa-circle"></i>
-                                    <p>Elaenia.com reserves the rights under these terms and conditions to take action if you breach these terms and conditions in any way. </p>
+                                    <p>Sourcecode.com reserves the rights under these terms and conditions to take action if you breach these terms and conditions in any way. </p>
                                 </li>
                                 <li>
                                     <i class="fa fa-circle"></i>
-                                    <p>Elaenia.com may take such action as seems appropriate to deal with the breach, including suspending your access to the website, suspending your earnings made trough Elaenia.com,prohibiting you from accessing the
+                                    <p>Sourcecode.com may take such action as seems appropriate to deal with the breach, including suspending your access to the website, suspending your earnings made trough Sourcecode.com,prohibiting you from accessing the
                                         website, or bringing court proceedings against you.</p>
                                 </li>
                             </ul>

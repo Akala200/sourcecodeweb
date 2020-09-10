@@ -56,7 +56,7 @@
                                 of Google Analytics, will not be associated with any other data held by Google. You
                                 may refuse the use of cookies by selecting the appropriate settings on your browser,
                                 however please note that if you do this you may
-                                not be able to use the full functionality of www.Elaenia.com. You can also opt-out
+                                not be able to use the full functionality of www.Sourcecode.com. You can also opt-out
                                 from being tracked by Google Analytics with effect for the future by downloading and
                                 installing Google Analytics Opt-out Browser Addon
                                 for your current web browser: https://tools.google.com/dlpage/gaoptout?hl=en.

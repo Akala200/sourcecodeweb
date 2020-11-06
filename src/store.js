@@ -37,6 +37,7 @@ export default new Vuex.Store({
           method: 'POST'
         })
           .then((resp) => {
+            console.log(resp);
             // eslint-disable-next-line no-console
             const token = resp.data.token
             const user = resp.data.id

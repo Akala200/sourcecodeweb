@@ -89,7 +89,7 @@ export default {
       userEmail = localStorage.getItem('email')
     }
 
-    axios.get(`https://modez.herokuapp.com/api/history/all?email=${userEmail}`)
+    axios.get(`https://coinzz.herokuapp.com/api/history/all?email=${userEmail}`)
       .then(res => {
         this.histories = res.data
         // eslint-disable-next-line no-console

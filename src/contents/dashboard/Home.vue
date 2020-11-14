@@ -78,7 +78,7 @@
                     <div class="balance-widget">
                         <div class="total-balance">
                             <div class="d-flex">
-                                <h3>BTC {{ balance.balance }}</h3>
+                                <h3>BTC {{ balance.balance.toFixed(8) }}</h3>
                             </div>
                             <div class="d-flex">
                                 <h3>NGN {{ Math.ceil(nairaBalance.price) }}</h3>
@@ -344,7 +344,7 @@ export default {
             userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://modez.herokuapp.com/api/history?email=${userEmail}`)
+        axios.get(`https://coinzz.herokuapp.com/api/history?email=${userEmail}`)
             .then(res => {
                 this.histories = res.data
                 // eslint-disable-next-line no-console
@@ -355,7 +355,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://modez.herokuapp.com/api/get/user?email=${userEmail}`)
+        axios.get(`https://coinzz.herokuapp.com/api/get/user?email=${userEmail}`)
             .then(res => {
                 this.user = res.data.data
                 // eslint-disable-next-line no-console
@@ -367,9 +367,10 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://modez.herokuapp.com/api/balance/coin?email=${userEmail}`)
+        axios.get(`https://coinzz.herokuapp.com/api/balance/coin?email=${userEmail}`)
             .then(res => {
-                this.balance = res.data
+                console.log('balancecoin,', res);
+                this.balance = res.data.message
                 // eslint-disable-next-line no-console
 
                 // eslint-disable-next-line no-unused-vars
@@ -378,7 +379,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://modez.herokuapp.com/api/balance/naira?email=${userEmail}`)
+        axios.get(`https://coinzz.herokuapp.com/api/balance/naira?email=${userEmail}`)
             .then(res => {
                 this.nairaBalance = res.data
                 // eslint-disable-next-line no-console
@@ -389,7 +390,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get('https://modez.herokuapp.com/api/shortlist')
+        axios.get('https://coinzz.herokuapp.com/api/shortlist')
             .then(res => {
                 this.shortlists = res.data.data
                 // eslint-disable-next-line no-console
@@ -406,7 +407,7 @@ export default {
 
         // shortlist callModal
         getbitcoin() {
-            axios.get('https://modez.herokuapp.com/api/bitcoin')
+            axios.get('https://coinzz.herokuapp.com/api/bitcoin')
                 .then(res => {
                     this.bitcoin = res.data.data[0]
                     // eslint-disable-next-line no-console
@@ -439,7 +440,7 @@ export default {
         },
 
         getHistory() {
-            axios.get('https://modez.herokuapp.com/api/history')
+            axios.get('https://coinzz.herokuapp.com/api/history')
                 .then(res => {
                     console.log(res)
                     this.histories = res.data

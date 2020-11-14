@@ -32,19 +32,18 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit('auth_request')
         axios({
-          url: 'https://modez.herokuapp.com/api/login',
+          url: 'https://coinzz.herokuapp.com/api/login',
           data: user,
           method: 'POST'
         })
           .then((resp) => {
-            console.log(resp);
             // eslint-disable-next-line no-console
-            const token = resp.data.token
-            const user = resp.data.id
-            const email = resp.data.email
-            const firstname = resp.data.first_name
-            const lastname = resp.data.last_name
-            const phone = resp.data.phone
+            const token = resp.data.data.token
+            const user = resp.data.data.id
+            const email = resp.data.data.email
+            const firstname = resp.data.data.first_name
+            const lastname = resp.data.data.last_name
+            const phone = resp.data.data.phone
 
             localStorage.setItem('token', token)
             localStorage.setItem('user', user)
@@ -69,7 +68,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit('auth_request')
         axios({
-          url: 'https://modez.herokuapp.com/api/create/account',
+          url: 'https://coinzz.herokuapp.com/api/create/account',
           data: user,
           method: 'POST'
         })
@@ -100,7 +99,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit('auth_request')
         axios({
-          url: 'https://modez.herokuapp.com/api/create/account',
+          url: 'https://coinzz.herokuapp.com/api/create/account',
           data: user,
           method: 'POST'
         })
@@ -131,16 +130,17 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit('auth_request')
         axios({
-          url: 'https://modez.herokuapp.com/api/verify',
+          url: 'https://coinzz.herokuapp.com/api/verify',
           data: code,
           method: 'POST'
         })
           .then((resp) => {
-            const token = resp.data.tokenize
-            const user = resp.data.id
-            const firstname = resp.data.first_name
-            const lastname = resp.data.last_name
-            const email = resp.data.email
+            
+            const token = resp.data.data.tokenize
+            const user = resp.data.data.id
+            const firstname = resp.data.data.first_name
+            const lastname = resp.data.data.last_name
+            const email = resp.data.data.email
             localStorage.setItem('token', token)
             localStorage.setItem('firstname', firstname)
             localStorage.setItem('lastname', lastname)

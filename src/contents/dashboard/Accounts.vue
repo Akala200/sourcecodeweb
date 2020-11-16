@@ -191,8 +191,6 @@ export default {
     axios.get(`https://coinzz.herokuapp.com/api/history?email=${userEmail}`)
       .then(res => {
         this.histories = res.data
-        // eslint-disable-next-line no-console
-
         // eslint-disable-next-line no-unused-vars
       }).catch(err => {
         console.log(err)
@@ -202,8 +200,6 @@ export default {
     axios.get(`https://coinzz.herokuapp.com/api/balance/coin?email=${userEmail}`)
       .then(res => {
           this.balance = res.data.message
-        // eslint-disable-next-line no-console
-
         // eslint-disable-next-line no-unused-vars
       }).catch(err => {
         console.log(err)

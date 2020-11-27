@@ -4,7 +4,7 @@
             <span><i class="fa fa-angle-left"></i></span> Back
         </router-link>
         <h3 class="text-center">OTP Verification</h3>
-        <p class="text-center mb-5">We will send one time code on this number</p>
+        <p class="text-center mb-5">We will send one time code on this email</p>
         <form>
             <div class="form-group">
                 <label>Your OTP Code</label>
@@ -23,6 +23,8 @@
 <script>
    import formPage from '@/components/FormPage.vue';
     // Import component
+    import { createToastInterface } from "vue-toastification";
+
     import Loading from 'vue-loading-overlay';
     // Import stylesheet
     import 'vue-loading-overlay/dist/vue-loading.css';
@@ -84,7 +86,7 @@ code
         .catch(err => console.log(err));
         setTimeout(() => {
                   this.isLoading = false
-                },5000)
+                })
     }
     }
 }

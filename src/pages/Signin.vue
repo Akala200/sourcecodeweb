@@ -74,10 +74,18 @@
 import formPage from '@/components/FormPage.vue'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 import validateField from '@/components/ValidateField.vue'
+import { createToastInterface } from "vue-toastification";
+
   import Loading from 'vue-loading-overlay';
     // Import stylesheet
     import 'vue-loading-overlay/dist/vue-loading.css';
 
+const pluginOptions = {
+  timeout: 4000
+};
+ 
+// Create the interface
+const toast = createToastInterface(pluginOptions);
 export default {
   components: { validateField, formPage, Loading },
 
@@ -95,7 +103,7 @@ export default {
 
   validations: {
     email: { required, email },
-    password: { required, minLength: minLength(5) }
+    password: { required, minLength: minLength(8) }
   },
 
   methods: {
@@ -113,17 +121,28 @@ export default {
     login: function () {
       this.isLoading = true
       // eslint-disable-next-line no-console
-      console.log('loding strated')
       let email = this.email
       let password = this.password
       this.$store
         .dispatch('login', { email, password })
-        .then(() => this.$router.push('/dashboard'))
-        // eslint-disable-next-line no-console
-        .catch(err => console.log(err))
-      setTimeout(() => {
+        .then(() => {
+            setTimeout(() => {
         this.isLoading = false
-      }, 5000)
+      })
+     toast.success('Login Successful');
+          this.$router.push('/dashboard')
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => {
+           setTimeout(() => {
+        this.isLoading = false
+      })
+            console.log(err.response);
+
+     toast.error(err.response.data.message);
+
+        })
+    
     }
   }
 }

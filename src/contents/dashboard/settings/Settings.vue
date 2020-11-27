@@ -22,6 +22,15 @@
                 </li>
                 <li class="nav-item">
                   <router-link
+                    to="/dashboard/settings"
+                    class="nav-link"
+                  >
+                    <i class="la la-envelope" />
+                    <span>Change Email</span>
+                  </router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link
                     to="/dashboard/settings/linked-account"
                     class="nav-link"
                   >

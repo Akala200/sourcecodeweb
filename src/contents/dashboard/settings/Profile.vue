@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+     <loading :active.sync="isLoading" 
+        :can-cancel="true" 
+        :is-full-page="fullPage"></loading>
     <div class="col-xl-6">
       <div class="card">
         <div class="card-header">
@@ -26,15 +29,6 @@
                   type="text"
                   class="form-control"
                   placeholder="Last Name"
-                >
-              </div>
-              <div class="form-group col-xl-12">
-                <label class="mr-sm-2">Update Your Email</label>
-                <input
-                  v-model="email"
-                  type="text"
-                  class="form-control"
-                  placeholder="Email"
                 >
               </div>
               <div class="form-group col-xl-12">
@@ -74,7 +68,8 @@
                 <input
                   type="password"
                   class="form-control"
-                  placeholder="**********"
+                  v-model="password"
+                  placeholder="Enter Password"
                 >
               </div>
               <div class="form-group col-xl-12">
@@ -82,11 +77,12 @@
                 <input
                   type="password"
                   class="form-control"
-                  placeholder="**********"
+                  v-model="password1"
+                  placeholder="Confirm Password"
                 >
               </div>
               <div class="col-12">
-                <button class="btn btn-success waves-effect">
+                <button class="btn btn-success waves-effect"   @click.prevent="updatePassword()">
                   Update Password
                 </button>
               </div>
@@ -101,16 +97,33 @@
 <script>
 import app from '@/App.vue'
 import { required, email, minLength } from 'vuelidate/lib/validators'
+    import formPage from '@/components/FormPage.vue';
+import { createToastInterface } from "vue-toastification";
+    import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
+
+const pluginOptions = {
+  timeout: 4000
+};
+ 
+// Create the interface
+const toast = createToastInterface(pluginOptions);
 const axios = require('axios')
 
 export default {
   extends: app,
-
+   components: { Loading
+ },
   data () {
     return {
       fullName: 'Maria Pascle',
       email: 'hello@example.com',
       dob: '',
+       isLoading: false,
+      fullPage: true,
+      password: '',
+      password1: '',
       presentAddress: '56, Old Street, Brooklyn',
       permanentAddress: '123, Central Square, Brooklyn',
       city: 'New York',
@@ -191,7 +204,36 @@ export default {
       if (!this.$v.$invalid) {
         this.$router.go(0)
       }
+    },
+
+     updatePassword () {
+      let userEmail;
+       if(this.password !== this.password1){
+                 toast.error('Password do not match ');
+              } else {
+        this.isLoading = false
+      if (process.browser) {
+        userEmail = localStorage.getItem('email')
+      }
+      const data = {
+        password: this.password,
+        email: this.email,
+      }
+
+      axios.put('https://coinzz.herokuapp.com/api/update/password', data)
+        .then(res => {
+        console.log(res)
+         toast.success('Password Updated');
+        // eslint-disable-next-line no-unused-vars
+        }).catch(err => {
+          console.log(err)
+             setTimeout(() => {
+        this.isLoading = false
+      });
+                 toast.error(err.response.data.message);
+        })
     }
+     }
   }
 }
 </script>

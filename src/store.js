@@ -93,6 +93,7 @@ export default new Vuex.Store({
           method: "POST"
         })
           .then(resp => {
+            console.log(resp);
             resolve(resp);
           })
           .catch(err => {
@@ -108,6 +109,24 @@ export default new Vuex.Store({
         commit("auth_request");
         axios({
           url: "https://coinzz.herokuapp.com/api/check/code",
+          data: code,
+          method: "POST"
+        })
+          .then(resp => {
+            console.log(resp);
+            resolve(resp);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      });
+    },
+
+    changeEmail({ commit }, code) {
+      return new Promise((resolve, reject) => {
+        commit("auth_request");
+        axios({
+          url: "https://coinzz.herokuapp.com/api/verify/new/email",
           data: code,
           method: "POST"
         })

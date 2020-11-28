@@ -14,9 +14,9 @@
                     <div class="info-list">
                         <h4 class="mb-3">Address</h4>
                         <ul>
-                            <li><i class="fa fa-map-marker"></i> California, USA</li>
-                            <li><i class="fa fa-phone"></i> (+880) 1243 665566</li>
-                            <li><i class="fa fa-envelope"></i> hello@example.com</li>
+                            <li><i class="fa fa-map-marker"></i> Lagos, Nigeria</li>
+                            <li><i class="fa fa-phone"></i> (+234) 10704 995 7988</li>
+                            <li><i class="fa fa-envelope"></i>  Info@sourcecodexchamge.com</li>
                         </ul>
                     </div>
                 </div>

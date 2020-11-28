@@ -34,8 +34,8 @@
                                                 great success for all parties, especially the users.
                                             </p>
                                             <div class="customer-info">
-                                                <h5>Mr John Doe</h5>
-                                                <p>CEO, Example Company</p>
+                                                <h5>Mr Fred Uche </h5>
+                                                <p>CEO, Source Code</p>
                                             </div>
                                         </div>
                                     </div>

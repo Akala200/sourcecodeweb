@@ -44,7 +44,7 @@
           </div>
         </div>
         <p class="p-4">
-          Note: Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi cupiditate suscipit explicabo voluptas eos in tenetur error temporibus dolorum. Nulla!
+          Note: Withdrawel of funds will take up to three 3hrs before you recieve a credit alert!
         </p>
       </div>
     </div>

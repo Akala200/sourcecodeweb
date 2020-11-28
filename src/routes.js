@@ -1,4 +1,3 @@
-import demo from '@/pages/Demo.vue';
 import landing from '@/pages/Landing.vue';
 import dashboard from '@/pages/Dashboard.vue';
 import signIn from "@/pages/Signin.vue";
@@ -30,6 +29,9 @@ import settings from '@/contents/dashboard/settings/Settings.vue';
 import profile from '@/contents/dashboard/settings/Profile.vue';
 import preferences from '@/contents/dashboard/settings/Preferences.vue';
 import security from '@/contents/dashboard/settings/Security.vue';
+import ChangeEmail from "@/contents/dashboard/settings/ChangeEmail.vue";
+import verifyEmail from "@/contents/dashboard/settings/verifyemail.vue";
+
 import linkedAccount from '@/contents/dashboard/settings/LinkedAccount.vue';
 import verifyStep1 from '@/contents/dashboard/VerifyStep1.vue';
 import verifyStep2 from '@/contents/dashboard/VerifyStep2.vue';
@@ -78,7 +80,11 @@ export default [
   { path: "/sign-in", meta: { title: "Sign-In" }, component: signIn },
   { path: "/sign-up", meta: { title: "Sign-Up" }, component: signUp },
   { path: "/reset", meta: { title: "Reset Password" }, component: reset },
-  { path: "/change_password", meta: { title: "Verify Code" }, component: Confirm },
+  {
+    path: "/change_password",
+    meta: { title: "Verify Code" },
+    component: Confirm
+  },
 
   {
     path: "/verify_code",
@@ -168,10 +174,21 @@ export default [
         components: { default: settings, dashboardPageTitle },
         children: [
           { path: "", meta: { title: "Edit Profile" }, component: profile },
+
           {
             path: "preferences",
             meta: { title: "Preferences" },
             component: preferences
+          },
+          {
+            path: "edit-email",
+            meta: { title: "Edit Email" },
+            component: ChangeEmail
+          },
+          {
+            path: "verify-email",
+            meta: { title: "Verify Email" },
+            component: verifyEmail
           },
           {
             path: "security",
@@ -188,3 +205,5 @@ export default [
     ]
   }
 ];
+
+//ChangeEmail

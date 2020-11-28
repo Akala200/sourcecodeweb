@@ -6,7 +6,7 @@
                     <div class="section_heading">
                         <span>Features</span>
                         <h3>The most trusted cryptocurrency platform</h3>
-                        <p>Here are a few reasons why you should choose Coinbase</p>
+                        <p>Here are a few reasons why you should choose Sourcecode Exchange</p>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <div class="features-content">
                         <span><i class="fa fa-life-ring"></i></span>
                         <h4>Industry best practices</h4>
-                        <p>Sourcecodesupports a variety of the most popular digital currencies.</p>
+                        <p>Sourcecode supports a variety of the most popular digital currencies.</p>
                         <a href="#">Learn more <i class="la la-angle-right"></i></a>
                     </div>
                 </div>

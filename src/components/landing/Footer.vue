@@ -22,7 +22,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-12 text-center text-lg-right">
                     <div class="copy_right text-center text-lg-center">
-                        Copyright © {{ year }} Quixlab. All Rights Reserved.
+                        Copyright © {{ year }} VSD Tech. All Rights Reserved.
                     </div>
                 </div>
             </div>

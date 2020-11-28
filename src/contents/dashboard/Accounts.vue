@@ -21,14 +21,6 @@
                 </div>
               </div>
 
-              <ul class="card-profile__info">
-                <li>
-                  <h5 class="text-danger mr-4">
-                    Last Log
-                  </h5>
-                  <span class="text-danger">3 February, 2019, 10:00 PM</span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

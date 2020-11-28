@@ -12,28 +12,19 @@
             <div class="card-body">
               <ul>
                 <li class="nav-item">
-                  <router-link
-                    to="/dashboard/settings"
-                    class="nav-link"
-                  >
+                  <router-link to="/dashboard/settings" class="nav-link">
                     <i class="la la-user" />
                     <span>Edit Profile</span>
                   </router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link
-                    to="/dashboard/settings"
-                    class="nav-link"
-                  >
+                  <router-link to="/dashboard/settings/edit-email" class="nav-link">
                     <i class="la la-envelope" />
                     <span>Change Email</span>
                   </router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link
-                    to="/dashboard/settings/linked-account"
-                    class="nav-link"
-                  >
+                   <router-link to="/dashboard/settings/linked-account" class="nav-link">
                     <i class="la la-university" />
                     <span>Linked Account</span>
                   </router-link>

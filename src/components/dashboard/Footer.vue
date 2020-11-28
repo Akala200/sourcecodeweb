@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-md-6">
                     <div class="copy_right">
-                        Copyright © {{ year }} Quixlab. All Rights Reserved.
+                        Copyright © {{ year }} VSD Tech. All Rights Reserved.
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-6 text-lg-right text-center">

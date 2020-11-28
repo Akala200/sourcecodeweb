@@ -15,15 +15,11 @@
                   <span class="mr-3"><i class="fa fa-bank" /></span>
                   <div class="media-body">
                     <h5 class="mt-0 mb-1">
-                      Bank of America
+                     Account Name - {{accountName}}
                     </h5>
-                    <p>Bank **************5421</p>
+                    <p>Account Number  {{accountNumber}}</p>
                   </div>
-                  <div class="edit-option">
-                    <a href="#"><i class="fa fa -eye" /></a>
-                    <a href="#"><i class="fa fa-pencil" /></a>
-                    <a href="#"><i class="fa fa-trash" /></a>
-                  </div>
+
                 </div>
               </div>
               <div class="col-3">
@@ -53,3 +49,67 @@
     </div>
   </div>
 </template>
+
+<script>
+import verificationBody from "@/components/dashboard/VerificationBody.vue";
+const axios = require("axios");
+import vSelect from 'vue-select'
+import {
+    createToastInterface
+} from "vue-toastification";
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+
+const pluginOptions = {
+    timeout: 4000
+};
+
+// Create the interface
+const toast = createToastInterface(pluginOptions);
+export default {
+  components: {
+        verificationBody,
+        vSelect,
+        Loading,
+        createToastInterface
+    },
+    data() {
+        return {
+            banks: [],
+            bank: "",
+            setSelected: '',
+            accountName: '',
+            accountNumber: '',
+            isLoading: false,
+            fullPage: true,
+        };
+    },
+     methods: {
+        getBank() {
+            let userEmail
+        if (process.browser) {
+            userEmail = localStorage.getItem('email')
+        }
+            axios
+                .get(`https://coinzz.herokuapp.com/api/user/bank?email=${userEmail}`)
+                .then(res => {
+                    // eslint-disable-next-line no-unused-vars
+                    this.accountName = res.data.accountName;
+                    this.accountNumber = res.data.accountNumber;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        },
+    },
+    mounted() {
+        this.getBank();
+    }
+}
+</script>
+<style scoped>
+.card {
+    height: 600px;
+}
+</style>

@@ -51,7 +51,14 @@ import {
     minLength
 } from 'vuelidate/lib/validators';
 import validateField from '@/components/ValidateField.vue';
+import { createToastInterface } from "vue-toastification";
 
+const pluginOptions = {
+  timeout: 4000
+};
+ 
+// Create the interface
+const toast = createToastInterface(pluginOptions);
 export default {
     components: {
         validateField,
@@ -116,12 +123,21 @@ password
         this.isLoading = true;
 
       this.$store.dispatch("register", { last_name, first_name, email, phone, password })
-        .then(() => this.$router.push("/otp-2"))
-        // eslint-disable-next-line no-console
-        .catch(err => console.log(err));
-        setTimeout(() => {
+        .then(() => {
+             setTimeout(() => {
                   this.isLoading = false
-                },5000)
+                })
+                 toast.success('Account created, kindly verify your email');
+            this.$router.push("/confirm_password")}
+            )
+        // eslint-disable-next-line no-console
+        .catch(err => {
+              setTimeout(() => {
+                  this.isLoading = false
+                });
+                 toast.error(err.response.data.message);
+            
+            });
     }
     }
 }

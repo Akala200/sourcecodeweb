@@ -78,10 +78,10 @@
                     <div class="balance-widget">
                         <div class="total-balance">
                             <div class="d-flex">
-                                <h3>BTC {{ balance.balance.toFixed(8) }}</h3>
+                                <h5>BTC {{ balance }}</h5>
                             </div>
                             <div class="d-flex">
-                                <h3>NGN {{ Math.ceil(nairaBalance.price) }}</h3>
+                                <h5>NGN {{ Math.ceil(nairaBalance.price) }}</h5>
                             </div>
                             <h6>Total Balance</h6>
                         </div>

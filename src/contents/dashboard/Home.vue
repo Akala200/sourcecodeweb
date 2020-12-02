@@ -81,7 +81,7 @@
                                 <h5>BTC {{ balance }}</h5>
                             </div>
                             <div class="d-flex">
-                                <h5>NGN {{ Math.ceil(nairaBalance.price) }}</h5>
+                                <h5>NGN {{ Math.ceil(nairaBalance.message) }}</h5>
                             </div>
                             <h6>Total Balance</h6>
                         </div>

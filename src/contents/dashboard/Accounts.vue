@@ -41,11 +41,11 @@
             <h5>{{user.address}}</h5>
             </div>
               <span>Available BTC</span>
-              <h5>{{ balance.balance }} BTC</h5>
+              <h5>{{ balance }} BTC</h5>
 
               <div class="mb-3">
                 <span>NGN Value</span>
-                <h5>{{ nairaBalance.price }} NGN</h5>
+                <h5>{{ nairaBalance.message }} NGN</h5>
               </div>
             </div>
           </div>

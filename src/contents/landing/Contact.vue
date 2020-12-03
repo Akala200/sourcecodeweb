@@ -16,7 +16,7 @@
                         <ul>
                             <li><i class="fa fa-map-marker"></i>Shop 41, 123/125 AGO Palace Okota Milaco Plaza, Lagos, Nigeria</li>
                             <li><i class="fa fa-phone"></i> (+234) 0704 995 7988</li>
-                            <li><i class="fa fa-envelope"></i>  Info@sourcecodexchamge.com</li>
+                            <li><i class="fa fa-envelope"></i>sales@sourcecodexchange.com</li>
                         </ul>
                     </div>
                 </div>

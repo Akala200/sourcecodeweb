@@ -81,7 +81,7 @@
                                 <h5>BTC {{ balance }}</h5>
                             </div>
                             <div class="d-flex">
-                                <h5>NGN {{ Math.ceil(nairaBalance.message) }}</h5>
+                                <h5>NGN {{ Math.ceil(nairaBalance) }}</h5>
                             </div>
                             <h6>Total Balance</h6>
                         </div>
@@ -324,7 +324,7 @@ export default {
             NGN: {},
             histories: [],
             balance: {},
-            nairaBalance: {},
+            nairaBalance: '',
             user: {},
             coin: '',
             wallet: '',
@@ -381,8 +381,9 @@ export default {
 
         axios.get(`https://coinzz.herokuapp.com/api/balance/naira?email=${userEmail}`)
             .then(res => {
-                this.nairaBalance = res.data
+                this.nairaBalance = res.data.price
                 // eslint-disable-next-line no-console
+                console.log(this.nairaBalance);
 
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {

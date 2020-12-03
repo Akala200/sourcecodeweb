@@ -92,7 +92,8 @@ export default {
                 bitcoin: this.bitcoin,
                 fee: this.fee,
                 realAmount: this.realAmount,
-                flatAmount: this.flatAmount,
+                flatAmount: this.bitcoin,
+                amount: this.amount,
                 email: this.userEmail
 
             }
@@ -111,7 +112,7 @@ export default {
                 }).catch(err => {
                     console.log(err.response.data)
                     Swal.fire({
-                        title: err.response.data.message,
+                        title: err.response.data,
                         text: 'Transaction not successful due to an error, kindly try again or rectify the issue',
                         icon: 'error',
                     })

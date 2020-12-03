@@ -34,28 +34,8 @@
                                                 great success for all parties, especially the users.
                                             </p>
                                             <div class="customer-info">
-                                                <h5>Mr Fred Uche </h5>
+                                                <h5>Mr Iwuanyanwu Federick </h5>
                                                 <p>CEO, Source Code</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="row align-items-center">
-                                    <div class="col-xl-6 col-md-6">
-                                        <div class="customer-img">
-                                            <img class="img-fluid" src="/images/testimonial/2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-md-6">
-                                        <div class="customer-review">
-                                            <img class="img-fluid" src="/images/brand/3.webp" alt="">
-                                            <p>MEW is excited to bring Sourcecode's extensive range of crypto assets,
-                                                competitive rates and seamless swap functionality</p>
-                                            <div class="customer-info">
-                                                <h5>Mr Abraham</h5>
-                                                <p>CEO, Example Company</p>
                                             </div>
                                         </div>
                                     </div>

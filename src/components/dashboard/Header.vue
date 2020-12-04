@@ -18,13 +18,6 @@
               <div class="d-flex align-items-center">
                 <div class="account_money">
                   <ul class="d-flex">
-                    <li class="crypto">
-                      <span>0</span>
-                      <i class="cc BTC-alt" />
-                    </li>
-                    <li class="usd">
-                      <span>0 NGN</span>
-                    </li>
                   </ul>
                 </div>
                 <div class="profile_log dropdown">

@@ -45,7 +45,7 @@
 
               <div class="mb-3">
                 <span>NGN Value</span>
-                <h5>{{ nairaBalance.message }} NGN</h5>
+                <h5>{{ nairaBalance.price }} NGN</h5>
               </div>
             </div>
           </div>

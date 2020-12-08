@@ -118,7 +118,7 @@ export default {
                 email = localStorage.getItem('email')
             }
 
-            const amountData = this.amount
+            const amountData = this.afterFee
             const data = {
                 email: email,
                 amount: amountData,

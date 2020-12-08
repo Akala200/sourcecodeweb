@@ -106,14 +106,17 @@ export default {
     }
   },
   mounted () {
-    let userEmail
+    let userEmail;
+    let user;
     if (process.browser) {
       localStorage.getItem('firstname')
       localStorage.getItem('lastname')
       userEmail = localStorage.getItem('email')
+     user = localStorage.getItem('user')
+
     }
 
-    axios.get(`https://cryptonew-api.herokuapp.com/api/history?email=${userEmail}`)
+    axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
       .then(res => {
         this.histories = res.data
         // eslint-disable-next-line no-console

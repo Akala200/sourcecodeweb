@@ -171,16 +171,18 @@ export default {
     }
   },
   mounted () {
-    let userEmail
+    let userEmail;
+    let user;
     if (process.browser) {
       this.firstname = localStorage.getItem('firstname')
       this.lastname = localStorage.getItem('lastname')
       this.email = localStorage.getItem('email')
       this.phone = localStorage.getItem('phone')
       userEmail = localStorage.getItem('email')
+      user = localStorage.getItem('user')
     }
 
-    axios.get(`https://cryptonew-api.herokuapp.com/api/history?email=${userEmail}`)
+    axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
       .then(res => {
         this.histories = res.data
         // eslint-disable-next-line no-unused-vars

@@ -337,14 +337,16 @@ export default {
     mounted() {
         this.getbitcoin()
         // eslint-disable-next-line no-unused-vars
-        let userEmail
+        let userEmail;
+        let user;
         if (process.browser) {
             localStorage.getItem('firstname')
             localStorage.getItem('lastname')
             userEmail = localStorage.getItem('email')
+            user = localStorage.getItem('user')
         }
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/history?email=${userEmail}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
             .then(res => {
                 this.histories = res.data
                 // eslint-disable-next-line no-console
@@ -441,10 +443,18 @@ export default {
         },
 
         getHistory() {
-            axios.get('https://cryptonew-api.herokuapp.com/api/history')
-                .then(res => {
-                    console.log(res)
-                    this.histories = res.data
+                 let userEmail;
+        let user;
+        if (process.browser) {
+            localStorage.getItem('firstname')
+            localStorage.getItem('lastname')
+            userEmail = localStorage.getItem('email')
+            user = localStorage.getItem('user')
+        }
+
+        axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
+            .then(res => {
+                this.histories = res.data
                     // eslint-disable-next-line no-console
 
                     // eslint-disable-next-line no-unused-vars

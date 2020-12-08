@@ -112,7 +112,7 @@ export default {
             userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://coinzz.herokuapp.com/api/get/user?email=${userEmail}`)
+        axios.get(`https://cryptonew-api.herokuapp.com//api/get/user?email=${userEmail}`)
             .then(res => {
                 this.first_name = res.data.data.first_name
                 this.last_name = res.data.data.last_name
@@ -140,7 +140,7 @@ export default {
                 email: this.email,
             }
 
-            axios.post(`https://coinzz.herokuapp.com/api/update/email?email=${userEmail}`, data)
+            axios.post(`https://cryptonew-api.herokuapp.com//api/update/email?email=${userEmail}`, data)
                 .then(res => {
                     console.log(res)
                       setTimeout(() => {
@@ -177,7 +177,7 @@ export default {
                     email: this.email,
                 }
 
-                axios.put('https://coinzz.herokuapp.com/api/update/password', data)
+                axios.put('https://cryptonew-api.herokuapp.com//api/update/password', data)
                     .then(res => {
                         console.log(res)
                         toast.success('Password Updated');

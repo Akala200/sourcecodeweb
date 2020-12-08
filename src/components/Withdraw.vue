@@ -18,7 +18,7 @@
                 Select
             </option>
             <option value="card">
-                Card
+                Bank Transfer
             </option>
         </select>
     </div>
@@ -35,7 +35,7 @@
             NGN {{ amount }}
         </h6>
     </div>
-     <div class="d-flex justify-content-between mb-3">
+        <div class="d-flex justify-content-between mb-3">
         <p class="mb-0">
           Fixed Fee
         </p>
@@ -59,7 +59,6 @@
             NGN {{ afterFee }}
         </h6>
     </div>
-    
      <div class="d-flex justify-content-between mb-3">
         <p class="mb-0">
            Bitcoin
@@ -69,8 +68,8 @@
         </h6>
     </div>
 
-    <button class="btn btn-success btn-block p-2" @click.prevent="buy()">
-        BUY COIN
+    <button class="btn btn-success btn-block p-2" @click.prevent="sell()">
+        SELL COIN
     </button>
 </form>
 </template>
@@ -91,27 +90,29 @@ export default {
             amount: '',
             usdAmount: '',
             afterFee: '',
-            coinAmount: ''
+            coinAmount: '',
+            fee: '',
+            baseAmount: ''
         }
     },
 
     methods: {
         searchInput: debounce(function (e) {
             // make API call here
-            axios.get(`https://coinzz.herokuapp.com/api/convert?amount=${e.target.value}`)
+            axios.get(`https://coinzz.herokuapp.com/api/sell/convert?amount=${e.target.value}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
                   this.afterFee =   res.data.amountAfterFee
                   this.coinAmount =   res.data.price
-
+                  this.fee =  res.data.fee
                     // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
                     console.log(err)
                 })
         }, 800),
         
-        buy() {
+        sell() {
             let email
             if (process.browser) {
                 email = localStorage.getItem('email')
@@ -122,9 +123,9 @@ export default {
                 email: email,
                 amount: amountData,
                 bitcoin: this.coinAmount,
- 
+                flatAmount: this.coinAmount,
             }
-            axios.post('https://coinzz.herokuapp.com/api/credit', data).then(res => {
+            axios.post('https://coinzz.herokuapp.com/api/withdraw', data).then(res => {
                     // sessionStorage.setItem('token', res.data.token)
                     window.location.href = res.data.authorization_url
                 })

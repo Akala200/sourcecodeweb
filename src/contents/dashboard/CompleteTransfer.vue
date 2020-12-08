@@ -6,25 +6,37 @@
             <h2>Transfer Summary</h2> <a class="btn mr-1">Back</a>
             <div class="row mt-3">
                 <h4>Amount : </h4>
-                <p class="ml-2" style="font-size: 16px">{{amount}}</p>
+                <p class="ml-2" style="font-size: 16px">NGN {{amount}}</p>
+            </div>
+        </div>
+                <div class="row">
+            <div class="row mt-3">
+                <h4>Fixed Fee - </h4>
+                <p class="ml-2" style="font-size: 16px">NGN 800</p>
+            </div>
+        </div>
+                <div class="row">
+            <div class="row mt-3">
+                <h4>Variable Fee - </h4>
+                <p class="ml-2" style="font-size: 16px">{{fee}}</p>
             </div>
         </div>
 
         <div class="row">
             <div class="row mt-3">
                 <h4>Amount After Fee : </h4>
-                <p class="ml-2" style="font-size: 16px">{{realAmount}}</p>
+                <p class="ml-2" style="font-size: 16px">NGN {{realAmount}}</p>
             </div>
         </div>
         <div class="row">
             <div class="row mt-3">
                 <h4>Amount Bitcoin - </h4>
-                <p class="ml-2" style="font-size: 16px">{{bitcoin}}</p>
+                <p class="ml-2" style="font-size: 16px">BTC {{bitcoin}}</p>
             </div>
         </div>
         <div class="row">
             <div class="row mt-3">
-                <h4>Recipient - </h4>
+                <h4>Recipient Address - </h4>
                 <p class="ml-2" style="font-size: 16px">{{address}}</p>
             </div>
         </div>
@@ -34,13 +46,6 @@
                 <p class="ml-2">{{wallet}}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="row mt-3">
-                <h4>Fee - </h4>
-                <p class="ml-2" style="font-size: 16px">{{fee}}</p>
-            </div>
-        </div>
-
         <div class="text-center mt-5">
             <button type="submit" class="btn btn-success pl-5 pr-5" @click.prevent="send()">Send</button>
         </div>
@@ -71,7 +76,8 @@ export default {
             wallet: '',
             address: '',
             amount: '',
-            fee: '3%',
+            fee: '0.015%',
+            sendinfFee: '',
             bitcoin: '',
             realAmount: '',
             flatAmount: '',
@@ -90,7 +96,7 @@ export default {
                 address: this.address,
                 wallet: this.wallet,
                 bitcoin: this.bitcoin,
-                fee: this.fee,
+                fee: this.sendinfFee,
                 realAmount: this.realAmount,
                 flatAmount: this.bitcoin,
                 amount: this.amount,
@@ -143,23 +149,21 @@ export default {
             this.userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://coinzz.herokuapp.com/api/convert?amount=${amountSelected}`)
+        axios.get(`https://coinzz.herokuapp.com/api/transfer/convert?amount=${amountSelected}`)
             .then(res => {
                 this.bitcoin = res.data.price
                 this.realAmount = res.data.amountAfterFee
                 // eslint-disable-next-line no-console
                 amountNeeded = res.data.amountAfterFee
+                const temptFee = this.data.fee
 
-                axios.get(`https://coinzz.herokuapp.com/api/coin?amount=${amountNeeded}`)
-                    .then(res => {
-                        this.flatAmount = res.data.price
-                        // eslint-disable-next-line no-console
-
-                        // eslint-disable-next-line no-unused-vars
-                    }).catch(err => {
-                        console.log(err)
-                    })
-
+                  axios.get(`https://coinzz.herokuapp.com/api/get/coin?amount=${temptFee}`)
+            .then(res => {
+                this.sendinfFee = res.data.price
+                console.log(this.sendinfFee);
+            }).catch(err => {
+                console.log(err)
+            })
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {
                 console.log(err)

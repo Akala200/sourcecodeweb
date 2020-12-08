@@ -10,34 +10,7 @@
                   <currency-form />
                 </b-tab>
                 <b-tab title="Sell">
-                  <div class="col-lg-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">
-                          Withdraw
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <form action="">
-                          <div class="form-group">
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <label class="input-group-text"><i class="fa fa-money" /></label>
-                              </div>
-                              <input
-                                type="text"
-                                class="form-control"
-                                placeholder="5000 BTC"
-                              >
-                            </div>
-                          </div>
-                          <button class="btn btn-primary btn-block">
-                            Withdraw Now
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                   <withdraw />
                 </b-tab>
               </b-tabs>
             </div>
@@ -118,11 +91,13 @@
 <script>
 import contentBody from '@/components/dashboard/ContentBody.vue'
 import currencyForm from '@/components/CurrencyForm.vue'
+import Withdraw from '@/components/Withdraw.vue'
+
 import app from '@/App.vue'
 import axios from 'axios'
 
 export default {
-  components: { currencyForm, contentBody },
+  components: { currencyForm, contentBody, Withdraw },
   extends: app,
 
   data () {

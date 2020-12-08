@@ -330,7 +330,7 @@ export default {
             wallet: '',
             address: '',
             amount: '',
-            fee: '3%'
+            fee: '0.015%'
 
         }
     },

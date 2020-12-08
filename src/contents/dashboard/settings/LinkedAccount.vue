@@ -92,7 +92,7 @@ export default {
             userEmail = localStorage.getItem('email')
         }
             axios
-                .get(`https://cryptonew-api.herokuapp.com//api/user/bank?email=${userEmail}`)
+                .get(`https://cryptonew-api.herokuapp.com/api/user/bank?email=${userEmail}`)
                 .then(res => {
                     // eslint-disable-next-line no-unused-vars
                     this.accountName = res.data.accountName;

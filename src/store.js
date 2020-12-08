@@ -32,7 +32,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/login",
+          url: "https://cryptonew-api.herokuapp.com/api/login",
           data: user,
           method: "POST"
         })
@@ -68,7 +68,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/forgot/password",
+          url: "https://cryptonew-api.herokuapp.com/api/forgot/password",
           data: user,
           method: "POST"
         })
@@ -88,7 +88,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/create/account",
+          url: "https://cryptonew-api.herokuapp.com/api/create/account",
           data: user,
           method: "POST"
         })
@@ -108,7 +108,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/check/code",
+          url: "https://cryptonew-api.herokuapp.com/api/check/code",
           data: code,
           method: "POST"
         })
@@ -126,7 +126,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/verify/new/email",
+          url: "https://cryptonew-api.herokuapp.com/api/verify/new/email",
           data: code,
           method: "POST"
         })
@@ -144,7 +144,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/web/password",
+          url: "https://cryptonew-api.herokuapp.com/api/web/password",
           data: data,
           method: "POST"
         })
@@ -162,7 +162,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://cryptonew-api.herokuapp.com//api/verify",
+          url: "https://cryptonew-api.herokuapp.com/api/verify",
           data: code,
           method: "POST"
         })

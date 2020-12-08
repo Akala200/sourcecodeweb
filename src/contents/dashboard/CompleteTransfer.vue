@@ -104,7 +104,7 @@ export default {
 
             }
 
-            axios.post(`https://cryptonew-api.herokuapp.com//api/send`, dataSend)
+            axios.post(`https://cryptonew-api.herokuapp.com/api/send`, dataSend)
                 .then(res => {
                     console.log(res)
                     Swal.fire({
@@ -149,7 +149,7 @@ export default {
             this.userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://cryptonew-api.herokuapp.com//api/transfer/convert?amount=${amountSelected}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/transfer/convert?amount=${amountSelected}`)
             .then(res => {
                 this.bitcoin = res.data.price
                 this.realAmount = res.data.amountAfterFee
@@ -157,7 +157,7 @@ export default {
                 amountNeeded = res.data.amountAfterFee
                 const temptFee = this.data.fee
 
-                  axios.get(`https://cryptonew-api.herokuapp.com//api/get/coin?amount=${temptFee}`)
+                  axios.get(`https://cryptonew-api.herokuapp.com/api/get/coin?amount=${temptFee}`)
             .then(res => {
                 this.sendinfFee = res.data.price
                 console.log(this.sendinfFee);

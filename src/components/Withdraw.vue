@@ -99,7 +99,7 @@ export default {
     methods: {
         searchInput: debounce(function (e) {
             // make API call here
-            axios.get(`https://cryptonew-api.herokuapp.com//api/sell/convert?amount=${e.target.value}`)
+            axios.get(`https://cryptonew-api.herokuapp.com/api/sell/convert?amount=${e.target.value}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
@@ -125,7 +125,7 @@ export default {
                 bitcoin: this.coinAmount,
                 flatAmount: this.coinAmount,
             }
-            axios.post('https://cryptonew-api.herokuapp.com//api/withdraw', data).then(res => {
+            axios.post('https://cryptonew-api.herokuapp.com/api/withdraw', data).then(res => {
                     // sessionStorage.setItem('token', res.data.token)
                     window.location.href = res.data.authorization_url
                 })

@@ -55,7 +55,7 @@
                                             <td>
                                                 <i class="cc BTC" /> Bitcoin
                                             </td>
-                                            <td>
+                                            <td v-if="history.type == 'credit'">
                                                 {{ history.cardType }} *******{{ history.lastFour }}
                                             </td>
                                             <td>

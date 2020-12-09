@@ -1,5 +1,8 @@
 <template>
 <form name="myform" class="currency_validate">
+  <loading :active.sync="isLoading" 
+        :can-cancel="true" 
+        :is-full-page="fullPage"></loading>
     <div class="form-group mb-3">
         <div class="input-group-prepend" />
         <select id="currency" class="form-control" name="currency">
@@ -79,8 +82,20 @@ import axios from 'axios'
 import {
     debounce
 } from 'debounce'
+import { createToastInterface } from "vue-toastification";
 
+  import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
+
+const pluginOptions = {
+  timeout: 4000
+};
+ 
+// Create the interface
+const toast = createToastInterface(pluginOptions);
 export default {
+  components: { Loading },
 
     data() {
         return {
@@ -92,6 +107,8 @@ export default {
             afterFee: '',
             coinAmount: '',
             fee: '',
+              isLoading: false,
+      fullPage: true,
             baseAmount: ''
         }
     },
@@ -114,6 +131,8 @@ export default {
         
         sell() {
             let email
+                  this.isLoading = true
+
             if (process.browser) {
                 email = localStorage.getItem('email')
             }
@@ -127,10 +146,26 @@ export default {
             }
             axios.post('https://cryptonew-api.herokuapp.com/api/withdraw', data).then(res => {
                     // sessionStorage.setItem('token', res.data.token)
-                    window.location.href = res.data.authorization_url
+                     setTimeout(() => {
+        this.isLoading = false
+      })
+      console.log(res);
+      toast.success(res.data);
+      this.$router.push('/dashboard');
                 })
                 .catch(err => {
-                    console.log(err)
+                     setTimeout(() => {
+        this.isLoading = false
+      });
+                 console.log(err.response);
+
+      if(err.status = 500) {
+               toast.error(err.response.data);
+
+      } else {
+     toast.error(err.response.data.message);
+
+      }
                 })
         }
     }

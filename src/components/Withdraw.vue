@@ -116,7 +116,7 @@ export default {
     methods: {
         searchInput: debounce(function (e) {
             // make API call here
-            axios.get(`https://cryptonew-api.herokuapp.com/api/sell/convert?amount=${e.target.value}`)
+            axios.get(`https://cryptonew-api.herokuapp.com/api/convert/sale?amount=${e.target.value}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console

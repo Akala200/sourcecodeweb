@@ -32,12 +32,12 @@
                                                 {{history.status}}
                                             </td>
                                                 <td>
-                                                {{new Date(history.createdAt)}}
+                                                {{ Date(history.createdAt)}}
                                             </td>
                                             <td>
                                                 <i class="cc BTC" /> Bitcoin
                                             </td>
-                                            <td>
+                                            <td v-if="history.type == 'debit'">
                                                 {{ history.cardType }} *******{{ history.lastFour }}
                                             </td>
                                             <td>

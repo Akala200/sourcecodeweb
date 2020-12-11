@@ -76,7 +76,7 @@ export default {
             wallet: '',
             address: '',
             amount: '',
-            fee: '0.015%',
+            fee: '1%',
             sendinfFee: '',
             bitcoin: '',
             realAmount: '',

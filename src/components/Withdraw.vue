@@ -38,14 +38,6 @@
             NGN {{ amount }}
         </h6>
     </div>
-        <div class="d-flex justify-content-between mb-3">
-        <p class="mb-0">
-          Fixed Fee
-        </p>
-        <h6 class="mb-0">
-            NGN 800
-        </h6>
-    </div>
     <div class="d-flex justify-content-between mb-3">
         <p class="mb-0">
            Amount After Fee

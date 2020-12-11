@@ -31,6 +31,9 @@
                                             <td>
                                                 {{history.status}}
                                             </td>
+                                                <td>
+                                                {{new Date(history.createdAt)}}
+                                            </td>
                                             <td>
                                                 <i class="cc BTC" /> Bitcoin
                                             </td>

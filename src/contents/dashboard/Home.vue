@@ -215,7 +215,7 @@
             <div class="card">
                 <div class="card-header border-0 py-0">
                     <h4 class="card-title">
-                        Exchange
+                        Buy Crypto
                     </h4>
                 </div>
                 <div class="card-body">
@@ -601,5 +601,10 @@ export default {
     border-color: #aaa;
 }
 
+.table tr td, .table tr th {
+    background: #423a6f;
+    border: 0px;
+    font-size: 15px;
+}
 
 </style>

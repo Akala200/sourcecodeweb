@@ -259,7 +259,7 @@
                                                 {{history.createdAt.substring(0, 10)}}
                                             </td>
                                             <td>
-                                                <i class="cc BTC" /> Bitcoin
+                                                <i class="cc BTC" />
                                             </td>
                                             <td v-if="history.type == 'credit'">
                                                 {{ history.cardType }} *******{{ history.lastFour }}

@@ -67,6 +67,7 @@
 import ApexCharts from 'apexcharts'
 import app from '@/App.vue'
 const axios = require('axios')
+import moment from 'moment';
 
 export default {
     extends: app,

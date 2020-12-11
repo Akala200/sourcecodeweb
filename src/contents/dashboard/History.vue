@@ -32,7 +32,7 @@
                                                 {{history.status}}
                                             </td>
                                                 <td>
-                                                {{ Date(history.createdAt)}}
+                                                {{moment((history.createdAt).format('MMMM Do YYYY, h:mm:ss a'))}}
                                             </td>
                                             <td>
                                                 <i class="cc BTC" /> Bitcoin

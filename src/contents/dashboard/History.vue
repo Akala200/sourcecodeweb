@@ -31,14 +31,17 @@
                                             <td>
                                                 {{history.status}}
                                             </td>
-                                                <td>
-                                                {{moment((history.createdAt).format('MMMM Do YYYY, h:mm:ss a'))}}
+                                            <td>
+                                                {{history.createdAt.substring(0, 10)}}
                                             </td>
                                             <td>
                                                 <i class="cc BTC" /> Bitcoin
                                             </td>
-                                            <td v-if="history.type == 'debit'">
+                                            <td v-if="history.type == 'credit'">
                                                 {{ history.cardType }} *******{{ history.lastFour }}
+                                            </td>
+                                            <td v-if="history.type == 'debit'">
+                                               {{history.mode}}
                                             </td>
                                             <td>
                                                 <div class="text-danger" v-if="history.type == 'debit'">
@@ -67,7 +70,6 @@
 import ApexCharts from 'apexcharts'
 import app from '@/App.vue'
 const axios = require('axios')
-import moment from 'moment';
 
 export default {
     extends: app,

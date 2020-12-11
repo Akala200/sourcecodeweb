@@ -238,7 +238,7 @@
                         <div class="table-responsive">
                             <table class="table mb-0 table-responsive-sm">
                                 <tbody>
-                                     <tr v-for="history in histories" :key="history.id">
+                                                                            <tr v-for="history in histories" :key="history.id">
                                             <td>
                                                 <span v-if="history.type === 'debit'" class="sold-thumb"><i class="la la-arrow-down" /></span>
                                                 <span v-else class="buy-thumb"><i class="la la-arrow-up" /></span>
@@ -256,10 +256,16 @@
                                                 {{history.status}}
                                             </td>
                                             <td>
-                                                <i class="cc BTC" /> Bitcoin
+                                                {{history.createdAt.substring(0, 10)}}
                                             </td>
                                             <td>
+                                                <i class="cc BTC" /> Bitcoin
+                                            </td>
+                                            <td v-if="history.type == 'credit'">
                                                 {{ history.cardType }} *******{{ history.lastFour }}
+                                            </td>
+                                            <td v-if="history.type == 'debit'">
+                                               {{history.mode}}
                                             </td>
                                             <td>
                                                 <div class="text-danger" v-if="history.type == 'debit'">

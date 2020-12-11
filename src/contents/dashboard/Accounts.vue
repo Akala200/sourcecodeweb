@@ -93,47 +93,45 @@
                 <div class="table-responsive">
                   <table class="table mb-0 table-responsive-sm">
                     <tbody>
-                      <tr
-                        v-for="history in histories"
-                        :key="history.id"
-                      >
-                        <td>
-                          <span
-                            v-if="history.type == 'debit'"
-                            class="sold-thumb"
-                          ><i class="la la-arrow-down" /></span>
-                          <span
-                            v-else
-                            class="buy-thumb"
-                          ><i class="la la-arrow-up" /></span>
-                        </td>
+                                                              <tr v-for="history in histories" :key="history.id">
+                                            <td>
+                                                <span v-if="history.type === 'debit'" class="sold-thumb"><i class="la la-arrow-down" /></span>
+                                                <span v-else class="buy-thumb"><i class="la la-arrow-up" /></span>
+                                            </td>
 
-                        <td>
-                          <span
-                            v-if="history.type == 'debit'"
-                            class="badge badge-danger"
-                          >SOLD</span>
-                          <span
-                            v-if="history.type == 'credit'"
-                            class="badge badge-success"
-                          >BUY</span>
-                        </td>
-                        <td>
-                          <i class="cc BTC" /> Bitcoin
-                        </td>
-                        <td>
-                          {{ history.cardType }} *******{{ history.lastFour }}
-                        </td>
-                        <td class="text-danger">
-                          <div v-if="history.type == 'debit'">
-                            -{{ history.coins }} BTC
-                          </div>
-                          <div v-else>
-                            {{ history.coins }} BTC
-                          </div>
-                        </td>
-                        <td>{{ history.amount }}NGN</td>
-                      </tr>
+                                            <td>
+                                                <div v-if="history.type == 'debit'">
+                                                    <span class="badge badge-danger">SELL</span>
+                                                </div>
+                                                <div v-else>
+                                                    <span class="badge badge-success">BUY</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{history.status}}
+                                            </td>
+                                            <td>
+                                                {{history.createdAt.substring(0, 10)}}
+                                            </td>
+                                            <td>
+                                                <i class="cc BTC" /> Bitcoin
+                                            </td>
+                                            <td v-if="history.type == 'credit'">
+                                                {{ history.cardType }} *******{{ history.lastFour }}
+                                            </td>
+                                            <td v-if="history.type == 'debit'">
+                                               {{history.mode}}
+                                            </td>
+                                            <td>
+                                                <div class="text-danger" v-if="history.type == 'debit'">
+                                                    -{{ history.coins }} BTC
+                                                </div>
+                                                <div  class="text-success" v-else>
+                                                    {{ history.coins }} BTC
+                                                </div>
+                                            </td>
+                                            <td>{{ history.amount }}NGN</td>
+                                        </tr>
                     </tbody>
                   </table>
                 </div>

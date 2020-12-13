@@ -115,13 +115,18 @@ export default {
         
         sell() {
             let email
-                  this.isLoading = true
+                        const amountData = this.afterFee
+
+             if (amountData < 5000) {
+                 toast.success('You can not withdraw less than 5000 Naira');
+            } else {
+                
+                    this.isLoading = true
 
             if (process.browser) {
                 email = localStorage.getItem('email')
             }
 
-            const amountData = this.afterFee
             const data = {
                 email: email,
                 amount: amountData,
@@ -151,6 +156,8 @@ export default {
 
       }
                 })
+            }
+
         }
     }
 }

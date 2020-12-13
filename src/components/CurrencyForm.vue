@@ -80,7 +80,13 @@ import axios from 'axios'
 import {
     debounce
 } from 'debounce'
-
+import { createToastInterface } from "vue-toastification";
+const pluginOptions = {
+  timeout: 4000
+};
+ 
+// Create the interface
+const toast = createToastInterface(pluginOptions);
 export default {
 
     data() {
@@ -113,12 +119,17 @@ export default {
         
         buy() {
             let email
+          const amountData = this.amount
+
             if (process.browser) {
                 email = localStorage.getItem('email')
             }
 
-            const amountData = this.amount
-            const data = {
+           
+             if (amountData < 5000) {
+                 toast.success('You can not buy coin less than 5000 Naira');
+            } else {
+                const data = {
                 email: email,
                 amount: amountData,
                 bitcoin: this.coinAmount,
@@ -131,6 +142,7 @@ export default {
                 .catch(err => {
                     console.log(err)
                 })
+            }
         }
     }
 }

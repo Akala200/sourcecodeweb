@@ -118,7 +118,7 @@ export default {
                         const amountData = this.afterFee
 
              if (amountData < 5000) {
-                 toast.success('You can not withdraw less than 5000 Naira');
+                 toast.error('You can not withdraw less than 5000 Naira');
             } else {
                 
                     this.isLoading = true

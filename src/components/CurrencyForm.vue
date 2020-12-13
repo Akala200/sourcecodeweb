@@ -127,7 +127,7 @@ export default {
 
            
              if (amountData < 5000) {
-                 toast.error('You can not buy coin less than 5000 Naira');
+                 toast.error('You can not buy coin less than 5000 Naira, enter an amount greater than 5000 Naira');
             } else {
                 const data = {
                 email: email,

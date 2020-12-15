@@ -15,13 +15,6 @@
                 <p class="ml-2" style="font-size: 16px">NGN 800</p>
             </div>
         </div>
-                <div class="row">
-            <div class="row mt-3">
-                <h4>Variable Fee - </h4>
-                <p class="ml-2" style="font-size: 16px">{{fee}}</p>
-            </div>
-        </div>
-
         <div class="row">
             <div class="row mt-3">
                 <h4>Amount After Fee : </h4>

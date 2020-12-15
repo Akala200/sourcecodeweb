@@ -58,10 +58,6 @@
                                         <span>Amount</span>
                                         <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="amount" aria-describedby="emailHelp" placeholder="₦0.00">
                                     </div>
-                                     <div class="col-lg-6">
-                                        <span>Fee</span>
-                                         <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="fee" aria-describedby="emailHelp" disabled>
-                                    </div>
                                 </div>
 
                                  <div class="row mt-4">

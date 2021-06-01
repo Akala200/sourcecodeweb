@@ -102,7 +102,7 @@
 
         <div class="col-xl-6 col-lg-8 col-xxl-8">
             <div class="card profile_chart">
-                <div class="card-header py-0" />
+                <div class="card-header py-0"/>
                 <div class="card-body mt-5">
                     <div class="chart-content text-center">
                         <div class="row">
@@ -234,7 +234,7 @@
                         <div class="table-responsive">
                             <table class="table mb-0 table-responsive-sm">
                                 <tbody>
-                                                                            <tr v-for="history in histories" :key="history.id">
+                                          <tr v-for="history in histories" :key="history.id">
                                             <td>
                                                 <span v-if="history.type === 'debit'" class="sold-thumb"><i class="la la-arrow-down" /></span>
                                                 <span v-else class="buy-thumb"><i class="la la-arrow-up" /></span>
@@ -249,7 +249,9 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{history.status}}
+                                                 <p v-if="history.status == 'successful'" style="color: green">{{history.status}}</p>
+                                               <p v-else style="color: #ff788e !important">{{history.status}}</p>
+                                               
                                             </td>
                                             <td>
                                                 {{history.createdAt.substring(0, 10)}}
@@ -261,11 +263,12 @@
                                                 {{ history.cardType }} *******{{ history.lastFour }}
                                             </td>
                                             <td v-if="history.type == 'debit'">
-                                               {{history.mode}}
+                                               <p v-if="history.status == 'successful'" style="color: green">{{history.mode}}</p>
+                                               <p v-else style="color: #ff788e !important" >{{history.mode}}</p>
                                             </td>
                                             <td>
                                                 <div class="text-danger" v-if="history.type == 'debit'">
-                                                    -{{ history.coins }} BTC
+                                                    - {{ history.coins }} BTC
                                                 </div>
                                                 <div  class="text-success" v-else>
                                                     {{ history.coins }} BTC

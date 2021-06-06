@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-xl-3 col-lg-4 col-xxl-4">
             <div class="card balance-widget">
-                <div class="card-header border-0 py-0">
-                    <div class="row">
+                 <!--  <div class="card-header border-0 py-0">
+                  <div class="row">
                         <div class="col-6">
                             <b-button @click.prevent="callModal()">Send</b-button>
                         </div>
@@ -13,6 +13,7 @@
                             <b-button @click.prevent="callModal2()">Receive</b-button>
                         </div>
                     </div>
+                  
                                         <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal2">
                                                 <div class="container">
                                                     <h3 class="mb-5">Copy Wallet Address</h3>
@@ -68,11 +69,12 @@
                             </div>
                         </div>
                     </sweet-modal>
+                     
                 </div>
-
+ -->
                 <div class="card-body pt-0">
                     <div class="balance-widget">
-                        <div class="total-balance">
+                      <!--  <div class="total-balance">
                             <div class="d-flex">
                                 <h5>BTC {{ balance }}</h5>
                             </div>
@@ -81,6 +83,7 @@
                             </div>
                             <h6>Total Balance</h6>
                         </div>
+                        -->
                         <ul class="list-unstyled">
                             <li class="media">
                                 <i class="cc BTC mr-3" />
@@ -90,8 +93,64 @@
                                     </h5>
                                 </div>
                                 <div class="text-right">
-                                    <h5>1 BTC</h5>
-                                    <span>{{ Math.ceil(bitcoin.quote.NGN.price) }} NGN</span>
+                                    <h5>{{balance}} BTC</h5>
+                                    <span>{{ Math.ceil(nairaBalance)}} NGN</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="balance-widget">
+                      <!--  <div class="total-balance">
+                            <div class="d-flex">
+                                <h5>BTC {{ balance }}</h5>
+                            </div>
+                            <div class="d-flex">
+                                <h5>NGN {{ Math.ceil(nairaBalance) }}</h5>
+                            </div>
+                            <h6>Total Balance</h6>
+                        </div>
+                        -->
+                        <ul class="list-unstyled">
+                            <li class="media">
+                                <i class="cc ETH mr-3" />
+                                <div class="media-body">
+                                    <h5 class="m-0">
+                                        Etherum
+                                    </h5>
+                                </div>
+                                <div class="text-right">
+                                    <h5>{{eth_balance}} ETH</h5>
+                                    <span>{{ Math.ceil(nairaBalance)}} NGN</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="balance-widget">
+                      <!--  <div class="total-balance">
+                            <div class="d-flex">
+                                <h5>BTC {{ balance }}</h5>
+                            </div>
+                            <div class="d-flex">
+                                <h5>NGN {{ Math.ceil(nairaBalance) }}</h5>
+                            </div>
+                            <h6>Total Balance</h6>
+                        </div>
+                        -->
+                        <ul class="list-unstyled">
+                            <li class="media">
+                                <i class="cc DOGE mr-3" />
+                                <div class="media-body">
+                                    <h5 class="m-0">
+                                        Dogecoin
+                                    </h5>
+                                </div>
+                                <div class="text-right">
+                                    <h5>{{balance}} BTC</h5>
+                                    <span>{{ Math.ceil(nairaBalance)}} NGN</span>
                                 </div>
                             </li>
                         </ul>
@@ -339,6 +398,7 @@ export default {
             nairaBalance: '',
             user: {},
             coin: '',
+            eth_balance: '',
             wallet: '',
             address: '',
             amount: '',
@@ -381,10 +441,22 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/coin?email=${userEmail}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`)
             .then(res => {
                 console.log('balancecoin,', res);
                 this.balance = res.data.message
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+        // eslint-disable-next-line no-console
+
+         axios.get(`https://cryptonew-api.herokuapp.com/api/balance/eth?email=${userEmail}&coin_type=ETH`)
+            .then(res => {
+                console.log('balancecoin,', res);
+                this.eth_balance = res.data.message
                 // eslint-disable-next-line no-console
 
                 // eslint-disable-next-line no-unused-vars

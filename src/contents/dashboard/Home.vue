@@ -2,7 +2,7 @@
 <template>
 <content-body>
     <div class="row">
-        <div class="col-xl-3 col-lg-4 col-xxl-4">
+        <div class="col">
             <div class="card balance-widget">
                  <!--  <div class="card-header border-0 py-0">
                   <div class="row">
@@ -72,7 +72,7 @@
                      
                 </div>
  -->
-                <div class="card-body pt-0">
+                <div class="card-body" style="margin-bottom: -50px;">
                     <div class="balance-widget">
                       <!--  <div class="total-balance">
                             <div class="d-flex">
@@ -100,7 +100,81 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-body pt-0">
+            </div>
+        </div>
+
+          <div class="col">
+            <div class="card balance-widget">
+                 <!--  <div class="card-header border-0 py-0">
+                  <div class="row">
+                        <div class="col-6">
+                            <b-button @click.prevent="callModal()">Send</b-button>
+                        </div>
+                        <div class="col-6">
+                            <b-button @click.prevent="callModal2()">Receive</b-button>
+                        </div>
+                    </div>
+                  
+                                        <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal2">
+                                                <div class="container">
+                                                    <h3 class="mb-5">Copy Wallet Address</h3>
+                                                 <h5>{{user.address}}</h5>
+                                                </div>
+
+                                        </sweet-modal>
+                    <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal1">
+                        <div class="container  d-none d-lg-block">
+                            <div class="d-flex">
+                                <img src="/images/pl.png" alt="" class="pl">
+                                <h4 class="tx">Send Bitcoin</h4>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="container">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <span>Currency</span>
+                                        <select class="select-css" v-model="coin">
+                                            <option>Select Coin</option>
+                                            <option> <i class="cc BTC mr-3" /> Bitcoin</option>
+                                        </select>
+                                    </div>
+                                     <div class="col-lg-6">
+                                        <span>From</span>
+                                        <select class="select-css" v-model="wallet">
+                                            <option>Select Wallet</option>
+                                            <option>Bitcoin Wallet</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-lg-12">
+                                        <span>To</span>
+                                          <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="address" aria-describedby="emailHelp" placeholder="Paste Wallet Address">
+                                    </div>
+                                </div>
+                                  <div class="row mt-4">
+                                    <div class="col-lg-6">
+                                        <span>Amount</span>
+                                        <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="amount" aria-describedby="emailHelp" placeholder="₦0.00">
+                                    </div>
+                                </div>
+
+                                 <div class="row mt-4">
+                                     <div class="col-lg-12">
+                                         <button class="btn btn-success buttn"  @click.prevent="nextPage()">Continue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sweet-modal>
+                     
+                </div>
+ -->
+    
+                <div class="card-body" style="margin-bottom: -50px;">
                     <div class="balance-widget">
                       <!--  <div class="total-balance">
                             <div class="d-flex">
@@ -128,7 +202,82 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-body pt-0">
+            </div>
+        </div>
+
+
+ <div class="col">
+            <div class="card balance-widget">
+                 <!--  <div class="card-header border-0 py-0">
+                  <div class="row">
+                        <div class="col-6">
+                            <b-button @click.prevent="callModal()">Send</b-button>
+                        </div>
+                        <div class="col-6">
+                            <b-button @click.prevent="callModal2()">Receive</b-button>
+                        </div>
+                    </div>
+                  
+                                        <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal2">
+                                                <div class="container">
+                                                    <h3 class="mb-5">Copy Wallet Address</h3>
+                                                 <h5>{{user.address}}</h5>
+                                                </div>
+
+                                        </sweet-modal>
+                    <sweet-modal modal-theme="dark" overlay-theme="dark" ref="modal1">
+                        <div class="container  d-none d-lg-block">
+                            <div class="d-flex">
+                                <img src="/images/pl.png" alt="" class="pl">
+                                <h4 class="tx">Send Bitcoin</h4>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="container">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <span>Currency</span>
+                                        <select class="select-css" v-model="coin">
+                                            <option>Select Coin</option>
+                                            <option> <i class="cc BTC mr-3" /> Bitcoin</option>
+                                        </select>
+                                    </div>
+                                     <div class="col-lg-6">
+                                        <span>From</span>
+                                        <select class="select-css" v-model="wallet">
+                                            <option>Select Wallet</option>
+                                            <option>Bitcoin Wallet</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-lg-12">
+                                        <span>To</span>
+                                          <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="address" aria-describedby="emailHelp" placeholder="Paste Wallet Address">
+                                    </div>
+                                </div>
+                                  <div class="row mt-4">
+                                    <div class="col-lg-6">
+                                        <span>Amount</span>
+                                        <input type="text" class="form-control input-css" id="exampleInputEmail1" v-model="amount" aria-describedby="emailHelp" placeholder="₦0.00">
+                                    </div>
+                                </div>
+
+                                 <div class="row mt-4">
+                                     <div class="col-lg-12">
+                                         <button class="btn btn-success buttn"  @click.prevent="nextPage()">Continue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sweet-modal>
+                     
+                </div>
+ -->
+    
+                <div class="card-body" style="margin-bottom: -50px;">
                     <div class="balance-widget">
                       <!--  <div class="total-balance">
                             <div class="d-flex">
@@ -149,7 +298,7 @@
                                     </h5>
                                 </div>
                                 <div class="text-right">
-                                    <h5>{{balance}} BTC</h5>
+                                    <h5>{{doge_balance}} DOGE</h5>
                                     <span>{{ Math.ceil(nairaBalance)}} NGN</span>
                                 </div>
                             </li>
@@ -158,92 +307,19 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-xl-6 col-lg-8 col-xxl-8">
-            <div class="card profile_chart">
-                <div class="card-header py-0"/>
-                <div class="card-body mt-5">
-                    <div class="chart-content text-center">
-                        <div class="row">
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        24hr Volume
-                                    </p>
-                                    <h5> $ {{ Math.ceil(bitcoin.quote.NGN.volume_24h) }}</h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        Market Cap
-                                    </p>
-                                    <h5>{{ Math.ceil(bitcoin.quote.NGN.market_cap) }} NGN</h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        Circulating Supply
-                                    </p>
-                                    <h5>{{ Math.ceil(bitcoin.circulating_supply) }} BTC</h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        All Time High
-                                    </p>
-                                    <h5>1{{ Math.ceil(bitcoin.max_supply) }} BTC</h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        Typical hold time
-                                    </p>
-                                    <h5>15 mins</h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        7days change
-                                    </p>
-                                    <h5>{{ bitcoin.quote.NGN.percent_change_7d }}% </h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        24hrs change
-                                    </p>
-                                    <h5>{{ bitcoin.quote.NGN.percent_change_24h }}% </h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-sm-6 col-6">
-                                <div class="chart-stat">
-                                    <p class="mb-1">
-                                        1hr change
-                                    </p>
-                                    <h5>{{ bitcoin.quote.NGN.percent_change_1h }}%</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-12 col-xxl-12">
+    <div class="row">
             <div class="card">
                 <div class="card-header border-0 py-0">
                     <h4 class="card-title">
                         Follow
                     </h4>
                 </div>
+                
                 <div class="card-body">
                     <div class="row">
-                        <div v-for="shortlist in shortlists" :key="shortlist.id" class="col-xl-12 col-lg-6 col-xxl-6">
+                        <div v-for="shortlist in shortlists" :key="shortlist.id" class="col-lg-3">
                             <div class="widget-card">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="widget-stat">
@@ -263,7 +339,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-xl-3 col-lg-4 col-xxl-4">
@@ -399,6 +474,7 @@ export default {
             user: {},
             coin: '',
             eth_balance: '',
+            doge_balance: 0,
             wallet: '',
             address: '',
             amount: '',
@@ -465,11 +541,26 @@ export default {
             })
         // eslint-disable-next-line no-console
 
+
+          /*  axios.get(`https://cryptonew-api.herokuapp.com/api/balance/doge?email=${userEmail}&coin_type=DOGE`)
+            .then(res => {
+                console.log('balancecoin,', res);
+                this.doge_balance = res.data.message
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+        // eslint-disable-next-line no-console
+
+        */
+
+
         axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}`)
             .then(res => {
-                this.nairaBalance = res.data.price
+                this.nairaBalance = res.data.price != null ? res.data.price: 0
                 // eslint-disable-next-line no-console
-                console.log(this.nairaBalance);
 
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {
@@ -677,5 +768,6 @@ export default {
     border: 0px;
     font-size: 15px;
 }
+
 
 </style>

@@ -2,18 +2,24 @@
 <form name="myform" class="currency_validate">
     <div class="form-group mb-3">
         <div class="input-group-prepend" />
-        <select id="currency" class="form-control" name="currency">
+        <select id="currency" class="form-control" name="currency" v-model="coin_type">
             <option value="">
                 Select
             </option>
-            <option value="bitcoin">
+            <option v-bind:value="{ coin_type: 'BTC' }">
                 Bitcoin
+            </option>
+               <option v-bind:value="{ coin_type: 'ETH' }">
+                Etherum
+            </option>
+              <option v-bind:value="{ coin_type: 'DOGE' }">
+                Doge
             </option>
         </select>
     </div>
 
     <div class="form-group mb-3">
-        <select id="method" class="form-control" name="method">
+        <select id="method" class="form-control select_box" name="method">
             <option value="">
                 Select
             </option>
@@ -65,7 +71,7 @@
            Bitcoin
         </p>
         <h6 class="mb-0">
-            BTC {{ coinAmount }}
+            {{coin_type.coin_type}} {{ coinAmount }}
         </h6>
     </div>
 
@@ -96,6 +102,7 @@ export default {
             card: '',
             amount: '',
             usdAmount: '',
+            coin_type: '',
             afterFee: '',
             coinAmount: ''
         }
@@ -103,8 +110,9 @@ export default {
 
     methods: {
         searchInput: debounce(function (e) {
+            console.log(this.coin_type.coin_type);
             // make API call here
-            axios.get(`https://cryptonew-api.herokuapp.com/api/convert?amount=${e.target.value}`)
+            axios.get(`https://cryptonew-api.herokuapp.com/api/convert?amount=${e.target.value}&coin_type=${this.coin_type.coin_type}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
@@ -237,4 +245,6 @@ user agent stylesheet input {
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
     border-image: initial;
 }
+
+
 </style>

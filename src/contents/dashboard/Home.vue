@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="text-right">
                                     <h5>{{eth_balance}} ETH</h5>
-                                    <span>{{ Math.ceil(nairaBalance)}} NGN</span>
+                                    <span>{{ Math.ceil(eth_balance_naira)}} NGN</span>
                                 </div>
                             </li>
                         </ul>
@@ -299,7 +299,7 @@
                                 </div>
                                 <div class="text-right">
                                     <h5>{{doge_balance}} DOGE</h5>
-                                    <span>{{ Math.ceil(nairaBalance)}} NGN</span>
+                                    <span>{{ Math.ceil(doge_balance_naira)}} NGN</span>
                                 </div>
                             </li>
                         </ul>
@@ -475,6 +475,8 @@ export default {
             coin: '',
             eth_balance: '',
             doge_balance: 0,
+            eth_balance_naira: '',
+            doge_balance_naira: 0,
             wallet: '',
             address: '',
             amount: '',
@@ -567,6 +569,31 @@ export default {
                 console.log(err)
             })
         // eslint-disable-next-line no-console
+
+
+          axios.get(`https://cryptonew-api.herokuapp.com/api/balance/eth/naira?email=${userEmail}`)
+            .then(res => {
+                this.eth_balance_naira = res.data.price != null ? res.data.price: 0
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+        // eslint-disable-next-line no-console
+
+
+               axios.get(`https://cryptonew-api.herokuapp.com/api/balance/doge/naira?email=${userEmail}`)
+            .then(res => {
+                this.doge_balance_naira = res.data.price != null ? res.data.price: 0
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+        // eslint-disable-next-line no-console
+
 
         axios.get('https://cryptonew-api.herokuapp.com/api/shortlist')
             .then(res => {

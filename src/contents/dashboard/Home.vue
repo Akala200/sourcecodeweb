@@ -294,12 +294,12 @@
                                 <i class="cc DOGE mr-3" />
                                 <div class="media-body">
                                     <h5 class="m-0">
-                                        Dogecoin
+                                        BCH
                                     </h5>
                                 </div>
                                 <div class="text-right">
-                                    <h5>{{doge_balance}} DOGE</h5>
-                                    <span>{{ Math.ceil(doge_balance_naira)}} NGN</span>
+                                    <h5>{{bch_balance}} BCH</h5>
+                                    <span>{{ Math.ceil(bch_balance_naira)}} NGN</span>
                                 </div>
                             </li>
                         </ul>
@@ -474,9 +474,9 @@ export default {
             user: {},
             coin: '',
             eth_balance: '',
-            doge_balance: 0,
+            bch_balance: 0,
             eth_balance_naira: '',
-            doge_balance_naira: 0,
+            bch_balance_naira: 0,
             wallet: '',
             address: '',
             amount: '',
@@ -583,9 +583,9 @@ export default {
         // eslint-disable-next-line no-console
 
 
-               axios.get(`https://cryptonew-api.herokuapp.com/api/balance/doge/naira?email=${userEmail}`)
+               axios.get(`https://cryptonew-api.herokuapp.com/api/balance/bch/naira?email=${userEmail}`)
             .then(res => {
-                this.doge_balance_naira = res.data.price != null ? res.data.price: 0
+                this.bch_balance_naira = res.data.price != null ? res.data.price: 0
                 // eslint-disable-next-line no-console
 
                 // eslint-disable-next-line no-unused-vars

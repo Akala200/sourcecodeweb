@@ -12,8 +12,8 @@
                <option v-bind:value="{ coin_type: 'ETH' }">
                 Etherum
             </option>
-              <option v-bind:value="{ coin_type: 'DOGE' }">
-                Doge
+              <option v-bind:value="{ coin_type: 'BCH' }">
+                BCH
             </option>
         </select>
     </div>

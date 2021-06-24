@@ -291,7 +291,7 @@
                         -->
                         <ul class="list-unstyled">
                             <li class="media">
-                                <i class="cc DOGE mr-3" />
+                                <i class="cc BCH mr-3" />
                                 <div class="media-body">
                                     <h5 class="m-0">
                                         BCH

@@ -4,6 +4,7 @@ import signIn from "@/pages/Signin.vue";
 import Confirm from "@/pages/Confirm.vue";
 import signUp from "@/pages/Signup.vue";
 import reset from '@/pages/Reset.vue';
+import bvn from "@/pages/Bvn.vue";
 import lock from '@/pages/Lock.vue';
 import oneTimePassword1 from '@/pages/OneTimePassword1.vue';
 import oneTimePassword2 from '@/pages/OneTimePassword2.vue';
@@ -80,6 +81,12 @@ export default [
   { path: "/sign-in", meta: { title: "Sign-In" }, component: signIn },
   { path: "/sign-up", meta: { title: "Sign-Up" }, component: signUp },
   { path: "/reset", meta: { title: "Reset Password" }, component: reset },
+  {
+    path: "/bvn-verification",
+    meta: { title: "BVN Verification" },
+    component: bvn
+  },
+
   {
     path: "/change_password",
     meta: { title: "Verify Code" },

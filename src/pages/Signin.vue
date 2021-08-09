@@ -125,12 +125,18 @@ export default {
       let password = this.password
       this.$store
         .dispatch('login', { email, password })
-        .then(() => {
+        .then((resp) => {
             setTimeout(() => {
         this.isLoading = false
       })
-     toast.success('Login Successful');
+
+       if(resp.bvn_status === false){
+              toast.success('Login Successful');
+          this.$router.push('/bvn-verification')
+       } else {
+            toast.success('Login Successful');
           this.$router.push('/dashboard')
+       }
         })
         // eslint-disable-next-line no-console
         .catch(err => {

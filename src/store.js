@@ -44,7 +44,6 @@ export default new Vuex.Store({
             const firstname = resp.data.data.first_name;
             const lastname = resp.data.data.last_name;
             const phone = resp.data.data.phone;
-
             localStorage.setItem("token", token);
             localStorage.setItem("user", user);
             localStorage.setItem("email", email);

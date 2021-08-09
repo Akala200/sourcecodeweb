@@ -112,11 +112,11 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <h5 class="m-0">
-                                                Dogecoin
+                                                Bitcoin Cash
                                             </h5>
                                         </div>
                                         <div class="col-lg-6">
-                                            <h5>0 DOGE</h5>
+                                            <h5>0 BCH</h5>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -132,7 +132,7 @@
                                     <div class="row mt-2">
                                         <div class="col-lg-12">
                                             <h5 class="m-0">
-                                                Address: {{user.doge_address}}
+                                                Address: {{user.bch_address}}
                                             </h5>
                                         </div>
                                     </div>
@@ -164,8 +164,8 @@
                                             <option value="ETH">
                                                 ETH
                                             </option>
-                                            <option value="DOGE">
-                                                DOGE
+                                            <option value="BCH">
+                                                BCH
                                             </option>
                                         </select>
                                     </div>

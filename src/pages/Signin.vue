@@ -129,13 +129,13 @@ export default {
             setTimeout(() => {
         this.isLoading = false
       })
-
+      console.log(resp);
        if(resp.data.data.bvn_status === false){
               toast.success('Login Successful');
           this.$router.push('/bvn-verification')
        } else {
             toast.success('Login Successful');
-          this.$router.push('/dashboard')
+           this.$router.push('/dashboard');
        }
         })
         // eslint-disable-next-line no-console

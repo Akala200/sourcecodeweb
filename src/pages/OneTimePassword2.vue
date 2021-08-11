@@ -81,12 +81,28 @@ code
         this.isLoading = true;
 
       this.$store.dispatch("verify", { code })
-        .then(() => this.$router.push("/dashboard/home"))
+        .then((resp) => {
+            setTimeout(() => {
+        this.isLoading = false
+      })
+      console.log(resp);
+       toast.success('Account Verified');
+       if(resp.data.data.bvn_status === false){
+          this.$router.push('/bvn-verification')
+       } else {
+           this.$router.push('/dashboard');
+       }
+        })
         // eslint-disable-next-line no-console
-        .catch(err => console.log(err));
-        setTimeout(() => {
-                  this.isLoading = false
-                })
+        .catch(err => {
+           setTimeout(() => {
+        this.isLoading = false
+      })
+            console.log(err.response);
+
+     toast.error(err.response.data.message);
+
+        })
     }
     }
 }

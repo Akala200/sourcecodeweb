@@ -83,6 +83,26 @@ export default new Vuex.Store({
       });
     },
 
+    completeSetup({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        commit("auth_request");
+        axios({
+          url: "https://cryptonew-api.herokuapp.com/api/complete/account",
+          data: data,
+          method: "POST"
+        })
+          .then(resp => {
+            console.log(resp);
+            resolve(resp);
+          })
+          .catch(err => {
+            
+            commit("auth_error", err);
+            reject(err);
+          });
+      });
+    },
+
     register({ commit }, user) {
       return new Promise((resolve, reject) => {
         commit("auth_request");

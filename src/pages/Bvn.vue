@@ -2,33 +2,31 @@
 <form-page>
     <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="fullPage"></loading>
     <template #header>
-        <h4 class="card-title">Verify Your BVN</h4>
+        <h4 class="card-title">Complete Account Setup</h4>
     </template>
 
     <div>
         <div class="form-group">
-            <label>Enter Your BVN</label>
-            <input type="number" v-model="email" class="form-control" placeholder="hello@example.com">
+            <label>BVN</label>
+            <input type="number" v-model="bvn" class="form-control" placeholder="Enter BVN">
         </div>
         <div class="form-group">
-            <label>Enter Account Number</label>
-            <input type="email" v-model="email" class="form-control" placeholder="hello@example.com">
+            <label>Account Number</label>
+            <input type="email" v-model="account_number" class="form-control" placeholder="Enter Account Number">
         </div>
 
         <div class="form-group">
-            <select v-model="bankCode" name="bank" id="bank" class="form-control" tabindex="12">
-                <option v-for="bank in banks" :key="bank.id" :value="bank">{{bank.name}}</option>             
+           <label>Select Bank</label>
+            <select v-model="account_bank" name="bank" id="bank" class="form-control" tabindex="12">
+                <option v-for="bank in banks" :key="bank.id" :value="bank.code">{{bank.name}}</option>             
             </select>
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success btn-block" @click.prevent="forgot()">Reset Password</button>
+            <button class="btn btn-success btn-block" @click.prevent="complete()">Proceed</button>
         </div>
     </div>
-    <div class="new-account mt-3">
-        <p class="mb-1">Not Received? </p>
-        <a class="text-primary" href="#" @click="$router.go()">Resend</a>
-    </div>
+
 </form-page>
 </template>
 
@@ -55,7 +53,6 @@ export default {
     },
     data() {
         return {
-            email: '',
             bvn: '',
             bankCode: '',
             banks: [],
@@ -79,32 +76,36 @@ export default {
             })
         },
 
-        forgot: function () {
+        complete: function () {
+            const email = localStorage.getItem("email")
             this.isLoading = true
             // eslint-disable-next-line no-console
-            console.log("loding strated")
             const {
-                email,
+              bvn,
+              account_number,
+              account_bank
+                
             } = this
             this.isLoading = true;
 
-            this.$store.dispatch("forgotPassword", {
-                    email
+            this.$store.dispatch("completeSetup", {
+                    email,bvn,account_number,account_bank
                 })
-                .then(() => {
+                .then((resp) => {
                     setTimeout(() => {
                         this.isLoading = false
                     });
-                    toast.success('Reset Password Successful');
-                    this.$router.push("/verify_code");
+                    console.log(resp)
+                    toast.success('Account Setup Complete And BVN Verified');
+                    this.$router.push("/dashboard");
                 })
                 // eslint-disable-next-line no-console
                 .catch(err => {
                     setTimeout(() => {
                         this.isLoading = false
                     });
+                      console.log(err)
                     toast.error(err.response.data.message);
-
                 });
         }
     },

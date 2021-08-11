@@ -130,7 +130,7 @@ export default {
         this.isLoading = false
       })
 
-       if(resp.bvn_status === false){
+       if(resp.data.data.bvn_status === false){
               toast.success('Login Successful');
           this.$router.push('/bvn-verification')
        } else {

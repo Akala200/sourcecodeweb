@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 NGN" @input="searchInput">
+        <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 USD" @input="searchInput">
     </div>
 
     <div class="d-flex justify-content-between mb-3">
@@ -38,7 +38,7 @@
             Total Amount
         </p>
         <h6 class="mb-0">
-            NGN {{ amount }}
+            USD {{ amount }}
         </h6>
     </div>
      <div class="d-flex justify-content-between mb-3">
@@ -46,7 +46,7 @@
           Fixed Fee
         </p>
         <h6 class="mb-0">
-            NGN 800
+            USD 1.94
         </h6>
     </div>
       <div class="d-flex justify-content-between mb-3">
@@ -62,7 +62,7 @@
            Amount After Fee
         </p>
         <h6 class="mb-0">
-            NGN {{ afterFee }}
+            USD {{ afterFee }}
         </h6>
     </div>
     
@@ -128,6 +128,8 @@ export default {
         buy() {
             let email
           const amountData = this.amount
+          const coin_type = this.coin_type
+          const coinAmount = this.coinAmount
 
             if (process.browser) {
                 email = localStorage.getItem('email')
@@ -141,15 +143,40 @@ export default {
                 email: email,
                 amount: amountData,
                 bitcoin: this.coinAmount,
- 
             }
-            axios.post('https://cryptonew-api.herokuapp.com/api/credit', data).then(res => {
-                    // sessionStorage.setItem('token', res.data.token)
-                    window.location.href = res.data.authorization_url
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+
+            const API_publicKey = "<ADD YOUR PUBLIC KEY HERE>";
+            var x = getpaidSetup({
+            PBFPubKey: API_publicKey,
+            customer_email: email,
+            amount: amountData,
+            customer_phone: "234099940409",
+            currency: "USD",
+            txref: "rave-123456",
+            meta: [{
+                metaname: "coin_type",
+                metavalue: coin_type
+            },{
+                metaname: "coin",
+                metavalue: coinAmount
+            }],
+            onclose: function() {},
+            callback: function(response) {
+                var txref = response.data.txRef; // collect txRef returned and pass to a                    server page to complete status check.
+                console.log("This is the response returned after a charge", response);
+                if (
+                    response.data.chargeResponseCode == "00" ||
+                    response.data.chargeResponseCode == "0"
+                ) {
+                    // redirect to a success page
+                } else {
+                    // redirect to a failure page.
+                }
+
+                x.close(); // use this to close the modal immediately after payment.
+            }
+        });
+            
             }
         }
     }

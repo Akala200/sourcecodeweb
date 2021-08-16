@@ -6,19 +6,19 @@
             <h2>Transfer Summary</h2> <a class="btn mr-1">Back</a>
             <div class="row mt-3">
                 <h4>Amount : </h4>
-                <p class="ml-2" style="font-size: 16px">NGN {{amount}}</p>
+                <p class="ml-2" style="font-size: 16px">USD {{amount}}</p>
             </div>
         </div>
                 <div class="row">
             <div class="row mt-3">
                 <h4>Fixed Fee - </h4>
-                <p class="ml-2" style="font-size: 16px">NGN 800</p>
+                <p class="ml-2" style="font-size: 16px">USD 1.94</p>
             </div>
         </div>
         <div class="row">
             <div class="row mt-3">
                 <h4>Amount After Fee : </h4>
-                <p class="ml-2" style="font-size: 16px">NGN {{realAmount}}</p>
+                <p class="ml-2" style="font-size: 16px">USD {{realAmount}}</p>
             </div>
         </div>
         <div class="row">

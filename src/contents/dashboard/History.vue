@@ -51,7 +51,7 @@
                                                     {{ history.coins }} BTC
                                                 </div>
                                             </td>
-                                            <td>{{ history.amount }}NGN</td>
+                                            <td>{{ history.amount }}USD</td>
                                         </tr>
                                     </tbody>
                                 </table>

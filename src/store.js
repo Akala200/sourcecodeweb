@@ -213,6 +213,14 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("logout");
         localStorage.removeItem("token");
+        localStorage.removeItem("firstname");
+        localStorage.removeItem("email");
+        localStorage.removeItem("lastname");
+        localStorage.removeItem("phone");
+        localStorage.removeItem("user");
+        this.$router.push('/sign-in');
+
+
         delete axios.defaults.headers.common["Authorization"];
         resolve();
       });

@@ -27,7 +27,7 @@
     </div>
 
     <div class="form-group">
-        <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 NGN" @input="searchInput">
+        <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 USD" @input="searchInput">
     </div>
 
     <div class="d-flex justify-content-between mb-3">
@@ -35,7 +35,7 @@
             Total Amount
         </p>
         <h6 class="mb-0">
-            NGN {{ amount }}
+            USD {{ amount }}
         </h6>
     </div>
     <div class="d-flex justify-content-between mb-3">
@@ -43,7 +43,7 @@
            Amount After Fee
         </p>
         <h6 class="mb-0">
-            NGN {{ afterFee }}
+            USD {{ afterFee }}
         </h6>
     </div>
      <div class="d-flex justify-content-between mb-3">

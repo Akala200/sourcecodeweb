@@ -41,10 +41,10 @@
                           <span><b>{{ list.name }}</b></span>
                         </td>
                         <td>
-                          NGN    {{ list.quote.NGN.price }}
+                          USD    {{ list.quote.USD.price }}
                         </td>
                         <td>
-                          <span class="text-success">+{{ list.quote.NGN.percent_change_1h }}%</span>
+                          <span class="text-success">+{{ list.quote.USD.percent_change_1h }}%</span>
                         </td>
                         <td>{{ list.circulating_supply }}</td>
                       </tr>

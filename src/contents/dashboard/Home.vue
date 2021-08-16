@@ -79,7 +79,7 @@
                                 <h5>BTC {{ balance }}</h5>
                             </div>
                             <div class="d-flex">
-                                <h5>NGN {{ Math.ceil(nairaBalance) }}</h5>
+                                <h5>USD {{ Math.ceil(nairaBalance) }}</h5>
                             </div>
                             <h6>Total Balance</h6>
                         </div>
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="text-right">
                                     <h5>{{balance}} BTC</h5>
-                                    <span>{{ Math.ceil(nairaBalance)}} NGN</span>
+                                    <span>{{ Math.ceil(nairaBalance)}} USD</span>
                                 </div>
                             </li>
                         </ul>
@@ -181,7 +181,7 @@
                                 <h5>BTC {{ balance }}</h5>
                             </div>
                             <div class="d-flex">
-                                <h5>NGN {{ Math.ceil(nairaBalance) }}</h5>
+                                <h5>USD {{ Math.ceil(nairaBalance) }}</h5>
                             </div>
                             <h6>Total Balance</h6>
                         </div>
@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="text-right">
                                     <h5>{{eth_balance}} ETH</h5>
-                                    <span>{{ Math.ceil(eth_balance_naira)}} NGN</span>
+                                    <span>{{ Math.ceil(eth_balance_naira)}} USD</span>
                                 </div>
                             </li>
                         </ul>
@@ -284,7 +284,7 @@
                                 <h5>BTC {{ balance }}</h5>
                             </div>
                             <div class="d-flex">
-                                <h5>NGN {{ Math.ceil(nairaBalance) }}</h5>
+                                <h5>USD {{ Math.ceil(nairaBalance) }}</h5>
                             </div>
                             <h6>Total Balance</h6>
                         </div>
@@ -299,7 +299,7 @@
                                 </div>
                                 <div class="text-right">
                                     <h5>{{bch_balance}} BCH</h5>
-                                    <span>{{ Math.ceil(bch_balance_naira)}} NGN</span>
+                                    <span>{{ Math.ceil(bch_balance_naira)}} USD</span>
                                 </div>
                             </li>
                         </ul>
@@ -329,7 +329,7 @@
                                             </h5>
                                         </div>
                                         <h4>
-                                            NGN {{ Math.ceil(shortlist.quote.NGN.price) }} <span class="badge badge-success ml-2">{{ shortlist.quote.NGN.percent_change_24h }}%</span>
+                                            USD {{ Math.ceil(shortlist.quote.USD.price) }} <span class="badge badge-success ml-2">{{ shortlist.quote.USD.percent_change_24h }}%</span>
                                         </h4>
                                     </div>
                                     <div id="btcChart" />
@@ -408,7 +408,7 @@
                                                     {{ history.coins }} BTC
                                                 </div>
                                             </td>
-                                            <td>{{ history.amount }}NGN</td>
+                                            <td>{{ history.amount }}USD</td>
                                         </tr>
                                 </tbody>
                             </table>
@@ -467,7 +467,7 @@ export default {
             },
             bitcoin: {},
             shortlists: [],
-            NGN: {},
+            USD: {},
             histories: [],
             balance: {},
             nairaBalance: '',
@@ -536,7 +536,6 @@ export default {
                 console.log('balancecoin,', res);
                 this.eth_balance = res.data.message
                 // eslint-disable-next-line no-console
-
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {
                 console.log(err)

@@ -48,6 +48,12 @@ export default [
   {
     path: "/",
     component: landing,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = localStorage.getItem("token");
+
+      if (isAuthenticated !== null || isAuthenticated !== '') next({ path: "/dashboard", });
+      else next();
+    },
     children: [
       {
         path: "",
@@ -107,6 +113,12 @@ export default [
 
   {
     path: "/dashboard",
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = localStorage.getItem("token");
+
+      if (isAuthenticated == null || isAuthenticated == '') next({ path: "/sign-in" });
+      else next();
+    },
     component: dashboard,
     children: [
       { path: "", redirect: "home" },

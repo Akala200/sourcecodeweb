@@ -135,7 +135,6 @@ export default {
                 email = localStorage.getItem('email')
             }
 
-           
              if (amountData < 5000) {
                  toast.error('You can not buy coin less than 5000 Naira, enter an amount greater than 5000 Naira');
             } else {

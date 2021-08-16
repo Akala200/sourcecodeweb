@@ -16,6 +16,7 @@
     "popper.js": "^1.16.1-lts",
     "sweet-modal-vue": "^2.0.0",
     "sweetalert2": "^9.17.2",
+    "unique-string": "^3.0.0",
     "vue": "^2.6.11",
     "vue-carousel": "^0.18.0",
     "vue-loading-overlay": "^3.4.0",

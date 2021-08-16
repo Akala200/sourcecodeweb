@@ -6,10 +6,19 @@
     </template>
 
     <div>
+        <!-- a comment in html 
+
         <div class="form-group">
             <label>BVN</label>
             <input type="number" v-model="bvn" class="form-control" placeholder="Enter BVN">
         </div>
+        -->
+
+         <div class="form-group">
+            <label>Account Name</label>
+            <input type="text" v-model="account_name" class="form-control" placeholder="Enter Account Name">
+        </div>
+
         <div class="form-group">
             <label>Account Number</label>
             <input type="email" v-model="account_number" class="form-control" placeholder="Enter Account Number">
@@ -18,7 +27,7 @@
         <div class="form-group">
            <label>Select Bank</label>
             <select v-model="account_bank" name="bank" id="bank" class="form-control" tabindex="12">
-                <option v-for="bank in banks" :key="bank.id" :value="bank.code">{{bank.name}}</option>             
+                <option v-for="bank in banks" :key="bank.id" :value="bank.name">{{bank.name}}</option>             
             </select>
         </div>
 
@@ -57,6 +66,7 @@ export default {
             bankCode: '',
             banks: [],
             account_number: '',
+            account_name: '',
             account_bank: '',
             isLoading: false,
             fullPage: true,
@@ -83,20 +93,21 @@ export default {
             const {
               bvn,
               account_number,
-              account_bank
+              account_bank,
+              account_name
                 
             } = this
             this.isLoading = true;
 
             this.$store.dispatch("completeSetup", {
-                    email,bvn,account_number,account_bank
+                    email,bvn,account_number,account_bank,account_name
                 })
                 .then((resp) => {
                     setTimeout(() => {
                         this.isLoading = false
                     });
                     console.log(resp)
-                    toast.success('Account Setup Complete And BVN Verified');
+                    toast.success('Account Setup Complete');
                     this.$router.push("/dashboard");
                 })
                 // eslint-disable-next-line no-console

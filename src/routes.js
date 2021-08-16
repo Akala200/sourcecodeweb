@@ -6,6 +6,8 @@ import signUp from "@/pages/Signup.vue";
 import reset from '@/pages/Reset.vue';
 import bvn from "@/pages/Bvn.vue";
 import lock from '@/pages/Lock.vue';
+import payment_verification from "@/pages/payment_verification.vue";
+
 import oneTimePassword1 from '@/pages/OneTimePassword1.vue';
 import oneTimePassword2 from '@/pages/OneTimePassword2.vue';
 import buySell from '@/contents/dashboard/BuySell.vue';
@@ -82,8 +84,8 @@ export default [
   { path: "/sign-up", meta: { title: "Sign-Up" }, component: signUp },
   { path: "/reset", meta: { title: "Reset Password" }, component: reset },
   {
-    path: "/bvn-verification",
-    meta: { title: "BVN Verification" },
+    path: "/complete_setup",
+    meta: { title: "Complete Setup" },
     component: bvn
   },
 
@@ -119,6 +121,11 @@ export default [
         path: "buy-sell",
         meta: { title: "Exchange" },
         components: { default: buySell, dashboardPageTitle }
+      },
+      {
+        path: "successful_payment",
+        meta: { title: "successful_payment" },
+        components: payment_verification
       },
       {
         path: "accounts",

@@ -86,6 +86,8 @@ import axios from 'axios'
 import {
     debounce
 } from 'debounce'
+import uniqueString from 'unique-string';
+
 import { createToastInterface } from "vue-toastification";
 const pluginOptions = {
   timeout: 4000
@@ -127,29 +129,64 @@ export default {
         
         buy() {
             let email
+            let phone;
           const amountData = this.amount
+          const coin_type = this.coin_type
+          const coinAmount = this.coinAmount
 
             if (process.browser) {
                 email = localStorage.getItem('email')
+                phone = localStorage.getItem('phone')
             }
 
            
-             if (amountData < 5000) {
+             if (amountData < 50) {
                  toast.error('You can not buy coin less than 5000 Naira, enter an amount greater than 5000 Naira');
             } else {
                 const data = {
                 email: email,
                 amount: amountData,
                 bitcoin: this.coinAmount,
- 
             }
-            axios.post('https://cryptonew-api.herokuapp.com/api/credit', data).then(res => {
-                    // sessionStorage.setItem('token', res.data.token)
-                    window.location.href = res.data.authorization_url
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+
+            const API_publicKey = "FLWPUBK-3415f0906111399b6bbfb93372e09f4d-X";
+            const id = uniqueString();
+             console.log(id)
+        var x = getpaidSetup({
+            PBFPubKey: API_publicKey,
+            customer_email: email,
+            amount: amountData,
+            customer_phone: phone,
+            currency: "USD",
+            txref: id,
+            meta: [{
+                metaname: "coin_type",
+                metavalue: coin_type
+            },
+            {
+                metaname: "coin",
+                metavalue: coinAmount
+            }
+            ],
+            onclose: function() {},
+            callback: function(response) {
+                var txref = response.data.txRef; // collect txRef returned and pass to a                    server page to complete status check.
+                console.log("This is the response returned after a charge", response);
+                if (
+                    response.data.chargeResponseCode == "00" ||
+                    response.data.chargeResponseCode == "0"
+                ) {
+                    // redirect to a success page
+                     this.$router.push('/successful_payment')
+
+                } else {
+                    // redirect to a failure page.
+                }
+
+                x.close(); // use this to close the modal immediately after payment.
+            }
+        });
+    
             }
         }
     }

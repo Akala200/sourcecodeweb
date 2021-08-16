@@ -41,7 +41,7 @@ yarn-error.log*
                                     <p class="mb-1">
                                         24hr Volume
                                     </p>
-                                    <h5> $ {{ Math.ceil(bitcoin.quote.NGN.volume_24h) }}</h5>
+                                    <h5> $ {{ Math.ceil(bitcoin.quote.USD.volume_24h) }}</h5>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-sm-6 col-6">
@@ -49,7 +49,7 @@ yarn-error.log*
                                     <p class="mb-1">
                                         Market Cap
                                     </p>
-                                    <h5>{{ Math.ceil(bitcoin.quote.NGN.market_cap) }} NGN</h5>
+                                    <h5>{{ Math.ceil(bitcoin.quote.USD.market_cap) }} USD</h5>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-sm-6 col-6">
@@ -81,7 +81,7 @@ yarn-error.log*
                                     <p class="mb-1">
                                         7days change
                                     </p>
-                                    <h5>{{ bitcoin.quote.NGN.percent_change_7d }}% </h5>
+                                    <h5>{{ bitcoin.quote.USD.percent_change_7d }}% </h5>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-sm-6 col-6">
@@ -89,7 +89,7 @@ yarn-error.log*
                                     <p class="mb-1">
                                         24hrs change
                                     </p>
-                                    <h5>{{ bitcoin.quote.NGN.percent_change_24h }}% </h5>
+                                    <h5>{{ bitcoin.quote.USD.percent_change_24h }}% </h5>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-sm-6 col-6">
@@ -97,7 +97,7 @@ yarn-error.log*
                                     <p class="mb-1">
                                         1hr change
                                     </p>
-                                    <h5>{{ bitcoin.quote.NGN.percent_change_1h }}%</h5>
+                                    <h5>{{ bitcoin.quote.USD.percent_change_1h }}%</h5>
                                 </div>
                             </div>
                         </div>

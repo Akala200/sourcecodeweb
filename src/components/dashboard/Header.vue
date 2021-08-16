@@ -58,12 +58,11 @@
                     >
                       <i class="la la-lock" /> Lock
                     </router-link>
-                    <router-link
-                      to="/sign-in"
-                      class="dropdown-item logout"
+                    <div
+                      class="dropdown-item logout"  @click.prevent="logout()"
                     >
                       <i class="la la-sign-out" /> Logout
-                    </router-link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -103,27 +102,15 @@ export default {
       }
     },
 
-    register: function () {
+    logout: function () {
       // eslint-disable-next-line no-console
-      console.log('loding strated')
-      const {
-        // eslint-disable-next-line camelcase
-        last_name,
-        // eslint-disable-next-line camelcase
-        first_name,
-        email,
-        phone,
-        password
-      } = this
-      this.isLoading = true
-
-      this.$store.dispatch('register', { last_name, first_name, email, phone, password })
-        .then(() => this.$router.push('/otp-2'))
-        // eslint-disable-next-line no-console
-        .catch(err => console.log(err))
-      setTimeout(() => {
-        this.isLoading = false
-      }, 5000)
+        localStorage.removeItem("token");
+        localStorage.removeItem("firstname");
+        localStorage.removeItem("email");
+        localStorage.removeItem("lastname");
+        localStorage.removeItem("phone");
+        localStorage.removeItem("user");
+         this.$router.push('/sign-in');
     }
   }
 }

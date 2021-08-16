@@ -51,7 +51,7 @@
                                                 </h5>
                                             </div>
                                             <div class="col-lg-6">
-                                                {{ Math.ceil(nairaBalance)}} NGN
+                                                {{ Math.ceil(nairaBalance)}} USD
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -89,7 +89,7 @@
                                                 </h5>
                                             </div>
                                             <div class="col-lg-6">
-                                                {{ Math.ceil(nairaBalance)}} NGN
+                                                {{ Math.ceil(nairaBalance)}} USD
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -126,7 +126,7 @@
                                             </h5>
                                         </div>
                                         <div class="col-lg-6">
-                                            {{ Math.ceil(nairaBalance)}} NGN
+                                            {{ Math.ceil(nairaBalance)}} USD
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -236,7 +236,7 @@
                                                     {{ history.coins }} BTC
                                                 </div>
                                             </td>
-                                            <td>{{ history.amount }}NGN</td>
+                                            <td>{{ history.amount }}USD</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -268,7 +268,7 @@ export default {
             eth_balance: '',
             bitcoin: {},
             shortlists: [],
-            NGN: {},
+            USD: {},
             histories: [],
             balance: {},
             nairaBalance: {},

@@ -146,7 +146,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">
-                            Withdraw
+                            Sell Coin
                         </h4>
                     </div>
                     <div class="card-body">
@@ -179,7 +179,7 @@
                             </div>
 
                             <button class="btn btn-primary btn-block">
-                                Withdraw Now
+                                Sell
                             </button>
                         </form>
                     </div>

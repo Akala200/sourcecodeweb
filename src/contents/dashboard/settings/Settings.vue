@@ -23,12 +23,14 @@
                     <span>Change Email</span>
                   </router-link>
                 </li>
+                <!--
                 <li class="nav-item">
                    <router-link to="/dashboard/settings/linked-account" class="nav-link">
                     <i class="la la-university" />
                     <span>Linked Account</span>
                   </router-link>
                 </li>
+                -->
               </ul>
             </div>
           </div>

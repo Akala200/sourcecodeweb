@@ -97,9 +97,6 @@
 <script>
 import app from '@/App.vue'
 import { required, email, minLength } from 'vuelidate/lib/validators'
-    import formPage from '@/components/FormPage.vue';
-import { createToastInterface } from "vue-toastification";
-    import Loading from 'vue-loading-overlay';
     // Import stylesheet
     import 'vue-loading-overlay/dist/vue-loading.css';
 
@@ -110,6 +107,10 @@ const pluginOptions = {
 // Create the interface
 const toast = createToastInterface(pluginOptions);
 const axios = require('axios')
+import {
+    createToastInterface
+} from "vue-toastification";
+import Loading from 'vue-loading-overlay';
 
 export default {
   extends: app,
@@ -184,18 +185,8 @@ export default {
 
       axios.put(`https://cryptonew-api.herokuapp.com/api/update/user?email=${userEmail}`, data)
         .then(res => {
-          this.first_name = res.data.data.first_name
-          this.last_name = res.data.data.last_name
-          this.email = res.data.data.email
-          this.phone = res.data.data.phone
-
-           if (process.browser) {
-       localStorage.setItem('firstname', res.data.data.first_name)
-         localStorage.setItem('lastname', res.data.data.last_name)
-        localStorage.setItem('email', res.data.data.email)
-       localStorage.setItem('phone', res.data.data.phone)
-      }
-
+           toast.success('Profile updated successfully');
+      
         // eslint-disable-next-line no-unused-vars
         }).catch(err => {
           console.log(err)

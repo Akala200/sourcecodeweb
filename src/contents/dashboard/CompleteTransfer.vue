@@ -3,13 +3,13 @@
     <loading :active.sync="isLoading" :can-cancel="true" :on-cancel="onCancel" :is-full-page="fullPage"></loading>
     <div class="container">
         <div class="row">
-            <h2>Transfer Summary</h2> <a class="btn mr-1">Back</a>
+            <h2>Transfer Summary</h2> <a class="btn mr-1" @click="$router.go(-1)">Back</a>
             <div class="row mt-3">
                 <h4>Amount : </h4>
                 <p class="ml-2" style="font-size: 16px">USD {{amount}}</p>
             </div>
         </div>
-                <div class="row">
+        <div class="row">
             <div class="row mt-3">
                 <h4>Fixed Fee - </h4>
                 <p class="ml-2" style="font-size: 16px">USD 1.94</p>
@@ -23,22 +23,17 @@
         </div>
         <div class="row">
             <div class="row mt-3">
-                <h4>Amount Bitcoin - </h4>
-                <p class="ml-2" style="font-size: 16px">BTC {{bitcoin}}</p>
+                <h4>Coin - </h4>
+                <p class="ml-2" style="font-size: 16px">{{coin}} {{bitcoin}}</p>
             </div>
         </div>
         <div class="row">
             <div class="row mt-3">
-                <h4>Recipient Address - </h4>
+                <h4>Recipient - </h4>
                 <p class="ml-2" style="font-size: 16px">{{address}}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="row mt-3">
-                <h4>Coin Wallet - </h4>
-                <p class="ml-2">{{wallet}}</p>
-            </div>
-        </div>
+
         <div class="text-center mt-5">
             <button type="submit" class="btn btn-success pl-5 pr-5" @click.prevent="send()">Send</button>
         </div>
@@ -128,10 +123,11 @@ export default {
         }
 
     },
-//api
+    //api
     mounted() {
         let amountSelected;
         let amountNeeded;
+        let coin;
         if (process.browser) {
             this.coin = localStorage.getItem('coin');
             this.wallet = localStorage.getItem('wallet');
@@ -142,7 +138,9 @@ export default {
             this.userEmail = localStorage.getItem('email')
         }
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/transfer/convert?amount=${amountSelected}`)
+        coin = localStorage.getItem('coin');
+
+        axios.get(`https://cryptonew-api.herokuapp.com/api/convert?amount=${amountSelected}&coin_type=${coin}`)
             .then(res => {
                 this.bitcoin = res.data.price
                 this.realAmount = res.data.amountAfterFee
@@ -150,13 +148,13 @@ export default {
                 amountNeeded = res.data.amountAfterFee
                 const temptFee = this.data.fee
 
-                  axios.get(`https://cryptonew-api.herokuapp.com/api/get/coin?amount=${temptFee}`)
-            .then(res => {
-                this.sendinfFee = res.data.price
-                console.log(this.sendinfFee);
-            }).catch(err => {
-                console.log(err)
-            })
+                axios.get(`https://cryptonew-api.herokuapp.com/api/get/coin?amount=${temptFee}`)
+                    .then(res => {
+                        this.sendinfFee = res.data.price
+                        console.log(this.sendinfFee);
+                    }).catch(err => {
+                        console.log(err)
+                    })
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {
                 console.log(err)

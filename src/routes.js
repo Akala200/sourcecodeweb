@@ -53,7 +53,8 @@ export default [
     beforeEnter: (to, from, next) => {
       const isAuthenticated = localStorage.getItem("token");
 
-      if (isAuthenticated !== null || isAuthenticated !== '') next({ path: "/dashboard", });
+      if (isAuthenticated !== null || isAuthenticated !== "")
+        next({ path: "/dashboard" });
       else next();
     },
     children: [
@@ -118,7 +119,8 @@ export default [
     beforeEnter: (to, from, next) => {
       const isAuthenticated = localStorage.getItem("token");
 
-      if (isAuthenticated == null || isAuthenticated == '') next({ path: "/sign-in" });
+      if (isAuthenticated == null || isAuthenticated == "")
+        next({ path: "/sign-in" });
       else next();
     },
     component: dashboard,
@@ -189,6 +191,7 @@ export default [
         meta: { title: "Success" },
         component: verifyStep6
       },
+    
       {
         path: "complete",
         meta: { title: "Complete" },

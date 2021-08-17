@@ -3,28 +3,25 @@
   <loading :active.sync="isLoading" 
         :can-cancel="true" 
         :is-full-page="fullPage"></loading>
-    <div class="form-group mb-3">
-        <div class="input-group-prepend" />
-        <select id="currency" class="form-control" name="currency">
-            <option value="">
-                Select
-            </option>
-            <option value="bitcoin">
-                Bitcoin
-            </option>
-        </select>
-    </div>
+         <div class="form-group">
+                                    <div class="form-group mb-3">
+        <select id="method" class="form-control" name="method" v-model="coin_type">
+                                            <option value="">
+                                                Select
+                                            </option>
+                                            <option value="BTC">
+                                                BTC
+                                            </option>
+                                            <option value="ETH">
+                                                ETH
+                                            </option>
+                                            <option value="BCH">
+                                                BCH
+                                            </option>
+                                        </select>
+                                    </div>
+                            </div>
 
-    <div class="form-group mb-3">
-        <select id="method" class="form-control" name="method">
-            <option value="">
-                Select
-            </option>
-            <option value="card">
-                Bank Transfer
-            </option>
-        </select>
-    </div>
 
     <div class="form-group">
         <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 USD" @input="searchInput">
@@ -48,10 +45,10 @@
     </div>
      <div class="d-flex justify-content-between mb-3">
         <p class="mb-0">
-           Bitcoin
+           Coin
         </p>
         <h6 class="mb-0">
-            BTC {{ coinAmount }}
+            {{coin_type}} {{ coinAmount }}
         </h6>
     </div>
 
@@ -83,7 +80,7 @@ export default {
 
     data() {
         return {
-            currency: '',
+            coin_type: '',
             method: '',
             card: '',
             amount: '',
@@ -117,7 +114,7 @@ export default {
             let email
                         const amountData = this.afterFee
 
-             if (amountData < 5000) {
+             if (amountData < 10) {
                  toast.error('You can not withdraw less than 5000 Naira, enter an amount greater than 5000 Naira');
             } else {
                 

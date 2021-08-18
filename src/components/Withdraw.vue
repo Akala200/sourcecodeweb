@@ -2,6 +2,7 @@
 <form name="myform" class="currency_validate">
   <loading :active.sync="isLoading" 
         :can-cancel="true" 
+        :on-cancel="onCancel"
         :is-full-page="fullPage"></loading>
          <div class="form-group">
                                     <div class="form-group mb-3">
@@ -48,7 +49,7 @@
            Coin
         </p>
         <h6 class="mb-0">
-            {{coin_type}} {{ coinAmount }}
+         {{ coinAmount }} {{coin_type}}
         </h6>
     </div>
 
@@ -60,15 +61,16 @@
 
 <script>
 import axios from 'axios'
+
+import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
 import {
     debounce
 } from 'debounce'
+import uniqueString from 'unique-string';
+
 import { createToastInterface } from "vue-toastification";
-
-  import Loading from 'vue-loading-overlay';
-    // Import stylesheet
-    import 'vue-loading-overlay/dist/vue-loading.css';
-
 const pluginOptions = {
   timeout: 4000
 };
@@ -88,22 +90,28 @@ export default {
             afterFee: '',
             coinAmount: '',
             fee: '',
-              isLoading: false,
-      fullPage: true,
+            isLoading: false,
+            fullPage: true,
             baseAmount: ''
         }
     },
 
     methods: {
-        searchInput: debounce(function (e) {
+            onCancel() {
+              console.log('User cancelled the loader.')
+            },
+
+            
+         searchInput: debounce(function (e) {
+            console.log(this.coin_type);
             // make API call here
-            axios.get(`https://cryptonew-api.herokuapp.com/api/convert/sale?amount=${e.target.value}`)
+            axios.get(`https://cryptonew-api.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
                   this.afterFee =   res.data.amountAfterFee
                   this.coinAmount =   res.data.price
-                  this.fee =  res.data.fee
+
                     // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
                     console.log(err)
@@ -111,14 +119,14 @@ export default {
         }, 800),
         
         sell() {
-            let email
-                        const amountData = this.afterFee
 
-             if (amountData < 10) {
-                 toast.error('You can not withdraw less than 5000 Naira, enter an amount greater than 5000 Naira');
+            let email
+            const amountData = this.afterFee
+             if (amountData < 11) {
+                 toast.error('You can not withdraw less than 11 Dollars, enter an amount greater than 11 Dollars');
             } else {
                 
-                    this.isLoading = true
+            this.isLoading = true
 
             if (process.browser) {
                 email = localStorage.getItem('email')
@@ -127,6 +135,7 @@ export default {
             const data = {
                 email: email,
                 amount: amountData,
+                coin_type: this.coin_type,
                 bitcoin: this.coinAmount,
                 flatAmount: this.coinAmount,
             }

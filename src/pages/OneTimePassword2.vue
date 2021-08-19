@@ -86,7 +86,7 @@ code
         this.isLoading = false
       })
       console.log(resp);
-       toast.success('Account Verified');
+      // toast.success('Account Verified');
        if(resp.data.data.bvn_status === false){
           this.$router.push('/complete_setup')
        } else {

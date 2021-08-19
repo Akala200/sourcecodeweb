@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="row mt-3">
-                <h4>Fixed Fee - </h4>
-                <p class="ml-2" style="font-size: 16px">USD 1.94</p>
-            </div>
         </div>
         <div class="row">
             <div class="row mt-3">

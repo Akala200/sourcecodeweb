@@ -93,7 +93,7 @@ code
 
       this.$store.dispatch("checkCode", { code })
         .then(() => {
-             toast.success('Code confirmed');
+          //   toast.success('Code confirmed');
             this.$router.push("/change_password")
             })
         // eslint-disable-next-line no-console

@@ -163,7 +163,7 @@ export default {
             customer_email: email,
             amount: amountData,
             customer_phone: phone,
-            currency: "NGN",
+            currency: "USD",
             txref: id,
             meta: [{
                 metaname: "coin_type",

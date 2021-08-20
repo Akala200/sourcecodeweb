@@ -156,7 +156,7 @@ export default {
           )
           .then(res => {
             console.log(res);
-            const API_publicKey = "FLWPUBK_TEST-ca1ce20768dffc93494b092d8ca077d8-X";
+            const API_publicKey = "FLWPUBK-3415f0906111399b6bbfb93372e09f4d-X";
             const id = uniqueString();
             var x = getpaidSetup({
             PBFPubKey: API_publicKey,

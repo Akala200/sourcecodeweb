@@ -49,7 +49,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <h5 class="m-0">
-                            Naira Balance
+                            Dollar Balance
                           </h5>
                         </div>
                         <div class="col-lg-6">
@@ -85,7 +85,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <h5 class="m-0">
-                            Naira Balance
+                            Dollar Balance
                           </h5>
                         </div>
                         <div class="col-lg-6">
@@ -120,7 +120,7 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <h5 class="m-0">
-                          Naira Balance
+                          Dollar Balance
                         </h5>
                       </div>
                       <div class="col-lg-6">

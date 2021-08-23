@@ -394,7 +394,7 @@ export default {
 
     axios
       .get(
-        `https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}`
+        `https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`
       )
       .then(res => {
         this.nairaBalance = res.data.message != null ? res.data.message : 0;

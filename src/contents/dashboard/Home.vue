@@ -398,7 +398,7 @@ export default {
 
         */
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
             .then(res => {
                 this.nairaBalance = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console
@@ -409,7 +409,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/eth/naira?email=${userEmail}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
             .then(res => {
                 this.eth_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console
@@ -420,7 +420,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/bch/naira?email=${userEmail}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/bch/naira?email=${userEmail}&coinType=BCH`)
             .then(res => {
                 this.bch_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console

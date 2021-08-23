@@ -156,15 +156,15 @@ export default {
           )
           .then(res => {
             console.log(res);
-            const API_publicKey = "FLWPUBK-3415f0906111399b6bbfb93372e09f4d-X";
+            const API_publicKey = "FLWPUBK_TEST-ca1ce20768dffc93494b092d8ca077d8-X";
             const id = uniqueString();
             
            FlutterwaveCheckout({
       public_key: API_publicKey,
       tx_ref: id,
       amount: amountData,
-      currency: "USD",
-      country: 'US',
+      currency: "NGN",
+      country: 'NG',
       payment_options: "card",
       redirect_url: "https://www.sourcecodexchange.com/successful_payment",
       meta: {  

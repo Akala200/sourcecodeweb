@@ -420,7 +420,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/bch/naira?email=${userEmail}&coinType=BCH`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
             .then(res => {
                 this.bch_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console

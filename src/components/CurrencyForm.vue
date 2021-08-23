@@ -158,46 +158,37 @@ export default {
             console.log(res);
             const API_publicKey = "FLWPUBK-3415f0906111399b6bbfb93372e09f4d-X";
             const id = uniqueString();
-            var x = getpaidSetup({
-            PBFPubKey: API_publicKey,
-            customer_email: email,
-            amount: amountData,
-            customer_phone: phone,
-            currency: "USD",
-            txref: id,
-            meta: [{
-                metaname: "coin_type",
-                metavalue: coin_type
-            },
-            {
-                metaname: "coin",
-                metavalue: coinAmount
-            }
-            ],
-            onclose: function() {},
-            callback: function(response) {
-                var txref = response.data.txRef; // collect txRef returned and pass to a                    server page to complete status check.
-                console.log("This is the response returned after a charge", response);
-                if (
-                    response.data.chargeResponseCode == "00" ||
-                    response.data.chargeResponseCode == "0"
-                ) {
-                    // redirect to a success page
-                     this.$router.push('/successful_payment')
-
-                } else {
-                    // redirect to a failure page.
-                }
-
-                x.close(); // use this to close the modal immediately after payment.
-            }
-        });
+            
+           FlutterwaveCheckout({
+      public_key: API_publicKey,
+      tx_ref: id,
+      amount: amountData,
+      currency: "USD",
+      country: 'US',
+      payment_options: "card",
+      redirect_url: "https://www.sourcecodexchange.com/successful_payment",
+      meta: {  
+        metaname: "userID",
+        metavalue: "userID"
+      },
+      customer: {
+        email: email,
+        phone_number: phone,
+        name: "",
+      },
+      callback: function (data) {
+      },
+      onclose: function() {
+        // close modal  
+         toast.error('Could not complete payment');
+      },
+    });
            
           })
           .catch(err => {
           
-            console.log(err.response);
-              toast.error(err.response.data);
+            console.log(err);
+              toast.error(err);
             
           });
       }

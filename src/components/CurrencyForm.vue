@@ -164,7 +164,7 @@ export default {
       public_key: API_publicKey,
       tx_ref: id,
       amount: amountData,
-      currency: "USD",
+      currency: "NGN",
       country: 'NG',
       payment_options: "card",
       redirect_url: "https://www.sourcecodexchange.com/dashboardsuccessful_payment",

@@ -31,6 +31,7 @@
 </verification-body>
 </template>
 
+
 <script>
 import verificationBody from "@/components/dashboard/VerificationBody.vue";
 const axios = require("axios");

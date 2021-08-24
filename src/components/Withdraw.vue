@@ -36,6 +36,16 @@
             USD {{ amount }}
         </h6>
     </div>
+
+    <div class="d-flex justify-content-between mb-3">
+        <p class="mb-0">
+            Variable Fee
+        </p>
+        <h6 class="mb-0">
+        {{ sellrate }}%
+        </h6>
+    </div>
+
     <div class="d-flex justify-content-between mb-3">
         <p class="mb-0">
            Amount After Fee
@@ -89,7 +99,7 @@ export default {
             usdAmount: '',
             afterFee: '',
             coinAmount: '',
-            fee: '',
+            sellrate: '',
             isLoading: false,
             fullPage: true,
             baseAmount: ''
@@ -164,6 +174,17 @@ export default {
                 })
             }
 
+        }
+    },
+
+       mounted() {
+        
+        let user;
+        if (process.browser) {
+          this.sellrate = localStorage.getItem('sale_rate')
+            localStorage.getItem('lastname')
+            userEmail = localStorage.getItem('email')
+            user = localStorage.getItem('user')
         }
     }
 }

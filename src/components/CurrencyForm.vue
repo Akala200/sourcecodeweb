@@ -57,7 +57,7 @@
         Variable Fee
       </p>
       <h6 class="mb-0">
-        10%
+        {{buyRate}}%
       </h6>
     </div>
     <div class="d-flex justify-content-between mb-3">
@@ -69,7 +69,7 @@
 
     <div class="d-flex justify-content-between mb-3">
       <p class="mb-0">
-        Bitcoin
+        Coin
       </p>
       <h6 class="mb-0">{{ coin_type.coin_type }} {{ coinAmount }}</h6>
     </div>
@@ -99,6 +99,7 @@ export default {
       method: "",
       card: "",
       amount: "",
+      buyRate: "",
       usdAmount: "",
       coin_type: "",
       afterFee: "",
@@ -193,7 +194,18 @@ export default {
           });
       }
     }
-  }
+  },
+
+    mounted() {
+        
+        let user;
+        if (process.browser) {
+          this.buyRate = localStorage.getItem('buy_rate')
+            localStorage.getItem('lastname')
+            userEmail = localStorage.getItem('email')
+            user = localStorage.getItem('user')
+        }
+    }
 };
 </script>
 

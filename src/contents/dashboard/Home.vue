@@ -170,7 +170,7 @@
                                         </h5>
                                     </div>
                                     <h4>
-                                        USD {{ Math.ceil(shortlist.quote.USD.price) }} <span class="badge badge-success ml-2">{{ shortlist.quote.USD.percent_change_24h }}%</span>
+                                        USD {{ Math.ceil(shortlist.quote.USD.price) }} <span class="badge badge-info ml-2">{{ shortlist.quote.USD.percent_change_24h }}%</span>
                                     </h4>
                                 </div>
                                 <div id="btcChart" />
@@ -285,7 +285,8 @@ import {
 
 import app from '@/App.vue'
 const axios = require('axios')
-
+      let userEmail;
+        let user;
 export default {
     components: {
         contentBody,
@@ -310,7 +311,7 @@ export default {
             shortlists: [],
             USD: {},
             histories: [],
-            balance: {},
+            balance: '',
             nairaBalance: '',
             user: {},
             coin: '',
@@ -329,8 +330,6 @@ export default {
     mounted() {
         this.getbitcoin()
         // eslint-disable-next-line no-unused-vars
-        let userEmail;
-        let user;
         if (process.browser) {
             localStorage.getItem('firstname')
             localStorage.getItem('lastname')
@@ -349,6 +348,18 @@ export default {
             })
         // eslint-disable-next-line no-console
 
+
+        axios.get(`https://cryptonew-api.herokuapp.com/api/get/rate`)
+            .then(res => {
+                // eslint-disable-next-line no-console
+                  localStorage.setItem("sale_rate", res.data.sale_rate);
+                  localStorage.setItem("buy_rate", res.data.variable_rate);
+                  localStorage.setItem("transfer_rate", res.data.transfer_rate);
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+
         axios.get(`https://cryptonew-api.herokuapp.com/api/get/user?email=${userEmail}`)
             .then(res => {
                 this.user = res.data.data
@@ -363,8 +374,9 @@ export default {
 
         axios.get(`https://cryptonew-api.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`)
             .then(res => {
-                console.log('balancecoin,', res);
+                console.log('balancecoin,', res.data.message);
                 this.balance = res.data.message
+                console.log('balancecoin,', this.balance);
                 // eslint-disable-next-line no-console
 
                 // eslint-disable-next-line no-unused-vars
@@ -400,7 +412,8 @@ export default {
 
         axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
             .then(res => {
-                this.nairaBalance = res.data.price != null ? res.data.price : 0
+                this.nairaBalance = res.data.price;
+                console.log('nairabalance', res.data.price)
                 // eslint-disable-next-line no-console
 
                 // eslint-disable-next-line no-unused-vars
@@ -435,7 +448,7 @@ export default {
             .then(res => {
                 this.shortlists = res.data.data
                 // eslint-disable-next-line no-console
-                console.log(this.shortlists)
+                console.log(this.shortlists, 'short')
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {
                 console.log(err)

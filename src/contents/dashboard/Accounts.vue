@@ -89,7 +89,7 @@
                           </h5>
                         </div>
                         <div class="col-lg-6">
-                          {{ Math.ceil(nairaBalance) }} USD
+                          {{ Math.ceil(eth_balance_naira) }} USD
                         </div>
                       </div>
                       <div class="row mt-2">
@@ -124,7 +124,7 @@
                         </h5>
                       </div>
                       <div class="col-lg-6">
-                        {{ Math.ceil(nairaBalance) }} USD
+                        {{ Math.ceil(bch_balance_naira) }} USD
                       </div>
                     </div>
                     <div class="row mt-2">
@@ -313,6 +313,8 @@ export default {
       lastname: "",
       phone: "",
       amount: "",
+      bch_balance_naira: "",
+      eth_balance_naira: "",
       coin_type: "",
       afterFee:"",
       eth_balance: "",
@@ -392,19 +394,39 @@ export default {
       });
     // eslint-disable-next-line no-console
 
-    axios
-      .get(
-        `https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`
-      )
-      .then(res => {
-        this.nairaBalance = res.data.message != null ? res.data.message : 0;
+           axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
+            .then(res => {
+                this.nairaBalance = res.data.price;
+                console.log('nairabalance', res.data.price)
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
         // eslint-disable-next-line no-console
 
-        // eslint-disable-next-line no-unused-vars
-      })
-      .catch(err => {
-        console.log(err);
-      });
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
+            .then(res => {
+                this.eth_balance_naira = res.data.price != null ? res.data.price : 0
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+        // eslint-disable-next-line no-console
+
+        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
+            .then(res => {
+                this.bch_balance_naira = res.data.price != null ? res.data.price : 0
+                // eslint-disable-next-line no-console
+
+                // eslint-disable-next-line no-unused-vars
+            }).catch(err => {
+                console.log(err)
+            })
+
   },
 
   methods: {

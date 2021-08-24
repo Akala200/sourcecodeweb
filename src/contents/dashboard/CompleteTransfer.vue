@@ -87,6 +87,7 @@ export default {
                 wallet: this.wallet,
                 bitcoin: this.bitcoin,
                 fee: this.fee,
+                coin_type: this.coin,
                 realAmount: this.realAmount,
                 flatAmount: this.bitcoin,
                 amount: this.amount,

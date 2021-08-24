@@ -19,14 +19,20 @@
         </div>
         <div class="row">
             <div class="row mt-3">
+                <h4>Fee : </h4>
+                <p class="ml-2" style="font-size: 16px">USD {{transfer_rate}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row mt-3">
                 <h4>Coin - </h4>
                 <p class="ml-2" style="font-size: 16px">{{coin}} {{bitcoin}}</p>
             </div>
         </div>
         <div class="row">
             <div class="row mt-3">
-                <h4>Recipient - </h4>
-                <p class="ml-2" style="font-size: 16px">{{address}}</p>
+                <div class="col"><h4>Recipient - </h4></div>
+                <div class="col"><p class="ml-2" style="font-size: 16px">{{address}}</p></div>
             </div>
         </div>
 
@@ -60,8 +66,8 @@ export default {
             wallet: '',
             address: '',
             amount: '',
-            fee: '1%',
-            sendinfFee: '',
+            fee: '',
+            transfer_rate: '',
             bitcoin: '',
             realAmount: '',
             flatAmount: '',
@@ -80,7 +86,7 @@ export default {
                 address: this.address,
                 wallet: this.wallet,
                 bitcoin: this.bitcoin,
-                fee: this.sendinfFee,
+                fee: this.fee,
                 realAmount: this.realAmount,
                 flatAmount: this.bitcoin,
                 amount: this.amount,
@@ -120,6 +126,7 @@ export default {
 
     },
     //api
+    
     mounted() {
         let amountSelected;
         let amountNeeded;
@@ -129,20 +136,21 @@ export default {
             this.wallet = localStorage.getItem('wallet');
             this.address = localStorage.getItem('address');
             this.amount = localStorage.getItem('amount');
-            this.fee = localStorage.getItem('fee');
             amountSelected = localStorage.getItem('amount');
             this.userEmail = localStorage.getItem('email')
+            this.transfer_rate = localStorage.getItem('transfer_rate')
+        
         }
 
         coin = localStorage.getItem('coin');
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/convert?amount=${amountSelected}&coin_type=${coin}`)
+        axios.get(`https://cryptonew-api.herokuapp.com/api/convert/sale?amount=${amountSelected}&coin_type=${coin}`)
             .then(res => {
                 this.bitcoin = res.data.price
                 this.realAmount = res.data.amountAfterFee
                 // eslint-disable-next-line no-console
                 amountNeeded = res.data.amountAfterFee
-                const temptFee = this.data.fee
+               this.fee = res.data.fee
 
                 axios.get(`https://cryptonew-api.herokuapp.com/api/get/coin?amount=${temptFee}`)
                     .then(res => {

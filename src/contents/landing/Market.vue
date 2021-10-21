@@ -44,7 +44,7 @@
                           USD    {{ list.quote.USD.price }}
                         </td>
                         <td>
-                          <span class="text-success">+{{ list.quote.USD.percent_change_1h }}%</span>
+                          <span  class="text-success">{{ list.quote.USD.percent_change_1h }}%</span>
                         </td>
                         <td>{{ list.circulating_supply }}</td>
                       </tr>
@@ -79,11 +79,11 @@ export default {
 
   methods: {
     getlist () {
-      axios.get('https://cryptonew-api.herokuapp.com/api/lists')
+      axios.get('https://cryptonew-apis.herokuapp.com/api/lists')
         .then(res => {
           this.lists = res.data.data
           // eslint-disable-next-line no-console
-          console.log(this.lists)
+          console.log(this.lists, 'changes')
 
           // eslint-disable-next-line no-unused-vars
         }).catch(err => {

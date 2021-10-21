@@ -50,13 +50,6 @@ export default [
   {
     path: "/",
     component: landing,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem("token");
-
-      if (isAuthenticated !== null || isAuthenticated !== "")
-        next({ path: "/dashboard" });
-      else next();
-    },
     children: [
       {
         path: "",
@@ -191,7 +184,7 @@ export default [
         meta: { title: "Success" },
         component: verifyStep6
       },
-    
+
       {
         path: "complete",
         meta: { title: "Complete" },

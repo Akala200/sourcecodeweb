@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-     <loading :active.sync="isLoading" 
-        :can-cancel="true" 
+     <loading :active.sync="isLoading"
+        :can-cancel="true"
         :is-full-page="fullPage"></loading>
     <div class="col-xl-6">
       <div class="card">
@@ -103,7 +103,7 @@ import { required, email, minLength } from 'vuelidate/lib/validators'
 const pluginOptions = {
   timeout: 4000
 };
- 
+
 // Create the interface
 const toast = createToastInterface(pluginOptions);
 const axios = require('axios')
@@ -153,7 +153,7 @@ export default {
       userEmail = localStorage.getItem('email')
     }
 
-    axios.get(`https://cryptonew-api.herokuapp.com/api/get/user?email=${userEmail}`)
+    axios.get(`https://cryptonew-apis.herokuapp.com/api/get/user?email=${userEmail}`)
       .then(res => {
         this.first_name = res.data.data.first_name
         this.last_name = res.data.data.last_name
@@ -183,10 +183,10 @@ export default {
         phone: this.phone
       }
 
-      axios.put(`https://cryptonew-api.herokuapp.com/api/update/user?email=${userEmail}`, data)
+      axios.put(`https://cryptonew-apis.herokuapp.com/api/update/user?email=${userEmail}`, data)
         .then(res => {
            toast.success('Profile updated successfully');
-      
+
         // eslint-disable-next-line no-unused-vars
         }).catch(err => {
           console.log(err)
@@ -211,7 +211,7 @@ export default {
         email: this.email,
       }
 
-      axios.put('https://cryptonew-api.herokuapp.com/api/update/password', data)
+      axios.put('https://cryptonew-apis.herokuapp.com/api/update/password', data)
         .then(res => {
         console.log(res)
          toast.success('Password Updated');

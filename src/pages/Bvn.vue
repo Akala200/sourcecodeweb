@@ -6,7 +6,7 @@
     </template>
 
     <div>
-        <!-- a comment in html 
+        <!-- a comment in html
 
         <div class="form-group">
             <label>BVN</label>
@@ -27,7 +27,7 @@
         <div class="form-group">
            <label>Select Bank</label>
             <select v-model="account_bank" name="bank" id="bank" class="form-control" tabindex="12">
-                <option v-for="bank in banks" :key="bank.id" :value="bank.name">{{bank.name}}</option>             
+                <option v-for="bank in banks" :key="bank.id" :value="bank.name">{{bank.name}}</option>
             </select>
         </div>
 
@@ -74,8 +74,8 @@ export default {
     },
     methods: {
         getBank: function (){
-            
-        axios.get(`https://cryptonew-api.herokuapp.com/api/get/bank`)
+
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/get/bank`)
             .then(res => {
                 this.banks = res.data
                 // eslint-disable-next-line no-console
@@ -95,7 +95,7 @@ export default {
               account_number,
               account_bank,
               account_name
-                
+
             } = this
             this.isLoading = true;
 

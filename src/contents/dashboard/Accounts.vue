@@ -1,7 +1,7 @@
 <template>
   <div class="content-body">
-        <loading :active.sync="isLoading" 
-        :can-cancel="true" 
+        <loading :active.sync="isLoading"
+        :can-cancel="true"
         :on-cancel="onCancel"
         :is-full-page="fullPage"></loading>
     <div class="container-fluid">
@@ -298,7 +298,7 @@ import { createToastInterface } from "vue-toastification";
 const pluginOptions = {
   timeout: 4000
 };
- 
+
 // Create the interface
 const toast = createToastInterface(pluginOptions);
 
@@ -341,7 +341,7 @@ export default {
     }
 
     axios
-      .get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
+      .get(`https://cryptonew-apis.herokuapp.com/api/history?user=${user}`)
       .then(res => {
         this.histories = res.data;
         // eslint-disable-next-line no-unused-vars
@@ -353,7 +353,7 @@ export default {
 
     axios
       .get(
-        `https://cryptonew-api.herokuapp.com/api/balance/eth?email=${userEmail}&coin_type=ETH`
+        `https://cryptonew-apis.herokuapp.com/api/balance/eth?email=${userEmail}&coin_type=ETH`
       )
       .then(res => {
         console.log("balancecoin,", res);
@@ -369,7 +369,7 @@ export default {
 
     axios
       .get(
-        `https://cryptonew-api.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`
+        `https://cryptonew-apis.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`
       )
       .then(res => {
         this.balance = res.data.message;
@@ -382,7 +382,7 @@ export default {
 
     axios
       .get(
-        `https://cryptonew-api.herokuapp.com/api/get/user?email=${userEmail}`
+        `https://cryptonew-apis.herokuapp.com/api/get/user?email=${userEmail}`
       )
       .then(res => {
         this.user = res.data.data;
@@ -394,7 +394,7 @@ export default {
       });
     // eslint-disable-next-line no-console
 
-           axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
+           axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
             .then(res => {
                 this.nairaBalance = res.data.price;
                 console.log('nairabalance', res.data.price)
@@ -406,7 +406,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
             .then(res => {
                 this.eth_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console
@@ -417,7 +417,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
             .then(res => {
                 this.bch_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console
@@ -433,7 +433,7 @@ export default {
         searchInput: debounce(function (e) {
             console.log(this.coin_type.coin_type);
             // make API call here
-            axios.get(`https://cryptonew-api.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`)
+            axios.get(`https://cryptonew-apis.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
@@ -457,7 +457,7 @@ export default {
              if (amountData < 11) {
                  toast.error('You can not withdraw less than 11 Dollars, enter an amount greater than 11 Dollars');
             } else {
-                
+
                  this.isLoading = true
 
             if (process.browser) {
@@ -474,9 +474,9 @@ export default {
                     setTimeout(() => {
         this.isLoading = false
       })
-            axios.post('https://cryptonew-api.herokuapp.com/api/withdraw', data).then(res => {
+            axios.post('https://cryptonew-apis.herokuapp.com/api/withdraw', data).then(res => {
                     // sessionStorage.setItem('token', res.data.token)
-            
+
       console.log(res);
          toast.success('Withdrawal Initiated Successfully');
       this.$router.push('/dashboard');
@@ -501,7 +501,7 @@ export default {
 
     getHistory() {
       axios
-        .get("https://cryptonew-api.herokuapp.com/api/history")
+        .get("https://cryptonew-apis.herokuapp.com/api/history")
         .then(res => {
           console.log(res);
           this.histories = res.data;

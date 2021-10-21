@@ -51,7 +51,7 @@
       </p>
       <h6 class="mb-0">USD {{ amount }}</h6>
     </div>
-  
+
     <div class="d-flex justify-content-between mb-3">
       <p class="mb-0">
         Variable Fee
@@ -113,7 +113,7 @@ export default {
       // make API call here
       axios
         .get(
-          `https://cryptonew-api.herokuapp.com/api/convert?amount=${e.target.value}&coin_type=${this.coin_type.coin_type}`
+          `https://cryptonew-apis.herokuapp.com/api/convert?amount=${e.target.value}&coin_type=${this.coin_type.coin_type}`
         )
         .then(res => {
           console.log(res);
@@ -152,14 +152,14 @@ export default {
         };
         axios
           .put(
-            "https://cryptonew-api.herokuapp.com/api/initiated/payment",
+            "https://cryptonew-apis.herokuapp.com/api/initiated/payment",
             initiatedData
           )
           .then(res => {
             console.log(res);
             const API_publicKey = "FLWPUBK-3415f0906111399b6bbfb93372e09f4d-X";
             const id = uniqueString();
-            
+
            FlutterwaveCheckout({
       public_key: API_publicKey,
       tx_ref: id,
@@ -168,7 +168,7 @@ export default {
       country: 'NG',
       payment_options: "card",
       redirect_url: "https://www.sourcecodexchange.com/dashboardsuccessful_payment",
-      meta: {  
+      meta: {
         metaname: "userID",
         metavalue: "userID"
       },
@@ -180,24 +180,24 @@ export default {
       callback: function (data) {
       },
       onclose: function() {
-        // close modal  
+        // close modal
          toast.error('Could not complete payment');
       },
     });
-           
+
           })
           .catch(err => {
-          
+
             console.log(err);
               toast.error(err);
-            
+
           });
       }
     }
   },
 
     mounted() {
-        
+
         let user;
         if (process.browser) {
           this.buyRate = localStorage.getItem('buy_rate')

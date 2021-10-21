@@ -71,7 +71,7 @@ export default {
     methods: {
         getBank() {
             axios
-                .get(`https://cryptonew-api.herokuapp.com/api/get/bank`)
+                .get(`https://cryptonew-apis.herokuapp.com/api/get/bank`)
                 .then(res => {
                     this.banks = res.data;
                     // eslint-disable-next-line no-unused-vars
@@ -101,7 +101,7 @@ export default {
                 };
                 console.log(data)
                 axios
-                    .post("https://cryptonew-api.herokuapp.com/api/add/bank", data)
+                    .post("https://cryptonew-apis.herokuapp.com/api/add/bank", data)
                     .then(res => {
                         toast.success('Bank Account Succefully Updated');
                         // eslint-disable-next-line no-unused-vars  /dashboard/settings/linked-account

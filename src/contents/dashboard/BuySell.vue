@@ -114,7 +114,7 @@ export default {
 
     }
 
-    axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
+    axios.get(`https://cryptonew-apis.herokuapp.com/api/history?user=${user}`)
       .then(res => {
         this.histories = res.data
         // eslint-disable-next-line no-console

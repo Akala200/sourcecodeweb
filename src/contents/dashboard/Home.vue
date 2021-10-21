@@ -18,17 +18,17 @@
                     <div class="col-lg-12">
                         <div class="container">
                             <h3> Bitcoin Address </h3>
-                            <h5>{{user.address}}</h5> 
+                            <h5>{{user.address}}</h5>
                         </div>
 
                           <div class="container mt-4">
                             <h3> Ethereum Address </h3>
-                            <h5>{{user.eth_address}}</h5> 
+                            <h5>{{user.eth_address}}</h5>
                         </div>
 
                         <div class="container mt-4">
                             <h3>Bitcoin Cash Address </h3>
-                            <h5>{{user.bch_address}}</h5> 
+                            <h5>{{user.bch_address}}</h5>
                         </div>
                     </div>
                 </div>
@@ -337,7 +337,7 @@ export default {
             user = localStorage.getItem('user')
         }
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/history?user=${user}`)
             .then(res => {
                 this.histories = res.data
                 // eslint-disable-next-line no-console
@@ -349,7 +349,7 @@ export default {
         // eslint-disable-next-line no-console
 
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/get/rate`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/get/rate`)
             .then(res => {
                 // eslint-disable-next-line no-console
                   localStorage.setItem("sale_rate", res.data.sale_rate);
@@ -360,7 +360,7 @@ export default {
                 console.log(err)
             })
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/get/user?email=${userEmail}`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/get/user?email=${userEmail}`)
             .then(res => {
                 this.user = res.data.data
                 // eslint-disable-next-line no-console
@@ -372,7 +372,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`)
             .then(res => {
                 console.log('balancecoin,', res.data.message);
                 this.balance = res.data.message
@@ -385,7 +385,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/eth?email=${userEmail}&coin_type=ETH`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/eth?email=${userEmail}&coin_type=ETH`)
             .then(res => {
                 console.log('balancecoin,', res);
                 this.eth_balance = res.data.message
@@ -396,7 +396,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        /*  axios.get(`https://cryptonew-api.herokuapp.com/api/balance/doge?email=${userEmail}&coin_type=DOGE`)
+        /*  axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/doge?email=${userEmail}&coin_type=DOGE`)
             .then(res => {
                 console.log('balancecoin,', res);
                 this.doge_balance = res.data.message
@@ -410,7 +410,7 @@ export default {
 
         */
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
             .then(res => {
                 this.nairaBalance = res.data.price;
                 console.log('nairabalance', res.data.price)
@@ -422,7 +422,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
             .then(res => {
                 this.eth_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console
@@ -433,7 +433,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
             .then(res => {
                 this.bch_balance_naira = res.data.price != null ? res.data.price : 0
                 // eslint-disable-next-line no-console
@@ -444,7 +444,7 @@ export default {
             })
         // eslint-disable-next-line no-console
 
-        axios.get('https://cryptonew-api.herokuapp.com/api/shortlist')
+        axios.get('https://cryptonew-apis.herokuapp.com/api/shortlist')
             .then(res => {
                 this.shortlists = res.data.data
                 // eslint-disable-next-line no-console
@@ -461,7 +461,7 @@ export default {
 
         // shortlist callModal
         getbitcoin() {
-            axios.get('https://cryptonew-api.herokuapp.com/api/bitcoin')
+            axios.get('https://cryptonew-apis.herokuapp.com/api/bitcoin')
                 .then(res => {
                     this.bitcoin = res.data.data[0]
                     // eslint-disable-next-line no-console
@@ -503,7 +503,7 @@ export default {
                 user = localStorage.getItem('user')
             }
 
-            axios.get(`https://cryptonew-api.herokuapp.com/api/history?user=${user}`)
+            axios.get(`https://cryptonew-apis.herokuapp.com/api/history?user=${user}`)
                 .then(res => {
                     this.histories = res.data
                     // eslint-disable-next-line no-console
@@ -559,7 +559,7 @@ export default {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
-    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient.
         for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
 
     */
@@ -591,7 +591,7 @@ export default {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
-    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient.
         for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
 
     */

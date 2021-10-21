@@ -1,7 +1,7 @@
 <template>
 <form name="myform" class="currency_validate">
-  <loading :active.sync="isLoading" 
-        :can-cancel="true" 
+  <loading :active.sync="isLoading"
+        :can-cancel="true"
         :on-cancel="onCancel"
         :is-full-page="fullPage"></loading>
          <div class="form-group">
@@ -84,7 +84,7 @@ import { createToastInterface } from "vue-toastification";
 const pluginOptions = {
   timeout: 4000
 };
- 
+
 // Create the interface
 const toast = createToastInterface(pluginOptions);
 export default {
@@ -111,11 +111,11 @@ export default {
               console.log('User cancelled the loader.')
             },
 
-            
+
          searchInput: debounce(function (e) {
             console.log(this.coin_type);
             // make API call here
-            axios.get(`https://cryptonew-api.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`)
+            axios.get(`https://cryptonew-apis.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`)
                 .then(res => {
                    console.log(res)
                     // eslint-disable-next-line no-console
@@ -127,7 +127,7 @@ export default {
                     console.log(err)
                 })
         }, 800),
-        
+
         sell() {
 
             let email
@@ -135,7 +135,7 @@ export default {
              if (amountData < 11) {
                  toast.error('You can not withdraw less than 11 Dollars, enter an amount greater than 11 Dollars');
             } else {
-                
+
             this.isLoading = true
 
             if (process.browser) {
@@ -149,7 +149,7 @@ export default {
                 bitcoin: this.coinAmount,
                 flatAmount: this.coinAmount,
             }
-            axios.post('https://cryptonew-api.herokuapp.com/api/withdraw', data).then(res => {
+            axios.post('https://cryptonew-apis.herokuapp.com/api/withdraw', data).then(res => {
                     // sessionStorage.setItem('token', res.data.token)
                      setTimeout(() => {
         this.isLoading = false
@@ -178,7 +178,7 @@ export default {
     },
 
        mounted() {
-        
+
         let user;
         if (process.browser) {
           this.sellrate = localStorage.getItem('sale_rate')

@@ -89,7 +89,7 @@ export default {
             user = localStorage.getItem('user')
         }
 
-        axios.get(`https://cryptonew-api.herokuapp.com/api/history/all?user=${user}`)
+        axios.get(`https://cryptonew-apis.herokuapp.com/api/history/all?user=${user}`)
             .then(res => {
                 this.histories = res.data
                 // eslint-disable-next-line no-console

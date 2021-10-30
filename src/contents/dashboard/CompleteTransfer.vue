@@ -13,14 +13,8 @@
         </div>
         <div class="row">
             <div class="row mt-3">
-                <h4>Amount After Fee : </h4>
-                <p class="ml-2" style="font-size: 16px">USD {{realAmount}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="row mt-3">
                 <h4>Fee : </h4>
-                <p class="ml-2" style="font-size: 16px">USD {{transfer_rate}}</p>
+                <p class="ml-2" style="font-size: 16px">% {{transfer_rate}}</p>
             </div>
         </div>
         <div class="row">
@@ -147,6 +141,7 @@ export default {
 
         axios.get(`https://cryptonew-apis.herokuapp.com/api/convert/sale?amount=${amountSelected}&coin_type=${coin}`)
             .then(res => {
+              console.log(res.data, 'send amount');
                 this.bitcoin = res.data.price
                 this.realAmount = res.data.amountAfterFee
                 // eslint-disable-next-line no-console

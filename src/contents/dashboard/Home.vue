@@ -259,17 +259,7 @@
             </div>
         </div>
     </div>
-    <b-toast id="my-toast" variant="warning" toaster="b-toaster-top-center" solid>
-        <template v-slot:toast-title>
-            <div class="d-flex flex-grow-1 align-items-baseline">
-                <b-img blank blank-color="#ff5555" class="mr-2" width="12" height="12" />
-                <strong class="mr-auto">Complete your payment!</strong>
-                <small class="text-muted mr-2">42 seconds ago</small>
-            </div>
-        </template>
-        Complete your payment to make it easier to exchange.
-        It is short and to the point.
-    </b-toast>
+
 </content-body>
 </template>
 
@@ -351,14 +341,15 @@ export default {
 
         axios.get(`https://cryptonew-apis.herokuapp.com/api/get/rate`)
             .then(res => {
+              console.log(res.data.data, "rate");
                 // eslint-disable-next-line no-console
-                  localStorage.setItem("sale_rate", res.data.sale_rate);
-                  localStorage.setItem("buy_rate", res.data.variable_rate);
-                  localStorage.setItem("transfer_rate", res.data.transfer_rate);
+                  localStorage.setItem("sale_rate", res.data.data.sale_rate);
+                  localStorage.setItem("buy_rate", res.data.data.variable_rate);
+                  localStorage.setItem("transfer_rate", res.data.data.transfer_rate);
                 // eslint-disable-next-line no-unused-vars
             }).catch(err => {
                 console.log(err)
-            })
+            });
 
         axios.get(`https://cryptonew-apis.herokuapp.com/api/get/user?email=${userEmail}`)
             .then(res => {

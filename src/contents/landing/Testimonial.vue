@@ -4,8 +4,7 @@
             <div class="row py-lg-5 justify-content-center">
                 <div class="col-xl-7">
                     <div class="section_heading">
-                        <span>What's Say</span>
-                        <h3>Trusted by 2 million customers</h3>
+                        <span>CEO</span>
                     </div>
                 </div>
             </div>
@@ -24,17 +23,15 @@
                                 <div class="row align-items-center">
                                     <div class="col-xl-6 col-md-6">
                                         <div class="customer-img">
-                                            <img class="img-fluid" src="/images/testimonial/1.jpg" alt="">
+                                            <img class="img-fluid" src="/images/ceo1.png" alt="">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-md-6">
                                         <div class="customer-review">
-                                            <img class="img-fluid" src="/images/brand/2.webp" alt="">
-                                            <p>Integrating Sourcecode services into Trezor Wallet's exchange has been a
-                                                great success for all parties, especially the users.
+                                            <p>
                                             </p>
                                             <div class="customer-info">
-                                                <h5>Mr Iwuanyanwu Federick </h5>
+                                                <h5>Mr Iwuanyanwu Fredrick</h5>
                                                 <p>CEO, Source Code</p>
                                             </div>
                                         </div>

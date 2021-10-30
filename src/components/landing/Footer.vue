@@ -12,10 +12,9 @@
                 </div>
                 <div class="col-xl-6 col-md-6 text-lg-right text-center">
                     <div class="social">
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://instagram.com/sourcecodedigitalservice_?utm_medium=copy_link"><i class="fa fa-instagram"></i></a>
+                        <a target="_blank" href="https://twitter.com/sourcecodexcha1?s=21"><i class="fa fa-twitter"></i></a>
+                        <a  target="_blank" href="https://www.facebook.com/sourcecodedigits"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
             </div>

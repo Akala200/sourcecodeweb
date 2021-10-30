@@ -1,9 +1,11 @@
 <template>
   <div class="content-body">
-        <loading :active.sync="isLoading"
-        :can-cancel="true"
-        :on-cancel="onCancel"
-        :is-full-page="fullPage"></loading>
+    <loading
+      :active.sync="isLoading"
+      :can-cancel="true"
+      :on-cancel="onCancel"
+      :is-full-page="fullPage"
+    ></loading>
     <div class="container-fluid">
       <div class="row">
         <div class="col-xl-3 col-lg-3 col-md-6">
@@ -11,8 +13,10 @@
             <div class="card-body">
               <div class="media">
                 <div class="media-body">
-                  <span>Hello</span>
-                  <h4 class="mb-2">{{ firstname }} {{ lastname }}</h4>
+                  <h4 class="mb-2">
+                    <span style="margin-right: 8px;">Hello,</span
+                    >{{ firstname }} {{ lastname }}
+                  </h4>
                   <p class="mb-1">
                     <span><i class="fa fa-phone mr-2 text-primary"/></span>
                     {{ phone }}
@@ -20,6 +24,20 @@
                   <p class="mb-1">
                     <span><i class="fa fa-envelope mr-2 text-primary"/></span>
                     {{ email }}
+                  </p>
+
+                  <p class="mb-1">
+                    Account Name:
+                    <span style="margin-left: 8px;">{{ accountName }}</span>
+                  </p>
+
+                  <p class="mb-1">
+                    Account Number:
+                    <span style="margin-left: 8px;">{{ accountNumber }}</span>
+                  </p>
+                  <p class="mb-1">
+                    Account Bank:
+                    <span style="margin-left: 8px;">{{ accountBank }}</span>
                   </p>
                 </div>
               </div>
@@ -155,7 +173,7 @@
                         class="form-control select_box"
                         name="method"
                         style="width: 335%;"
-                         v-model="coin_type"
+                        v-model="coin_type"
                       >
                         <option value="">
                           Select
@@ -178,7 +196,14 @@
                         ><i class="fa fa-money"
                       /></label>
                     </div>
-                    <input v-model="amount" type="number" name="usd_amount" class="form-control" placeholder="125.00 USD" @input="searchInput"/>
+                    <input
+                      v-model="amount"
+                      type="number"
+                      name="usd_amount"
+                      class="form-control"
+                      placeholder="125.00 USD"
+                      @input="searchInput"
+                    />
                   </div>
                 </div>
 
@@ -201,7 +226,10 @@
                   <h6 class="mb-0">{{ coin_type }} {{ coinAmount }}</h6>
                 </div>
 
-                <button class="btn btn-primary btn-block" @click.prevent="sell()">
+                <button
+                  class="btn btn-primary btn-block"
+                  @click.prevent="sell()"
+                >
                   Sell
                 </button>
               </form>
@@ -284,16 +312,14 @@
 // eslint-disable-next-line no-unused-vars
 import ApexCharts from "apexcharts";
 import app from "@/App.vue";
-import axios from 'axios'
-import {
-    debounce
-} from 'debounce'
-import uniqueString from 'unique-string';
+import axios from "axios";
+import { debounce } from "debounce";
+import uniqueString from "unique-string";
 import { createToastInterface } from "vue-toastification";
 
-  import Loading from 'vue-loading-overlay';
-    // Import stylesheet
-    import 'vue-loading-overlay/dist/vue-loading.css';
+import Loading from "vue-loading-overlay";
+// Import stylesheet
+import "vue-loading-overlay/dist/vue-loading.css";
 
 const pluginOptions = {
   timeout: 4000
@@ -316,10 +342,13 @@ export default {
       bch_balance_naira: "",
       eth_balance_naira: "",
       coin_type: "",
-      afterFee:"",
+      afterFee: "",
       eth_balance: "",
       coinAmount: "",
       bitcoin: {},
+      accountName: "",
+      accountNumber: "",
+      accountBank: "",
       shortlists: [],
       USD: {},
       histories: [],
@@ -368,6 +397,19 @@ export default {
     // eslint-disable-next-line no-console
 
     axios
+      .get(`https://cryptonew-apis.herokuapp.com/api/user/bank?email=${user}`)
+      .then(res => {
+        console.log(res, "Data");
+        // eslint-disable-next-line no-unused-vars
+        this.accountName = res.data.accountName;
+        this.accountNumber = res.data.accountNumber;
+        this.accountBank = res.data.account_bank;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    axios
       .get(
         `https://cryptonew-apis.herokuapp.com/api/balance/coin?email=${userEmail}&coin_type=BTC`
       )
@@ -386,6 +428,7 @@ export default {
       )
       .then(res => {
         this.user = res.data.data;
+        console.log(this.user);
         // eslint-disable-next-line no-console
         // eslint-disable-next-line no-unused-vars
       })
@@ -394,110 +437,133 @@ export default {
       });
     // eslint-disable-next-line no-console
 
-           axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`)
-            .then(res => {
-                this.nairaBalance = res.data.price;
-                console.log('nairabalance', res.data.price)
-                // eslint-disable-next-line no-console
-
-                // eslint-disable-next-line no-unused-vars
-            }).catch(err => {
-                console.log(err)
-            })
+    axios
+      .get(
+        `https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BTC`
+      )
+      .then(res => {
+        this.nairaBalance = res.data.price;
+        console.log("nairabalance", res.data.price);
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`)
-            .then(res => {
-                this.eth_balance_naira = res.data.price != null ? res.data.price : 0
-                // eslint-disable-next-line no-console
+        // eslint-disable-next-line no-unused-vars
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // eslint-disable-next-line no-console
 
-                // eslint-disable-next-line no-unused-vars
-            }).catch(err => {
-                console.log(err)
-            })
+    axios
+      .get(
+        `https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=ETH`
+      )
+      .then(res => {
+        this.eth_balance_naira = res.data.price != null ? res.data.price : 0;
         // eslint-disable-next-line no-console
 
-        axios.get(`https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`)
-            .then(res => {
-                this.bch_balance_naira = res.data.price != null ? res.data.price : 0
-                // eslint-disable-next-line no-console
+        // eslint-disable-next-line no-unused-vars
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // eslint-disable-next-line no-console
 
-                // eslint-disable-next-line no-unused-vars
-            }).catch(err => {
-                console.log(err)
-            })
+    axios
+      .get(
+        `https://cryptonew-apis.herokuapp.com/api/balance/naira?email=${userEmail}&coinType=BCH`
+      )
+      .then(res => {
+        this.bch_balance_naira = res.data.price != null ? res.data.price : 0;
+        // eslint-disable-next-line no-console
 
+        // eslint-disable-next-line no-unused-vars
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
 
   methods: {
-        searchInput: debounce(function (e) {
-            console.log(this.coin_type.coin_type);
-            // make API call here
-            axios.get(`https://cryptonew-apis.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`)
-                .then(res => {
-                   console.log(res)
-                    // eslint-disable-next-line no-console
-                  this.afterFee =   res.data.amountAfterFee
-                  this.coinAmount =   res.data.price
+    searchInput: debounce(function(e) {
+      console.log(this.coin_type.coin_type);
+      // make API call here
+      axios
+        .get(
+          `https://cryptonew-apis.herokuapp.com/api/convert/sale?amount=${e.target.value}&coin_type=${this.coin_type}`
+        )
+        .then(res => {
+          console.log(res);
+          // eslint-disable-next-line no-console
+          this.afterFee = res.data.amountAfterFee;
+          this.coinAmount = res.data.price;
 
-                    // eslint-disable-next-line no-unused-vars
-                }).catch(err => {
-                    console.log(err)
-                })
-        }, 800),
+          // eslint-disable-next-line no-unused-vars
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, 800),
 
     onCancel() {
-              console.log('User cancelled the loader.')
-            },
+      console.log("User cancelled the loader.");
+    },
 
-
-          sell() {
-            let email
-            const amountData = this.afterFee
-             if (amountData < 11) {
-                 toast.error('You can not withdraw less than 11 Dollars, enter an amount greater than 11 Dollars');
-            } else {
-
-                 this.isLoading = true
-
-            if (process.browser) {
-                email = localStorage.getItem('email')
-            }
-
-            const data = {
-                email: email,
-                amount: amountData,
-                coin_type: this.coin_type,
-                bitcoin: this.coinAmount,
-                flatAmount: this.coinAmount,
-            }
-                    setTimeout(() => {
-        this.isLoading = false
-      })
-            axios.post('https://cryptonew-apis.herokuapp.com/api/withdraw', data).then(res => {
-                    // sessionStorage.setItem('token', res.data.token)
-
-      console.log(res);
-         toast.success('Withdrawal Initiated Successfully');
-      this.$router.push('/dashboard');
-                })
-                .catch(err => {
-                     setTimeout(() => {
-        this.isLoading = false
-      });
-                 console.log(err.response.data);
- toast.error('Insufficient Balance');
-      if(err.status = 500) {
-               toast.error(err.response.data);
-
+    sell() {
+      let email;
+      const amountData = this.afterFee;
+      if (amountData < 1000) {
+        this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Invalid Amount",
+          text:
+            "You can not withdraw less than 1000 Dollars, enter an amount greater than 11 Dollars"
+        });
       } else {
-     toast.error(err.response.data.message);
+        this.isLoading = true;
 
-      }
-                })
+        if (process.browser) {
+          email = localStorage.getItem("email");
+        }
+
+        const data = {
+          email: email,
+          amount: amountData,
+          coin_type: this.coin_type,
+          bitcoin: this.coinAmount,
+          flatAmount: this.coinAmount
+        };
+        setTimeout(() => {
+          this.isLoading = false;
+        });
+        axios
+          .post("https://cryptonew-apis.herokuapp.com/api/withdraw", data)
+          .then(res => {
+            // sessionStorage.setItem('token', res.data.token)
+
+            console.log(res);
+            toast.success("Withdrawal Initiated Successfully");
+            this.$router.push("/dashboard");
+          })
+          .catch(err => {
+            setTimeout(() => {
+              this.isLoading = false;
+            });
+            console.log(err.response.data);
+            this.$notify({
+              group: "foo",
+              type: "error",
+              title: "Invalid Balance",
+              text: "Insufficient Balance"
+            });
+            if ((err.status = 500)) {
+              toast.error(err.response.data);
+            } else {
+              toast.error(err.response.data.message);
             }
-
-        },
+          });
+      }
+    },
 
     getHistory() {
       axios

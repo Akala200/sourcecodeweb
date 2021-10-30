@@ -132,8 +132,14 @@ export default {
 
             let email
             const amountData = this.afterFee
-             if (amountData < 11) {
-                 toast.error('You can not withdraw less than 11 Dollars, enter an amount greater than 11 Dollars');
+             if (amountData < 500) {
+                      this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Invalid Amount",
+          text:
+            "You can not buy coin less than 500 Dollars, enter an amount greater than 500 Dollars"
+        });
             } else {
 
             this.isLoading = true
@@ -154,8 +160,12 @@ export default {
                      setTimeout(() => {
         this.isLoading = false
       })
-      console.log(res);
-      toast.success(res.data);
+                     this.$notify({
+          group: "foo",
+          type: "success",
+          title: "Transaction Successful",
+          text: res.data
+        });
       this.$router.push('/dashboard');
                 })
                 .catch(err => {
@@ -165,10 +175,22 @@ export default {
                  console.log(err.response);
 
       if(err.status = 500) {
-               toast.error(err.response.data);
+                     this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Bad transaction",
+          text: err.response.data.message
+        });
+
 
       } else {
      toast.error(err.response.data.message);
+            this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Error",
+          text: err.response.data.message
+        });
 
       }
                 })

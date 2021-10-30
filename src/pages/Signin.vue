@@ -1,7 +1,7 @@
 <template>
   <form-page>
-  <loading :active.sync="isLoading" 
-        :can-cancel="true" 
+  <loading :active.sync="isLoading"
+        :can-cancel="true"
         :on-cancel="onCancel"
         :is-full-page="fullPage"></loading>
     <template #header>
@@ -83,7 +83,7 @@ import { createToastInterface } from "vue-toastification";
 const pluginOptions = {
   timeout: 4000
 };
- 
+
 // Create the interface
 const toast = createToastInterface(pluginOptions);
 export default {
@@ -132,9 +132,20 @@ export default {
       console.log(resp);
        if(resp.data.data.bvn_status === false){
               toast.success('Login Successful');
+                   this.$notify({
+          group: "foo",
+          type: "success",
+          text:
+            "Login Successful"
+        });
           this.$router.push('/complete_setup')
        } else {
-            toast.success('Login Successful');
+                   this.$notify({
+          group: "foo",
+          type: "success",
+          text:
+            "Login Successful"
+        });
            this.$router.push('/dashboard');
        }
         })
@@ -145,10 +156,13 @@ export default {
       })
             console.log(err.response);
 
-     toast.error(err.response.data.message);
-
+        this.$notify({
+          group: "foo",
+          type: "error",
+          text: err.response.data.message,
+        });
         })
-    
+
     }
   }
 }

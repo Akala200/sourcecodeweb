@@ -11,6 +11,8 @@
           <div class="sk-child sk-bounce3" />
         </div>
       </div>
+      <notifications group="foo" />
+
     </transition>
 
     <router-view :is-loading="isLoading" />

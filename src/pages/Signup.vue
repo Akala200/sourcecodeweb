@@ -1,9 +1,9 @@
 <template>
 <form-page>
- <loading :active.sync="isLoading" 
-        :can-cancel="true" 
+ <loading :active.sync="isLoading"
+        :can-cancel="true"
         :is-full-page="fullPage"></loading>
-        
+
     <template #header>
         <h4 class="card-title">Sign up your account</h4>
     </template>
@@ -56,7 +56,7 @@ import { createToastInterface } from "vue-toastification";
 const pluginOptions = {
   timeout: 4000
 };
- 
+
 // Create the interface
 const toast = createToastInterface(pluginOptions);
 export default {
@@ -127,7 +127,11 @@ password
              setTimeout(() => {
                   this.isLoading = false
                 })
-                 toast.success('Account created, kindly verify your email');
+        this.$notify({
+          group: "foo",
+          type: "success",
+          text: 'Account created, kindly verify your email',
+        });
             this.$router.push("/confirm_password")}
             )
         // eslint-disable-next-line no-console
@@ -135,8 +139,12 @@ password
               setTimeout(() => {
                   this.isLoading = false
                 });
-                 toast.error(err.response.data.message);
-            
+                 this.$notify({
+          group: "foo",
+          type: "success",
+          text: err.response.data.message,
+        });
+
             });
     }
     }

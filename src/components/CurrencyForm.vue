@@ -140,10 +140,15 @@ export default {
         phone = localStorage.getItem("phone");
       }
 
-      if (amountData < 3) {
-        toast.error(
-          "You can not buy coin less than 3 Dollars, enter an amount greater than 3 Dollars"
-        );
+      if (amountData < 24) {
+
+         this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Invalid Amount",
+          text:
+            "You can not buy coin less than 3 Dollars, enter an amount greater than 5 Dollars"
+        });
       } else {
         const initiatedData = {
           coin_type: this.coin_type.coin_type,
@@ -182,6 +187,13 @@ export default {
       onclose: function() {
         // close modal
          toast.error('Could not complete payment');
+            this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Payment Error",
+          text:
+            "Could not complete payment"
+        });
       },
     });
 
@@ -189,7 +201,12 @@ export default {
           .catch(err => {
 
             console.log(err);
-              toast.error(err);
+            this.$notify({
+          group: "foo",
+          type: "error",
+          title: "Payment Error",
+          text: err
+        });
 
           });
       }

@@ -13,19 +13,21 @@ import "vue-toast-notification/dist/theme-sugar.css";
 import Toast from "vue-toastification";
 // Import the CSS or use your own!
 import "vue-toastification/dist/index.css";
+import Notifications from 'vue-notification'
 
 import routes from './routes'
 import app from './App.vue'
 const options = {
   // You can set your default options here
 };
- 
+
 Vue.use(VueRouter)
 Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
 Vue.use(VueSimpleAlert, { reverseButtons: true });
 Vue.use(VueToast);
 Vue.use(Toast, options);
+Vue.use(Notifications);
 
 Vue.prototype.$http = Axios
 

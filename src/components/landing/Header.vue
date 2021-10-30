@@ -23,9 +23,6 @@
                                     <a class="nav-link" href="#portfolio" data-scroll-nav="2">Portfolio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#testimonial" data-scroll-nav="3">Testimonial</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="#contact" data-scroll-nav="4">Contact</a>
                                 </li>
                                 <li class="nav-item d-lg-none">

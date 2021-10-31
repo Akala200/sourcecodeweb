@@ -17,7 +17,7 @@
           </div>
         </div>
         <p class="p-4">
-          Note: Withdrawal of funds will take up to three 3hrs before you recieve a credit alert!
+          Note: Withdrawal of funds will take up to three 24hrs before you recieve a credit alert!
         </p>
       </div>
     </div>

@@ -74,6 +74,8 @@
       <h6 class="mb-0">{{ coin_type.coin_type }} {{ coinAmount }}</h6>
     </div>
 
+    <div><p>For transaction above $1000 kindly reach out to us via chat icon or email</p></div>
+
     <button class="btn btn-success btn-block p-2" @click.prevent="buy()">
       BUY COIN
     </button>
